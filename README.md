@@ -5,8 +5,8 @@
 *Base Architecture Project Boilerplate*
 
 *TCBaseArchitecture* is a showcase of customized [clean architecture](https://github.com/android10/Android-CleanArchitecture) with [Dagger 2](https://github.com/google/dagger), [Data Binding](https://developer.android.com/topic/libraries/data-binding/index.html), [RxJava](https://github.com/ReactiveX/RxJava) and [Realm](https://news.realm.io/news/realm-for-android/). 
-It can be used as boilerplate code for new projects which use standard work flow (onboarding -> sign in/up –> activity with content)
-You are free to choose one of pre-defined UI activities to extend yours :
+It can be used as boilerplate code for new projects which use standard work flow (onboarding -> sign in/up –> activity with content).
+Feel free to choose one of pre-defined UI activities to extend yours :
 * [`BaseActivity`](https://github.com/Gh0stahCZ/TCBaseArchitecture/blob/master/app/src/main/java/com/tomaschlapek/tcbasearchitecture/presentation/ui/activity/base/BaseActivity.java) (base)
 * [`ToolbarActivity`](https://github.com/Gh0stahCZ/TCBaseArchitecture/blob/master/app/src/main/java/com/tomaschlapek/tcbasearchitecture/presentation/ui/activity/base/ToolbarActivity.java) (Toolbar included)
 * [`DrawerActivity`](https://github.com/Gh0stahCZ/TCBaseArchitecture/blob/master/app/src/main/java/com/tomaschlapek/tcbasearchitecture/presentation/ui/activity/base/DrawerActivity.java) (Navigation Drawer & Toolbar included)
