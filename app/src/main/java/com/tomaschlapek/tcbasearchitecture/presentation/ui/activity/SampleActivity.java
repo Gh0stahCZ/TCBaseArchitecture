@@ -35,7 +35,7 @@ public class SampleActivity
 
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
-    int menuRes = R.menu.menu_search;
+    int menuRes = R.menu.menu_sample;
     getMenuInflater().inflate(menuRes, menu);
 
     MenuItem menuItem = menu.findItem(R.id.action_search);
