@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:id="@+id/drawer_wrapper"
+  android:orientation="vertical"
+  android:layout_width="@dimen/menu_drawer_width"
+  android:layout_height="match_parent"
+  android:paddingTop="@dimen/margin_medium"
+  android:background="@color/gray_90"
+>
+
+  <!-- <ScrollView
+     android:layout_width="match_parent"
+     android:layout_height="0dp"
+     android:layout_weight="1"
+     >
+
+     <LinearLayout
+       android:orientation="vertical"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       >
+
+       <TextView
+         style="@style/menu_item"
+         android:id="@+id/menu_profile_manager"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:text="@string/menu_profile_manager"
+         />
+
+       <TextView
+         style="@style/menu_item"
+         android:id="@+id/menu_project_manager"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:text="@string/menu_project_manager"
+         />
+
+       <TextView
+         style="@style/menu_item"
+         android:id="@+id/menu_funds_manager"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:text="@string/menu_funds_manager"
+         />
+
+       <RelativeLayout
+         style="@style/menu_item"
+         android:id="@+id/menu_messages"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:paddingTop="@dimen/margin_huge"
+         android:paddingBottom="@dimen/margin_huge"
+         >
+
+         <TextView
+           android:id="@+id/menu_messages_label"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="@string/menu_messages"
+           android:textSize="@dimen/text_size_small"
+           android:textColor="@color/white"
+           />
+
+         <ImageView
+           android:layout_width="wrap_content"
+           android:layout_height="match_parent"
+           android:src="@drawable/ic_mail"
+           android:layout_toRightOf="@id/menu_messages_label"
+           android:layout_toEndOf="@id/menu_messages_label"
+           android:layout_alignTop="@id/menu_messages_label"
+           android:layout_alignBottom="@id/menu_messages_label"
+           android:contentDescription="@string/messaged_icon"
+           />
+
+       </RelativeLayout>
+
+       <View
+         android:layout_width="match_parent"
+         android:layout_height="@dimen/margin_normal"
+         />
+
+       <TextView
+         style="@style/menu_item"
+         android:id="@+id/menu_feedback"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:text="@string/menu_feedback"
+         />
+
+       <TextView
+         style="@style/menu_item"
+         android:id="@+id/menu_settings"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:text="@string/menu_settings"
+         />
+     </LinearLayout>
+   </ScrollView>-->
+
+  <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/margin_huge"
+    android:text="Item 1"
+    android:textColor="@color/white"
+    android:background="?attr/selectableItemBackground"
+  />
+  <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/margin_huge"
+    android:text="Item 2"
+    android:textColor="@color/white"
+    android:background="?attr/selectableItemBackground"
+  />
+  <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/margin_huge"
+    android:text="Item 3"
+    android:textColor="@color/white"
+    android:background="?attr/selectableItemBackground"
+  />
+</LinearLayout>

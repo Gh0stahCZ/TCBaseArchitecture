@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+>
+  <FrameLayout
+    android:id="@+id/sample_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+  >
+    <android.support.v4.view.ViewPager
+      android:id="@+id/onboarding_viewpager"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+    />
+
+    <LinearLayout
+      android:orientation="vertical"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+
+      <android.support.v4.widget.Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8.5"/>
+
+      <me.relex.circleindicator.CircleIndicator
+        android:id="@+id/indicator"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        app:ci_drawable="@drawable/shape_circle_orange"
+        app:ci_drawable_unselected="@drawable/shape_circle_gray"/>
+
+
+      <android.support.v4.widget.Space
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_onboarding_height"/>
+    </LinearLayout>
+
+
+  </FrameLayout>
+</layout>

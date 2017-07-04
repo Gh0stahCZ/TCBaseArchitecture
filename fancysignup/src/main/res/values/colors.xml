@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <color name="colorPrimary">#3F51B5</color>
+  <color name="colorPrimaryDark">#303F9F</color>
+  <color name="colorAccent">#FF4081</color>
+
+  <color name="black">#000000</color>
+  <color name="white">#FFFFFF</color>
+  <color name="pinky">#ed1b58</color>
+
+  <color name="text_color_primary">#212121</color>
+  <color name="text_color_secondary">#bbbbbb</color>
+
+  <color name="melanzane">#3E2136</color>
+  <color name="melanzane_50">#CC3E2136</color>
+  <color name="lavender_blush">#FFF9FA</color>
+  <color name="deep_blush">#E07B89</color>
+  <color name="deep_blush_50">#80E07B89</color>
+  <color name="turkish_rose">#A56378</color>
+  <color name="moody_blue">#7E7CCC</color>
+  <color name="snuff">#F4D6F3</color>
+
+
+
+</resources>

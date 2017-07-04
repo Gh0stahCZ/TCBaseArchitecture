@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <!-- Default screen margins, per the Android Design guidelines. -->
+  <dimen name="activity_horizontal_margin">16dp</dimen>
+  <dimen name="activity_vertical_margin">16dp</dimen>
+
+  <dimen name="text_size_header">48sp</dimen>
+  <dimen name="text_size_normal">16sp</dimen>
+
+  <dimen name="margin_giga">24dp</dimen>
+  <dimen name="margin_mega">20dp</dimen>
+  <dimen name="margin_huger">18dp</dimen>
+  <dimen name="margin_huge">16dp</dimen>
+  <dimen name="margin_larger">14dp</dimen>
+  <dimen name="margin_large">12dp</dimen>
+  <dimen name="margin_medium">8dp</dimen>
+  <dimen name="margin_small">4dp</dimen>
+  <dimen name="margin_mini">2dp</dimen>
+  <dimen name="margin_tiny">1dp</dimen>
+
+  <dimen name="margin_extra">0dp</dimen>
+
+  <dimen name="margin_huge_negative">-20dp</dimen>
+
+  <dimen name="text_size_giga">26dp</dimen>
+  <dimen name="text_size_mega">22dp</dimen>
+  <dimen name="text_size_huger">20dp</dimen>
+  <dimen name="text_size_huge">18dp</dimen>
+  <dimen name="text_size_larger">16dp</dimen>
+  <dimen name="text_size_large">14dp</dimen>
+  <dimen name="text_size_medium">12dp</dimen>
+  <dimen name="text_size_small">10dp</dimen>
+  <dimen name="text_size_mini">8dp</dimen>
+  <dimen name="text_size_tiny">6dp</dimen>
+
+  <!--Custom dimens-->
+  <dimen name="menu_drawer_width">280dp</dimen>
+  <dimen name="button_onboarding_height">64dp</dimen>
+  <dimen name="sample_sign_in_image_height">100dp</dimen>
+
+</resources>

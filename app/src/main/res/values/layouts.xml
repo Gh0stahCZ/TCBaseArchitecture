@@ -1,0 +1,4 @@
+<resources>
+  <bool name="is_dual_pane">false</bool>
+  <bool name="has_two_columns_in_portrait">false</bool>
+</resources>

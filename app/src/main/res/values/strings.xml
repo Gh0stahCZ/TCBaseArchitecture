@@ -1,0 +1,38 @@
+<resources>
+  <string name="app_name">TCBaseArchitecture</string>
+  <string name="app_name_mine">TCBaseArchitecture</string>
+
+  <string name="sample_button">go</string>
+  <string name="sample_onboarding_title">sample_onboarding_title</string>
+  <string name="sample_onboarding_body">sample_onboarding_body</string>
+
+  <string name="sample_onboarding_page_one_title">Page one title</string>
+  <string name="sample_onboarding_page_one_message">Page one message</string>
+
+  <string name="sample_onboarding_page_two_title">Page two title</string>
+  <string name="sample_onboarding_page_two_message">Page two message</string>
+
+  <string name="sample_onboarding_page_three_title">Page three title</string>
+  <string name="sample_onboarding_page_three_message">Page three message</string>
+
+  <string name="sample_onboarding_positive_button">Allow</string>
+  <string name="sample_onboarding_negative_button">Not now</string>
+
+  <string name="sample_continue_button_text">Continue</string>
+  <string name="sample_negative_button_text">No</string>
+  <string name="sample_positive_button_text">Yes</string>
+  <string name="sample_toast_permission_request">Permission dialog</string>
+
+  <string name="sample_sign_in_email">Email</string>
+  <string name="sample_sign_in_pass">Password</string>
+  <string name="sample_sign_in_link">No account yet? Create one</string>
+  <string name="sample_sign_in_button">Login</string>
+  <string name="sample_sign_in_invalid_email">Invalid email</string>
+  <string name="sample_sign_in_invalid_pass">Invalid password</string>
+
+  <string name="menu_share">Share</string>
+  <string name="text_favorites">Favorites</string>
+  <string name="text_schedules">Schedule</string>
+  <string name="text_music">Music</string>
+  <string name="action_search">Search</string>
+</resources>

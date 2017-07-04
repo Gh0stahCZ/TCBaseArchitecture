@@ -1,0 +1,65 @@
+ext {
+
+  // Versions
+
+  compileSdkVersionVar = 25
+  buildToolsVersionVar = "25.0.2"
+
+  targetSdkVersionVar = 25
+
+  supportVersion = "25.4.0"
+  //  supportVersion = "26.0.0-beta2"
+  playServicesVersion = "10.0.1"
+  retrofitVersion = "2.1.0"
+  firebaseVersion = "10.2.6"
+  leakCanaryVersion = "1.5.1"
+  powerMockVersion = "1.6.6"
+
+  timberVersion = "4.3.1"
+
+  // Multiple Libraries dependencies
+
+  supportDependencies = [
+    appCompat        : "com.android.support:appcompat-v7:${supportVersion}",
+    recyclerView     : "com.android.support:recyclerview-v7:${supportVersion}",
+    cardView         : "com.android.support:cardview-v7:${supportVersion}",
+    design           : "com.android.support:design:${supportVersion}",
+    supportAnnotation: "com.android.support:support-annotations:${supportVersion}"
+  ]
+
+  leakCanaryDependencies = [
+    leakDebug  : "com.squareup.leakcanary:leakcanary-android:${leakCanaryVersion}",
+    leakRelease: "com.squareup.leakcanary:leakcanary-android-no-op:${leakCanaryVersion}",
+    leakTest   : "com.squareup.leakcanary:leakcanary-android-no-op:${leakCanaryVersion}"
+  ]
+
+  networkDependencies = [
+    retrofit      : "com.squareup.retrofit2:retrofit:${retrofitVersion}",
+    rxjava_adapter: "com.squareup.retrofit2:adapter-rxjava:${retrofitVersion}",
+    converter_gson: "com.squareup.retrofit2:converter-gson:${retrofitVersion}"
+  ]
+
+  timberDependencies = [
+    timber: "com.jakewharton.timber:timber:${timberVersion}"
+  ]
+
+  playDependencies = [
+    gcm      : "com.google.android.gms:play-services-gcm:${playServicesVersion}",
+    maps     : "com.google.android.gms:play-services-maps:${playServicesVersion}",
+    analytics: "com.google.android.gms:play-services-analytics:${playServicesVersion}",
+    auth     : "com.google.android.gms:play-services-auth:${playServicesVersion}"
+  ]
+
+  firebaseDependencies = [
+    core     : "com.google.firebase:firebase-core:${firebaseVersion}",
+    messaging: "com.google.firebase:firebase-messaging:${firebaseVersion}",
+    auth     : "com.google.firebase:firebase-auth:${firebaseVersion}"
+  ]
+
+  powerMockDependencies = [
+    rule        : "org.powermock:powermock-module-junit4:${powerMockVersion}",
+    api         : "org.powermock:powermock-api-mockito:${powerMockVersion}",
+    classloading: "org.powermock:powermock-classloading-xstream:${powerMockVersion}"
+  ]
+
+}

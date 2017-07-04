@@ -1,0 +1,20 @@
+<resources>
+  <string name="lib_sign_in_app_name">FancySignUp</string>
+
+  <string name="broadcast_sign_up">broadcast_sign_up</string>
+  <string name="broadcast_create_account">broadcast_create_account</string>
+
+  <string name="sign_up_title">Sign Up</string>
+  <string name="sample_sign_up_full_name">FULL NAME</string>
+  <string name="sample_sign_up_email">EMAIL</string>
+  <string name="sample_sign_up_pass">PASSWORD</string>
+  <string name="sample_create_account">Create account</string>
+
+  <string name="sample_sign_up_login">Already have an account?
+    <b>Login</b>
+  </string>
+
+  <string name="sample_sign_up_invalid_full_name">Invalid name</string>
+  <string name="sample_sign_up_invalid_email">Invalid email</string>
+  <string name="sample_sign_up_invalid_pass">Invalid password</string>
+</resources>

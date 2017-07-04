@@ -1,0 +1,8 @@
+<manifest
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  package="com.tomaschlapek.fancyonboarding">
+
+  <application
+    android:label="@string/lib_app_name"/>
+
+</manifest>

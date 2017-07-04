@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <string name="pref_key_first_run">pref_first_run</string>
+  <string name="pref_key_user_login_token">pref_user_login_token</string>
+  <string name="pref_key_user_uid">pref_user_uid</string>
+
+</resources>

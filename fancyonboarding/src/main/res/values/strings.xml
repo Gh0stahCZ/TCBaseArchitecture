@@ -1,0 +1,8 @@
+<resources>
+  <string name="lib_app_name">FancyOnboarding</string>
+
+  <string name="sample_continue_button_text">Continue</string>
+  <string name="sample_negative_button_text">No</string>
+  <string name="sample_positive_button_text">Yes</string>
+  <string name="sample_toast_permission_request">Permission dialog</string>
+</resources>

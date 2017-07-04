@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <color name="colorPrimary">#3F51B5</color>
+  <color name="colorPrimaryDark">#303F9F</color>
+  <color name="colorAccent">#FF4081</color>
+
+  <!-- Basic colors. -->
+  <color name="black">#000000</color>
+  <color name="white">#ffffff</color>
+  <color name="white20p">#33ffffff</color>
+  <color name="red">#FF0000</color>
+  <color name="google_plus_gray">#2f414c</color>
+  <color name="gray_10">#e6e6e6</color>
+  <color name="gray_20">#cccccc</color>
+  <color name="gray_30">#b3b3b3</color>
+  <color name="gray_40">#999999</color>
+  <color name="gray_50">#808080</color>
+  <color name="gray_60">#666666</color>
+  <color name="gray_70">#4d4d4d</color>
+  <color name="gray_80">#333333</color>
+  <color name="gray_90">#1a1a1a</color>
+  <color name="transparent">#00000000</color>
+  <color name="transparent_black_10">#1a000000</color>
+  <color name="transparent_black_20">#33000000</color>
+  <color name="transparent_black_30">#4d000000</color>
+  <color name="transparent_black_40">#66000000</color>
+  <color name="transparent_black_50">#80000000</color>
+  <color name="transparent_black_60">#99000000</color>
+  <color name="transparent_black_70">#b3000000</color>
+  <color name="transparent_black_80">#cc000000</color>
+  <color name="transparent_black_90">#e6000000</color>
+  <color name="transparent_white_10">#1affffff</color>
+  <color name="transparent_white_20">#33ffffff</color>
+  <color name="transparent_white_30">#4dffffff</color>
+  <color name="transparent_white_40">#66ffffff</color>
+  <color name="transparent_white_50">#80ffffff</color>
+  <color name="transparent_white_60">#99ffffff</color>
+  <color name="transparent_white_70">#b3ffffff</color>
+  <color name="transparent_white_80">#ccffffff</color>
+  <color name="transparent_white_90">#e6ffffff</color>
+
+  <color name="spilled_wine_red">#bd485d</color>
+  <color name="spilled_wine_dark_red">#8b3142</color>
+  <color name="orange">#EF6C00</color>
+  <color name="steel_gray">#798085</color>
+  <color name="dark_mint">#4ac77e</color>
+  <color name="space_black">#020D14</color>
+
+  <color name="text_color_primary">#212121</color>
+  <color name="text_color_secondary">#424242</color>
+
+  <color name="button_text_normal">@color/text_color_primary</color>
+  <color name="button_text_checked">@color/white</color>
+  <color name="button_text_inverse_normal">@color/white</color>
+  <color name="button_text_inverse_checked">@color/text_color_primary</color>
+
+  <color name="button_background_inverse_normal">@color/gray_60</color>
+  <color name="button_background_inverse_pressed">@color/gray_50</color>
+  <color name="button_background_inverse_checked">@color/gray_20</color>
+
+
+  <!--Define your own brand colors here and use only them-->
+
+  <color name="sample_green_soft">#388e3c</color>
+  <color name="sample_green">#2e7d32</color>
+  <color name="sample_greed_dark">#1b5e20</color>
+
+  <color name="button_background_normal">@color/sample_green_soft</color>
+  <color name="button_background_pressed">@color/sample_green</color>
+  <color name="button_background_checked">@color/sample_greed_dark</color>
+
+
+</resources>

@@ -1,0 +1,223 @@
+<layout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+>
+
+  <ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+  >
+
+    <FrameLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+
+      <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/background_image"
+        android:scaleType="centerCrop"/>
+
+
+      <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+      >
+
+        <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_margin="@dimen/margin_tera"
+          android:layout_gravity="center_horizontal"
+          android:text="@string/sign_up_title"
+          android:textSize="@dimen/text_size_giga"
+          android:textColor="@color/white"
+        />
+
+
+        <LinearLayout
+          android:orientation="horizontal"
+          android:layout_width="match_parent"
+          android:layout_height="@dimen/social_container_height"
+          android:layout_marginLeft="@dimen/margin_tera"
+          android:layout_marginRight="@dimen/margin_tera"
+          android:padding="@dimen/margin_medium"
+          android:background="@drawable/social_container"
+          android:elevation="@dimen/margin_small"
+        >
+
+          <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="?android:attr/selectableItemBackground"
+            app:srcCompat="@drawable/ic_facebook"
+          />
+
+          <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="?android:attr/selectableItemBackground"
+            app:srcCompat="@drawable/ic_twitter"
+          />
+
+          <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="?android:attr/selectableItemBackground"
+            app:srcCompat="@drawable/ic_google_plus"
+          />
+
+
+        </LinearLayout>
+
+        <android.support.v7.widget.CardView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginLeft="@dimen/margin_huge"
+          android:layout_marginRight="@dimen/margin_huge"
+          android:layout_marginTop="-40dp"
+          android:layout_marginBottom="@dimen/margin_medium"
+          android:elevation="@dimen/margin_small"
+          app:cardCornerRadius="@dimen/margin_medium"
+          android:backgroundTint="@color/lavender_blush"
+        >
+
+          <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/margin_huge"
+            android:layout_marginRight="@dimen/margin_huge"
+            android:layout_marginTop="60dp">
+
+            <RelativeLayout
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+            >
+
+              <TextView
+                style="@style/Text.Large.Unimportant"
+                android:id="@+id/or_center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_small"
+                android:text="or"
+                android:layout_centerInParent="true"/>
+
+              <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/text_color_secondary"
+                android:layout_alignBaseline="@id/or_center"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/or_center"/>
+
+              <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/text_color_secondary"
+                android:layout_alignBaseline="@id/or_center"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/or_center"/>
+
+
+            </RelativeLayout>
+
+            <android.support.design.widget.TextInputLayout
+              android:id="@+id/sample_sign_up_full_name_input"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="@dimen/margin_medium"
+              android:layout_marginBottom="@dimen/margin_medium"
+              android:textColorHint="@color/text_color_secondary">
+
+              <android.support.design.widget.TextInputEditText
+                android:id="@+id/sample_sign_up_full_name_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/sample_sign_up_full_name"
+                android:inputType="textEmailAddress"
+                android:textSize="@dimen/text_size_large"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+              android:id="@+id/sample_sign_up_email_input"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="@dimen/margin_medium"
+              android:layout_marginBottom="@dimen/margin_medium">
+
+              <android.support.design.widget.TextInputEditText
+                android:id="@+id/sample_sign_up_email_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:hint="@string/sample_sign_up_email"
+                android:inputType="textEmailAddress"
+                android:textSize="@dimen/text_size_large"
+                android:textColorHint="@color/text_color_secondary"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+              android:id="@+id/sample_sign_up_pass_input"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="@dimen/margin_medium"
+              android:layout_marginBottom="@dimen/margin_medium">
+
+              <android.support.design.widget.TextInputEditText
+                android:id="@+id/sample_sign_up_pass_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/sample_sign_up_pass"
+                android:inputType="textPassword"
+                android:textSize="@dimen/text_size_large"
+                android:textColorHint="@color/text_color_secondary"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+
+            <Button
+              android:id="@+id/sample_create_account_button"
+              style="?android:attr/borderlessButtonStyle"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="@dimen/margin_medium"
+              android:layout_marginBottom="@dimen/margin_medium"
+              android:text="@string/sample_create_account"
+              android:textColor="@color/pinky"
+            />
+
+          </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <TextView
+          style="@style/Text.Large.Inverse"
+          android:id="@+id/sample_sign_up_login_link"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginLeft="@dimen/margin_huge"
+          android:layout_marginRight="@dimen/margin_huge"
+          android:layout_marginTop="@dimen/margin_medium"
+          android:layout_marginBottom="@dimen/margin_huge"
+          android:gravity="center"
+          android:textAlignment="center"
+        />
+
+      </LinearLayout>
+
+    </FrameLayout>
+
+  </ScrollView>
+
+
+</layout>

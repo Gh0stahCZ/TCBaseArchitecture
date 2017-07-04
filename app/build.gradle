@@ -1,0 +1,221 @@
+apply plugin: 'com.android.application'
+//apply plugin: 'android-apt'
+//apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: "me.tatarka.retrolambda"
+apply plugin: 'realm-android' // Realm
+//apply plugin: 'io.fabric' // Crashlytics
+apply from: '../gradleScript/dependencies.gradle'
+
+// Constants definitions.
+def BOOLEAN = "Boolean"
+def TRUE = "true"
+def FALSE = "false"
+def FIELD_DEBUG_MODE = "DEBUG_MODE"
+def FIELD_LEAK_CANARY_ENABLED = "LEAK_CANARY_ENABLED"
+
+/*
+// TODO Include SHA to version name
+def getGitCommitCount = {
+  return 'git rev-list --all --count'
+}
+
+def getGitSha = {
+  return 'git rev-parse --short HEAD'
+}
+
+def versionMajor = 1
+def versionMinor = 0
+def versionPatch = getGitCommitCount()
+def versionBuild = getGitSha()*/
+
+// TODO Uncomment it when app will be added on Git
+def buildNumber
+buildNumber = 1
+//buildNumber = Integer.parseInt('git rev-list --all --count'.execute([], project.rootDir).text.trim())
+//println 'Using build number ' + buildNumber + ' from commit count based on counting commits to branch master'
+
+// Create a variable called keystorePropertiesFile, and initialize it to your
+// keystore.properties file, in the rootProject folder.
+def keystorePropertiesFile = rootProject.file("keystore.properties")
+
+// Initialize a new Properties() object called keystoreProperties.
+def keystoreProperties = new Properties()
+
+// Load your keystore.properties file into the keystoreProperties object.
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
+android {
+  compileSdkVersion compileSdkVersionVar
+  buildToolsVersion buildToolsVersionVar
+
+  signingConfigs {
+    config {
+      keyAlias keystoreProperties['keyAlias']
+      keyPassword keystoreProperties['keyPassword']
+      storeFile file(keystoreProperties['storeFile'])
+      storePassword keystoreProperties['storePassword']
+    }
+  }
+
+  defaultConfig {
+    applicationId "com.tomaschlapek.tcbasearchitecture"
+    minSdkVersion 16
+    targetSdkVersion 25
+    versionCode buildNumber
+    versionName "1.0." + buildNumber
+    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    vectorDrawables.useSupportLibrary = true
+    signingConfig signingConfigs.config
+  }
+
+  dataBinding {
+    enabled = true
+  }
+
+  buildTypes {
+    release {
+      debuggable false
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+      testCoverageEnabled false
+      buildConfigField BOOLEAN, FIELD_DEBUG_MODE, FALSE
+      buildConfigField BOOLEAN, FIELD_LEAK_CANARY_ENABLED, FALSE
+    }
+    debug {
+      debuggable true
+      testCoverageEnabled false
+      applicationIdSuffix ".debug"
+      versionNameSuffix '-DEBUG'
+      buildConfigField BOOLEAN, FIELD_DEBUG_MODE, TRUE
+      buildConfigField BOOLEAN, FIELD_LEAK_CANARY_ENABLED, TRUE
+    }
+  }
+
+
+  packagingOptions {
+    exclude 'META-INF/DEPENDENCIES.txt'
+    exclude 'META-INF/DEPENDENCIES'
+    exclude 'META-INF/dependencies.txt'
+    exclude 'META-INF/LICENSE.txt'
+    exclude 'META-INF/LICENSE'
+    exclude 'META-INF/license.txt'
+    exclude 'META-INF/LGPL2.1'
+    exclude 'META-INF/NOTICE.txt'
+    exclude 'META-INF/NOTICE'
+    exclude 'META-INF/notice.txt'
+  }
+
+  // Compile options to allow retro lambda
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
+
+}
+
+repositories {
+  maven {
+    url 'https://github.com/uPhyca/stetho-realm/raw/master/maven-repo'
+  }
+  // crashlytics
+  //  maven {
+  //    url 'https://maven.fabric.io/public'
+  //  }
+}
+
+dependencies {
+  compile fileTree(include: ['*.jar'], dir: 'libs')
+  androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    exclude group: 'com.android.support', module: 'support-annotations'
+  })
+  compile supportDependencies.appCompat
+  compile supportDependencies.recyclerView
+  compile supportDependencies.cardView
+  compile supportDependencies.design
+  compile supportDependencies.supportAnnotation
+
+  // leak canary.
+
+  //  debugCompile leakCanaryDependencies.leakDebug
+
+  //  releaseCompile leakCanaryDependencies.leakRelease
+
+  //  testCompile leakCanaryDependencies.leakTest
+
+  // networking
+  compile networkDependencies.retrofit
+  compile networkDependencies.rxjava_adapter
+  compile networkDependencies.converter_gson
+  testCompile powerMockDependencies.rule
+  testCompile powerMockDependencies.api
+  testCompile powerMockDependencies.classloading
+
+  // logging
+  compile timberDependencies.timber
+
+  // TODO Uncomment when it will be necessary
+
+  //  compile playDependencies.gcm
+
+  //  compile playDependencies.maps
+
+  //  compile playDependencies.analytics
+
+  //  compile playDependencies.auth
+
+  //  firebase
+
+  //  compile firebaseDependencies.core
+
+  //  compile firebaseDependencies.messaging
+
+  //  compile firebaseDependencies.auth
+
+  // autofactory - google
+
+  //  compile 'com.google.auto.factory:auto-factory:1.0-beta3'
+
+  // circle image view
+
+  // compile 'de.hdodenhof:circleimageview:2.1.0'
+
+  // crashlytics
+
+  // compile('com.crashlytics.sdk.android:crashlytics:2.6.8@aar') {
+
+  //   transitive = true;
+
+  // }
+
+  // mvvm library
+  compile 'eu.inloop:androidviewmodel:1.0.0'
+
+  // dagger
+  annotationProcessor 'com.google.dagger:dagger-compiler:2.9'
+  compile 'com.google.dagger:dagger:2.9'
+  provided 'javax.annotation:jsr250-api:1.0'
+
+  // rxjava
+  compile 'io.reactivex:rxjava:1.2.4'
+  compile 'io.reactivex:rxandroid:1.2.1'
+  compile 'com.jakewharton.rxbinding:rxbinding-appcompat-v7:0.4.0'
+
+  // picasso
+  compile 'com.squareup.picasso:picasso:2.5.2'
+  compile 'com.jakewharton.picasso:picasso2-okhttp3-downloader:1.1.0'
+  compile 'com.squareup.okhttp:okhttp:2.5.0'
+
+  // Stetho debug bridge - add library only for debug.
+  compile 'com.facebook.stetho:stetho:1.5.0'
+  compile 'com.uphyca:stetho_realm:2.0.0'
+
+  // Circle Indicator for onboarding
+  compile 'me.relex:circleindicator:1.2.2@aar'
+  testCompile 'junit:junit:4.12'
+  testCompile 'org.mockito:mockito-core:2.8.9'
+  compile project(path: ':fancyonboarding')
+  compile project(':fancysignup')
+}
+
+apply plugin: 'me.tatarka.retrolambda'
+//apply plugin: 'com.google.gms.google-services'

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools">
+  <data>
+    <import type="android.view.View"/>
+    <variable
+      name="page"
+      type="com.tomaschlapek.fancyonboarding.OnBoardingPage"
+    />
+  </data>
+  <LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/margin_small"
+    android:background="@color/white">
+
+    <android.support.v4.widget.Space
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:layout_weight="1"/>
+
+    <FrameLayout
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:layout_weight="5"
+      android:layout_marginLeft="@dimen/margin_large"
+      android:layout_marginRight="@dimen/margin_large"
+    >
+
+      <ImageView
+        android:id="@+id/background_image_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src='@{page.backgroundImage}'
+      />
+
+
+    </FrameLayout>
+
+    <LinearLayout
+      android:orientation="vertical"
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:layout_weight="2.5"
+      android:gravity="center_horizontal"
+      android:clipChildren="false"
+      android:clipToPadding="false">
+
+      <TextView
+        android:id="@+id/title_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="2.5"
+        android:gravity="center"
+        android:paddingLeft="@dimen/margin_medium"
+        android:paddingRight="@dimen/margin_medium"
+        android:text='@{page.titleText}'
+        android:textSize="@dimen/text_size_giga"
+        android:textStyle="bold"
+        android:textColor="@color/text_color_primary"
+        tools:text="Sample title"
+      />
+
+      <android.support.v4.widget.Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"/>
+
+      <TextView
+        android:id="@+id/message_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:paddingLeft="@dimen/margin_small"
+        android:paddingRight="@dimen/margin_small"
+        android:text='@{page.messageText}'
+        android:textSize="@dimen/text_size_huge"
+        android:textColor="@color/text_color_secondary"
+        tools:text="Sample message"
+        android:textAlignment="center"
+      />
+
+    </LinearLayout>
+
+    <FrameLayout
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:layout_weight="1"
+      android:layout_gravity="center"/>
+
+    <LinearLayout
+      android:orientation="horizontal"
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/button_onboarding_height"
+      android:visibility='@{page.permissionType != null ? View.VISIBLE : View.GONE}'
+      tools:visibility="gone"
+    >
+      <Button
+        style="@style/FancyOnboardingButton.Inverse"
+        android:id="@+id/negative_button"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:text='@{page.negativeButtonText ?? @string/sample_negative_button_text}'
+        android:textColor="@color/white"
+      />
+      <Button
+        style="@style/FancyOnboardingButton"
+        android:id="@+id/positive_button"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:text='@{page.positiveButtonText ?? @string/sample_positive_button_text}'
+        android:textColor="@color/white"
+      />
+
+    </LinearLayout>
+    <Button
+      style="@style/FancyOnboardingButton"
+      android:id="@+id/continue_button"
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/button_onboarding_height"
+      android:text='@{page.nextButtonText ?? @string/sample_continue_button_text}'
+      android:textColor="@color/white"
+      android:visibility='@{page.permissionType != null ? View.GONE : View.VISIBLE}'
+    />
+
+  </LinearLayout>
+</layout>

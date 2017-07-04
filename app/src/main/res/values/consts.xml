@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <string name="base_url">http://www.tomaschlapek.com/api/</string>
+
+  <string name="broadcast_sign_up">broadcast_sign_up</string>
+  <string name="broadcast_create_account">broadcast_create_account</string>
+
+  <!--<string name="fabric_api_key">42f5078xxxxxxxxxxxxxxx</string>-->
+
+</resources>
