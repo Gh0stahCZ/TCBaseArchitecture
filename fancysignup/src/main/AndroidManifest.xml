@@ -3,18 +3,11 @@
   xmlns:android="http://schemas.android.com/apk/res/android"
   package="com.tomaschlapek.fancysignup">
 
-
   <application
     android:label="@string/lib_sign_in_app_name"
   >
 
-    <activity android:name=".SignUpActivity">
-      <intent-filter>
-        <action android:name="android.intent.action.MAIN"/>
-
-        <category android:name="android.intent.category.LAUNCHER"/>
-      </intent-filter>
-    </activity>
+    <activity android:name=".SignUpActivity"/>
   </application>
 
 </manifest>
