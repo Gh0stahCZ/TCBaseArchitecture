@@ -4,9 +4,7 @@
   package="com.tomaschlapek.fancysignup">
 
   <application
-    android:label="@string/lib_sign_in_app_name"
-  >
-
+    android:label="@string/lib_sign_in_app_name">
     <activity android:name=".SignUpActivity"/>
   </application>
 
