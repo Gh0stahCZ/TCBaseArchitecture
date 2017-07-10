@@ -14,8 +14,6 @@ import android.support.v4.content.ContextCompat;
 import com.facebook.stetho.Stetho;
 import com.tomaschlapek.tcbasearchitecture.core.component.AppComponent;
 import com.tomaschlapek.tcbasearchitecture.core.component.DaggerAppComponent;
-import com.tomaschlapek.tcbasearchitecture.core.module.AppModule;
-import com.tomaschlapek.tcbasearchitecture.core.module.NetModule;
 import com.tomaschlapek.tcbasearchitecture.helper.RealmHelper;
 import com.tomaschlapek.tcbasearchitecture.presentation.ui.activity.SampleActivity;
 import com.uphyca.stetho_realm.RealmInspectorModulesProvider;
@@ -277,7 +275,8 @@ public class App extends Application {
     }
 
     sAppComponent =
-      DaggerAppComponent.builder().appModule(new AppModule(this)).netModule(new NetModule())
+      DaggerAppComponent.builder()
+        .application(this)
         .build();
 
     Stetho.initialize(
@@ -293,7 +292,6 @@ public class App extends Application {
     //    }
 
     // Initialize attributes.
-    sAppComponent = DaggerAppComponent.builder().appModule(new AppModule(this)).build();
     sContextReference = new WeakReference<>(this);
     sResources = getResources();
     sAssets = getAssets();

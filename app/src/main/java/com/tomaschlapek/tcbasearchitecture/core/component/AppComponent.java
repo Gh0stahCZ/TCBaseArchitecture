@@ -11,6 +11,7 @@ import com.tomaschlapek.tcbasearchitecture.presentation.ui.activity.base.Present
 
 import javax.inject.Singleton;
 
+import dagger.BindsInstance;
 import dagger.Component;
 
 /**
@@ -29,6 +30,17 @@ public interface AppComponent {
   NetworkHelper provideNetworkHelper();
 
   PreferenceHelper providePreferenceHelper();
+
+  /**
+   * Description:
+   * https://proandroiddev.com/dagger-2-component-builder-1f2b91237856
+   */
+  @Component.Builder
+  interface Builder {
+    AppComponent build();
+    @BindsInstance
+    Builder application(Application application);
+  }
 
   /*
   void inject(BaseFragment activity);

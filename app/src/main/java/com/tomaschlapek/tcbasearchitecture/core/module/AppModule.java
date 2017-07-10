@@ -19,22 +19,22 @@ import retrofit2.Retrofit;
 @Module
 public class AppModule {
 
-  private Application mApplication;
-
-  public AppModule(Application application) {
-    this.mApplication = application;
-  }
+  //  private Application mApplication;
+  //
+  //  public AppModule(Application application) {
+  //    this.mApplication = application;
+  //  }
+  //
+  //  @Provides
+  //  @Singleton
+  //  Application provideApplication() {
+  //    return this.mApplication;
+  //  }
 
   @Provides
   @Singleton
-  Application provideApplication() {
-    return this.mApplication;
-  }
-
-  @Provides
-  @Singleton
-  Context provideContext() {
-    return this.mApplication;
+  Context provideContext(Application application) {
+    return application.getApplicationContext();
   }
 
   @Provides
