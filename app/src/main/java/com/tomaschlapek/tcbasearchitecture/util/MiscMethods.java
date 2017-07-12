@@ -111,4 +111,16 @@ public class MiscMethods {
   public static int dpToPx(int dp) {
     return (int) (dp * Resources.getSystem().getDisplayMetrics().density);
   }
+
+  /**
+   * Simulates time-expensive operation.
+   */
+  public static void expensiveOperation() {
+    try {
+      Thread.sleep(8000);
+    } catch (InterruptedException e) {
+      // this is ok
+    }
+  }
+
 }

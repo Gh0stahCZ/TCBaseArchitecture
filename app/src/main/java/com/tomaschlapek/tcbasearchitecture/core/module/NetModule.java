@@ -83,6 +83,10 @@ public class NetModule {
       if (request.body() != null) {
         Timber.d("Request: %s", bodyToString(request.body()));
       }
+
+      // TODO Uncomment this call for simulation of slow internet connection.
+      // MiscMethods.expensiveOperation();
+
       return chain.proceed(request);
     });
     builder.cache(cache);
