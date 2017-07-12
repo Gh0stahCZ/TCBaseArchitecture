@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+>
+  <LinearLayout
+    android:id="@+id/drawer_wrapper"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/chat_control_panel_height"
+    android:layout_gravity="bottom"
+    android:gravity="center_vertical"
+    android:padding="@dimen/margin_medium"
+    android:background="@color/gray_20"
+    android:layout_alignParentBottom="true"
+  >
+
+    <ImageButton
+      android:id="@+id/chat_control_like"
+      android:layout_width="@dimen/chat_control_panel_component_height"
+      android:layout_height="@dimen/chat_control_panel_component_height"
+      android:src="@drawable/ic_favorite"
+      android:background="?attr/selectableItemBackground"
+    />
+
+    <EditText
+      android:id="@+id/chat_control_input"
+      android:layout_width="0dp"
+      android:layout_height="@dimen/chat_control_panel_component_height"
+      android:layout_weight="1"
+      android:layout_marginRight="@dimen/margin_small"
+      android:hint="@string/chat_control_panel_input_hint"
+      android:theme="@style/ChatControlStyle"
+    />
+
+    <FrameLayout
+      android:layout_width="@dimen/chat_control_panel_component_height"
+      android:layout_height="@dimen/chat_control_panel_component_height"
+      android:layout_marginLeft="@dimen/margin_small"
+    >
+
+      <ImageButton
+        android:id="@+id/chat_control_send"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/ic_send"
+        android:background="?attr/selectableItemBackground"
+      />
+
+      <ProgressBar
+        android:id="@+id/chat_control_progress"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+      />
+
+    </FrameLayout>
+
+  </LinearLayout>
+</layout>

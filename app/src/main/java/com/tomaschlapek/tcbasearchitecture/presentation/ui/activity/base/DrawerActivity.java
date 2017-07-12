@@ -1,5 +1,6 @@
 package com.tomaschlapek.tcbasearchitecture.presentation.ui.activity.base;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.DrawerLayout.DrawerListener;
 
 import com.tomaschlapek.tcbasearchitecture.R;
+import com.tomaschlapek.tcbasearchitecture.helper.NavigationHelper;
 import com.tomaschlapek.tcbasearchitecture.presentation.presenter.base.ActivityPresenter;
 import com.tomaschlapek.tcbasearchitecture.presentation.presenter.interfaces.view.IBaseView;
 
@@ -67,7 +69,7 @@ public abstract class DrawerActivity<TView extends IBaseView, TViewModel extends
       mDrawerOpened = savedInstanceState.getBoolean(Extra.DRAWER_OPENED, false);
     }
 
-    //    initMenu();
+    initMenu();
   }
 
   @Override
@@ -140,6 +142,19 @@ public abstract class DrawerActivity<TView extends IBaseView, TViewModel extends
     super.onSaveInstanceState(outState);
 
     outState.putBoolean(Extra.DRAWER_OPENED, mDrawerOpened);
+  }
+
+  private void initMenu() {
+    Context context = this;
+
+    boolean isInitActivity = false;
+
+    findViewById(R.id.drawer_item_chat).setOnClickListener(
+      view -> {
+        setDrawerOpened(false);
+        NavigationHelper.openChatActivity(context, isInitActivity);
+      }
+    );
   }
 
   //  private void initMenu() {

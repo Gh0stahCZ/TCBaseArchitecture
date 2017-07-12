@@ -37,6 +37,8 @@
   <!--Custom dimens-->
   <dimen name="menu_drawer_width">280dp</dimen>
   <dimen name="button_onboarding_height">64dp</dimen>
+  <dimen name="chat_control_panel_height">64dp</dimen>
   <dimen name="sample_sign_in_image_height">100dp</dimen>
+  <dimen name="chat_control_panel_component_height">48dp</dimen>
 
 </resources>

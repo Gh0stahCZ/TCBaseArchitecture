@@ -32,7 +32,15 @@
 
   <string name="menu_share">Share</string>
   <string name="text_favorites">Favorites</string>
+  <string name="text_chat">Chat</string>
   <string name="text_schedules">Schedule</string>
   <string name="text_music">Music</string>
   <string name="action_search">Search</string>
+
+  <string name="drawer_item_chat">Chat</string>
+  <string name="chat_control_panel_input_hint">Type your message...</string>
+  <string name="chat_message_empty">No message defined</string>
+  <string name="chat_message_connection_problem">Problem with sending your message. Try it again.
+  </string>
+
 </resources>

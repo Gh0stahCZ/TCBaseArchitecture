@@ -38,6 +38,10 @@
       android:screenOrientation="portrait"
     />
     <activity
+      android:name=".presentation.ui.activity.ChatActivity"
+      android:screenOrientation="portrait"
+    />
+    <activity
       android:name=".presentation.ui.activity.OnboardingActivity"
       android:screenOrientation="portrait"
     />

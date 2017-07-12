@@ -11,6 +11,7 @@ import android.support.v4.app.FragmentTransaction;
 
 import com.tomaschlapek.fancysignup.SignUpActivity;
 import com.tomaschlapek.tcbasearchitecture.R;
+import com.tomaschlapek.tcbasearchitecture.presentation.ui.activity.ChatActivity;
 import com.tomaschlapek.tcbasearchitecture.presentation.ui.activity.OnboardingActivity;
 import com.tomaschlapek.tcbasearchitecture.presentation.ui.activity.SampleActivity;
 import com.tomaschlapek.tcbasearchitecture.presentation.ui.activity.SignInActivity;
@@ -46,6 +47,23 @@ public class NavigationHelper {
     Timber.d("openSampleActivity()");
 
     Intent intent = new Intent(context, SampleActivity.class);
+
+    if (isInitActivity) {
+      intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+    } else {
+      intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+    }
+
+    context.startActivity(intent);
+  }
+
+  /**
+   * Opens chat activity..
+   */
+  public static void openChatActivity(Context context, boolean isInitActivity) {
+    Timber.d("openChatActivity()");
+
+    Intent intent = new Intent(context, ChatActivity.class);
 
     if (isInitActivity) {
       intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -129,6 +147,8 @@ public class NavigationHelper {
       openSignInActivity(context, isInitActivity);
     } else if (SignUpActivity.class.getName().equals(activityName)) {
       openSignUpActivity(context, isInitActivity);
+    } else if (ChatActivity.class.getName().equals(activityName)) {
+      openChatActivity(context, isInitActivity);
     } else {
       openSampleActivity(context, isInitActivity);
     }
