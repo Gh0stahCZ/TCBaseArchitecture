@@ -1,20 +1,27 @@
 package com.tomaschlapek.tcbasearchitecture.helper;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 
+import com.tbruyelle.rxpermissions.RxPermissions;
 import com.tomaschlapek.fancysignup.SignUpActivity;
+import com.tomaschlapek.tcbasearchitecture.App;
 import com.tomaschlapek.tcbasearchitecture.R;
 import com.tomaschlapek.tcbasearchitecture.presentation.ui.activity.OnboardingActivity;
 import com.tomaschlapek.tcbasearchitecture.presentation.ui.activity.SampleActivity;
 import com.tomaschlapek.tcbasearchitecture.presentation.ui.activity.SignInActivity;
 
+import pl.aprilapps.easyphotopicker.EasyImage;
 import timber.log.Timber;
 
 /**
@@ -102,6 +109,39 @@ public class NavigationHelper {
     }
 
     context.startActivity(intent);
+  }
+
+  /**
+   * Opens browser with definer url.
+   *
+   * @param context Context.
+   * @param url Requested url.
+   */
+  public static void openBrowser(Context context, String url) {
+
+    if (!url.startsWith("http://") && !url.startsWith("https://")) {
+      url = "http://" + url;
+    }
+
+    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+    context.startActivity(browserIntent);
+  }
+
+  public static void openCamera(Activity activity) {
+    RxPermissions rxPermissions = new RxPermissions(activity);
+    rxPermissions
+      .request(Manifest.permission.CAMERA)
+      .subscribe(granted -> {
+        if (granted) { // Always true pre-M
+
+          EasyImage
+            .openChooserWithGallery(activity, App.getResString(R.string.image_dialog_chooser), 0);
+        } else {
+          Toast
+            .makeText(activity, App.getResString(R.string.image_dialog_denied), Toast.LENGTH_SHORT)
+            .show();
+        }
+      });
   }
 
   public static void openInitActivity(Context context, String activityName,

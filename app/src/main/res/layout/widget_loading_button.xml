@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  tools:context=".widget.LoadingButton"
+>
+  <Button
+    style="@style/Button"
+    android:id="@+id/loading_button"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+  />
+  <ProgressBar
+    style="?android:attr/progressBarStyle"
+    android:id="@+id/loading_progress_bar"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:padding="6dp"
+    android:layout_alignLeft="@+id/loading_button"
+    android:layout_alignRight="@+id/loading_button"
+    android:layout_alignTop="@+id/loading_button"
+    android:layout_alignBottom="@+id/loading_button"
+    android:visibility="gone"
+  />
+</RelativeLayout>
