@@ -58,6 +58,14 @@
         android:value=".presentation.ui.activity.SampleActivity"/>
     </activity>-->
 
+    <service
+      android:exported="false"
+      android:name=".presentation.ui.service.AutoUpdateJobService">
+      <intent-filter>
+        <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE"/>
+      </intent-filter>
+    </service>
+
   </application>
 
 </manifest>

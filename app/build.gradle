@@ -166,6 +166,8 @@ dependencies {
 
   //  firebase
 
+
+
   //  compile firebaseDependencies.core
 
   //  compile firebaseDependencies.messaging
@@ -190,6 +192,9 @@ dependencies {
 
   // mvvm library
   compile 'eu.inloop:androidviewmodel:1.0.0'
+
+  // job dispatcher
+  compile 'com.firebase:firebase-jobdispatcher:0.8.0'
 
   // dagger
   annotationProcessor 'com.google.dagger:dagger-compiler:2.9'
