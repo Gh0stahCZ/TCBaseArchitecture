@@ -91,4 +91,11 @@ public class PreferenceHelper {
     editor.putString(mResources.getString(R.string.pref_key_user_uid), token);
     editor.apply();
   }
+
+  //////////////////////////////////////////////////////////////////////////////////////////////////
+
+  public void clearUserData() {
+    setUserLoginToken(null);
+    setUserUID(null);
+  }
 }
