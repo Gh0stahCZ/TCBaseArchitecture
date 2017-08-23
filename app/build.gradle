@@ -162,7 +162,7 @@ dependencies {
 
   //  compile playDependencies.analytics
 
-  //  compile playDependencies.auth
+    compile playDependencies.auth
 
   //  firebase
 
@@ -172,7 +172,7 @@ dependencies {
 
   //  compile firebaseDependencies.messaging
 
-  //  compile firebaseDependencies.auth
+    compile firebaseDependencies.auth
 
   // autofactory - google
 
