@@ -1,6 +1,5 @@
 package com.tomaschlapek.tcbasearchitecture.core.module;
 
-import android.app.Application;
 import android.content.Context;
 
 import com.google.gson.Gson;
@@ -57,10 +56,10 @@ public class NetModule {
 
   @Provides
   @Singleton
-  public Picasso providePicasso(Application app) {
+  public Picasso providePicasso(Context context) {
 
-    return new Picasso.Builder(app)
-      .downloader(new OkHttpDownloader(app.getApplicationContext()))
+    return new Picasso.Builder(context)
+      .downloader(new OkHttpDownloader(context))
       .listener((picasso, uri, exception) -> Timber.d("Exception " + exception.getStackTrace()))
       .build();
   }

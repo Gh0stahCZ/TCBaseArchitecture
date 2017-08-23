@@ -7,11 +7,11 @@ import android.view.ViewGroup;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 
-import com.tomaschlapek.tcbasearchitecture.App;
 import com.tomaschlapek.tcbasearchitecture.helper.PreferenceHelper;
 
 import javax.inject.Inject;
 
+import dagger.android.AndroidInjection;
 import eu.inloop.viewmodel.IViewModelProvider;
 import eu.inloop.viewmodel.ViewModelProvider;
 import rx.Observable.Transformer;
@@ -67,6 +67,9 @@ public abstract class PresenterEmptyActivity extends AppCompatActivity
    */
   @Override
   protected void onCreate(@Nullable Bundle savedInstanceState) {
+
+    AndroidInjection.inject(this);
+
     super.onCreate(savedInstanceState);
     mPresenterProvider = ViewModelProvider.newInstance(this);
 
@@ -74,7 +77,7 @@ public abstract class PresenterEmptyActivity extends AppCompatActivity
       .subscribeOn(Schedulers.io())
       .observeOn(AndroidSchedulers.mainThread());
 
-    App.getAppComponent().inject(this);
+// TODO   App.getAppComponent().inject(this);
   }
 
   /**

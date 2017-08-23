@@ -1,9 +1,9 @@
 package com.tomaschlapek.tcbasearchitecture.core.module;
 
-import android.app.Application;
 import android.content.Context;
 
 import com.squareup.picasso.Picasso;
+import com.tomaschlapek.tcbasearchitecture.App;
 import com.tomaschlapek.tcbasearchitecture.helper.NetworkHelper;
 import com.tomaschlapek.tcbasearchitecture.helper.PreferenceHelper;
 
@@ -15,25 +15,14 @@ import retrofit2.Retrofit;
 
 /**
  * Base app module.
+ * Application module refers to sub components and provides application level dependencies.
  */
 @Module
 public class AppModule {
 
-  //  private Application mApplication;
-  //
-  //  public AppModule(Application application) {
-  //    this.mApplication = application;
-  //  }
-  //
-  //  @Provides
-  //  @Singleton
-  //  Application provideApplication() {
-  //    return this.mApplication;
-  //  }
-
   @Provides
   @Singleton
-  Context provideContext(Application application) {
+  Context provideContext(App application) {
     return application.getApplicationContext();
   }
 
@@ -49,10 +38,8 @@ public class AppModule {
     return new NetworkHelper(context, retrofit, picasso);
   }
 
-
-/*
-
-	@Singleton
+  /*
+  @Singleton
 	@Provides
 	public RealmHelper provideRealmHelper() {
 		return new RealmHelper();

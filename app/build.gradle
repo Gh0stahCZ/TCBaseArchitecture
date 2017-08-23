@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 //apply plugin: 'android-apt'
 //apply plugin: 'com.neenbedankt.android-apt'
-apply plugin: "me.tatarka.retrolambda"
+//apply plugin: "me.tatarka.retrolambda"
 apply plugin: 'realm-android' // Realm
 //apply plugin: 'io.fabric' // Crashlytics
 apply from: '../gradleScript/dependencies.gradle'
@@ -190,10 +190,17 @@ dependencies {
   // mvvm library
   compile 'eu.inloop:androidviewmodel:1.0.0'
 
-  // dagger
-  annotationProcessor 'com.google.dagger:dagger-compiler:2.9'
-  compile 'com.google.dagger:dagger:2.9'
-  provided 'javax.annotation:jsr250-api:1.0'
+//  // dagger
+//  annotationProcessor 'com.google.dagger:dagger-compiler:2.9'
+//  compile 'com.google.dagger:dagger:2.9'
+//  provided 'javax.annotation:jsr250-api:1.0'
+
+  annotationProcessor 'com.google.dagger:dagger-compiler:2.11'
+  annotationProcessor 'com.google.dagger:dagger-android-processor:2.11'
+  compile 'com.google.dagger:dagger:2.11'
+  compile 'com.google.dagger:dagger-android-support:2.11'
+
+// Use this instead if you're using support library
 
   // rxjava
   compile 'io.reactivex:rxjava:1.2.4'
@@ -217,5 +224,5 @@ dependencies {
   compile project(':fancysignup')
 }
 
-apply plugin: 'me.tatarka.retrolambda'
+//apply plugin: 'me.tatarka.retrolambda'
 //apply plugin: 'com.google.gms.google-services'

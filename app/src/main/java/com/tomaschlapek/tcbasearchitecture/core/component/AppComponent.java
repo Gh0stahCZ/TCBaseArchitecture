@@ -1,29 +1,29 @@
 package com.tomaschlapek.tcbasearchitecture.core.component;
 
-import android.app.Application;
 import android.content.Context;
 
+import com.tomaschlapek.tcbasearchitecture.App;
 import com.tomaschlapek.tcbasearchitecture.core.module.AppModule;
+import com.tomaschlapek.tcbasearchitecture.core.module.BuildersModule;
 import com.tomaschlapek.tcbasearchitecture.core.module.NetModule;
 import com.tomaschlapek.tcbasearchitecture.helper.NetworkHelper;
 import com.tomaschlapek.tcbasearchitecture.helper.PreferenceHelper;
-import com.tomaschlapek.tcbasearchitecture.presentation.ui.activity.base.PresenterEmptyActivity;
 
 import javax.inject.Singleton;
 
 import dagger.BindsInstance;
 import dagger.Component;
+import dagger.android.AndroidInjector;
+import dagger.android.support.AndroidSupportInjectionModule;
 
 /**
  * Base app component.
  */
 @Singleton
-@Component(modules = { AppModule.class, NetModule.class })
-public interface AppComponent {
-
-  void inject(PresenterEmptyActivity activity);
-
-  Application provideApplication();
+@Component(modules = {
+  AndroidSupportInjectionModule.class, AppModule.class, NetModule.class, BuildersModule.class
+})
+public interface AppComponent extends AndroidInjector<App> {
 
   Context provideContext();
 
@@ -37,9 +37,11 @@ public interface AppComponent {
    */
   @Component.Builder
   interface Builder {
-    AppComponent build();
+
     @BindsInstance
-    Builder application(Application application);
+    Builder application(App application);
+
+    AppComponent build();
   }
 
   /*

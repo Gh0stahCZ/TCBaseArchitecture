@@ -1,11 +1,13 @@
 package com.tomaschlapek.tcbasearchitecture;
 
+import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
+import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
 
@@ -24,16 +26,29 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.lang.ref.WeakReference;
 
+import javax.inject.Inject;
+
+import dagger.android.AndroidInjection;
+import dagger.android.AndroidInjector;
+import dagger.android.DispatchingAndroidInjector;
+import dagger.android.HasActivityInjector;
+import dagger.android.support.HasSupportFragmentInjector;
 import timber.log.Timber;
 
 /**
  * Application class.
  */
-public class App extends Application {
+public class App extends Application implements HasActivityInjector {
 
   /* Public Constants *****************************************************************************/
 
   public static final String INIT_ACTIVITY_NAME = SampleActivity.class.getName();
+
+  /* Public Constants *****************************************************************************/
+
+  @Inject
+  DispatchingAndroidInjector<Activity> mAndroidInjector;
+
 
   /* Private Constants ****************************************************************************/
 
@@ -279,6 +294,10 @@ public class App extends Application {
         .application(this)
         .build();
 
+    sAppComponent.inject(this);
+
+//    initLifecycle();
+
     Stetho.initialize(
       Stetho.newInitializerBuilder(this)
         .enableDumpapp(Stetho.defaultDumperPluginsProvider(this))
@@ -306,6 +325,11 @@ public class App extends Application {
     RealmHelper.initializeRealmConfig();
   }
 
+  @Override
+  public AndroidInjector<Activity> activityInjector() {
+    return mAndroidInjector;
+  }
+
   //  /**
   //   * Returns Leak Canary ref watcher.
   //   *
@@ -319,6 +343,63 @@ public class App extends Application {
   //  }
 
   /* Private Methods ******************************************************************************/
+
+  private void initLifecycle() {
+    registerActivityLifecycleCallbacks(new Application.ActivityLifecycleCallbacks() {
+      @Override
+      public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
+        handleActivity(activity);
+      }
+
+      @Override
+      public void onActivityStarted(Activity activity) {
+      }
+
+      @Override
+      public void onActivityResumed(Activity activity) {
+      }
+
+      @Override
+      public void onActivityPaused(Activity activity) {
+      }
+
+      @Override
+      public void onActivityStopped(Activity activity) {
+      }
+
+      @Override
+      public void onActivitySaveInstanceState(Activity activity, Bundle outState) {
+      }
+
+      @Override
+      public void onActivityDestroyed(Activity activity) {
+      }
+    });
+  }
+
+  private static void handleActivity(Activity activity) {
+    if (activity instanceof HasSupportFragmentInjector) {
+      AndroidInjection.inject(activity);
+    }
+  }
+  //    if (activity instanceof FragmentActivity)
+  //    {
+  //      ((FragmentActivity) activity).getSupportFragmentManager()
+  //        .registerFragmentLifecycleCallbacks(
+  //          new FragmentManager.FragmentLifecycleCallbacks()
+  //          {
+  //            @Override
+  //            public void onFragmentCreated(FragmentManager fm, Fragment f,
+  //              Bundle savedInstanceState)
+  //            {
+  //              if (f instanceof Injectable)
+  //              {
+  //                AndroidSupportInjection.inject(f);
+  //              }
+  //            }
+  //          }, true);
+  //    }
+
   /* Getters / Setters ****************************************************************************/
   /* Inner classes ********************************************************************************/
 
