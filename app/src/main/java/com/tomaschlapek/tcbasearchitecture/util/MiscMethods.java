@@ -11,6 +11,8 @@ import android.view.WindowManager;
 import java.io.IOException;
 import java.io.InputStream;
 
+import okhttp3.RequestBody;
+import okio.Buffer;
 import timber.log.Timber;
 
 /**
@@ -110,5 +112,21 @@ public class MiscMethods {
 
   public static int dpToPx(int dp) {
     return (int) (dp * Resources.getSystem().getDisplayMetrics().density);
+  }
+
+  /**
+   * Converts network request body to String.
+   * @param request Request body.
+   * @return Output string.
+   */
+  public static String bodyToString(final RequestBody request) {
+    try {
+      final RequestBody copy = request;
+      final Buffer buffer = new Buffer();
+      copy.writeTo(buffer);
+      return buffer.readUtf8();
+    } catch (final IOException e) {
+      return "Do not work :/";
+    }
   }
 }
