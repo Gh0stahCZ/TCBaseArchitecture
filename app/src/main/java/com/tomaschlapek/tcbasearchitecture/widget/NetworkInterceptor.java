@@ -14,13 +14,17 @@ import timber.log.Timber;
  */
 
 public class NetworkInterceptor implements Interceptor {
+
+  private static final String HEADER_CONTENT_TYPE_KEY = "Content-Type";
+  private static final String HEADER_CONTENT_TYPE_VALUE = "application/json";
+
   @Override
   public Response intercept(Chain chain) throws IOException {
     Request request =
       chain
         .request()
         .newBuilder()
-        .addHeader("Content-Type", "application/json")
+        .addHeader(HEADER_CONTENT_TYPE_KEY, HEADER_CONTENT_TYPE_VALUE)
         .build();
 
     Timber.d("Request: [%s] %s", request.method(), request.url());
