@@ -9,6 +9,8 @@ import com.tomaschlapek.tcbasearchitecture.presentation.presenter.base.ActivityP
 import com.tomaschlapek.tcbasearchitecture.presentation.presenter.interfaces.presenter.ISamplePresenter;
 import com.tomaschlapek.tcbasearchitecture.presentation.presenter.interfaces.view.ISampleActivityView;
 
+import io.realm.Realm;
+
 import timber.log.Timber;
 
 /**
@@ -73,11 +75,16 @@ public class SamplePresenterImpl extends ActivityPresenter<ISampleActivityView> 
     if(getView() != null) {
       getView().showToast("Button clicked");
     }
+
   }
 
   @Override
   public String getSharingText() {
     return "Shiiiiiiit";
+  }
+
+  public Realm getRealm(){
+    return mRealm;
   }
 
   /* Private Methods ******************************************************************************/

@@ -26,4 +26,5 @@ public abstract class BuildersModule {
 
   @ContributesAndroidInjector
   public abstract SignInActivity contributeSignInActivityInjector();
+
 }

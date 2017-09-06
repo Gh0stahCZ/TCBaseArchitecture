@@ -1,5 +1,7 @@
 package com.tomaschlapek.tcbasearchitecture.realm.repository;
 
+import com.tomaschlapek.tcbasearchitecture.helper.PreferenceHelper;
+
 import io.realm.Realm;
 import io.realm.Realm.Transaction.OnError;
 import io.realm.Realm.Transaction.OnSuccess;
@@ -15,7 +17,11 @@ import java.util.List;
  *
  * @param <T> Definer Realm object.
  */
-public abstract class RAbstractRepository<T extends RealmModel> {
+public abstract class RAbstractRepository<T extends RealmModel> extends RBaseRepository {
+
+  public RAbstractRepository(PreferenceHelper preferenceHelper) {
+    super(preferenceHelper);
+  }
 
   // No instance defined
 

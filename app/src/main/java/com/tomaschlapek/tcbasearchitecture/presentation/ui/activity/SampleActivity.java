@@ -105,5 +105,6 @@ public class SampleActivity
   public void showToast(String text) {
     mViews.sampleTextView.setText(getPresenter().getSharingText());
     Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
+    mRealmHelper.getLoggedUser(getPresenter().getRealm());
   }
 }

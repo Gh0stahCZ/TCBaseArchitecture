@@ -6,6 +6,8 @@ import com.tomaschlapek.tcbasearchitecture.realm.repository.RUserRepository;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 
+import javax.inject.Inject;
+
 /**
  * Manages access and CRUD operation to Realm.
  */
@@ -13,8 +15,9 @@ public class RealmHelper {
 
   private RUserRepository mRUserRepository;
 
-  public RealmHelper() {
-    mRUserRepository = new RUserRepository();
+  @Inject
+  public RealmHelper(RUserRepository rUserRepository) {
+    mRUserRepository = rUserRepository;
   }
 
   //**********************************************************************************************//

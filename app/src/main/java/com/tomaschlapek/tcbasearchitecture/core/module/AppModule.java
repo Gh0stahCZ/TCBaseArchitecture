@@ -6,6 +6,9 @@ import com.squareup.picasso.Picasso;
 import com.tomaschlapek.tcbasearchitecture.App;
 import com.tomaschlapek.tcbasearchitecture.helper.NetworkHelper;
 import com.tomaschlapek.tcbasearchitecture.helper.PreferenceHelper;
+import com.tomaschlapek.tcbasearchitecture.helper.RealmHelper;
+import com.tomaschlapek.tcbasearchitecture.realm.repository.RBaseRepository;
+import com.tomaschlapek.tcbasearchitecture.realm.repository.RUserRepository;
 
 import javax.inject.Singleton;
 
@@ -38,10 +41,15 @@ public class AppModule {
     return new NetworkHelper(context, retrofit, picasso);
   }
 
-  /*
   @Singleton
 	@Provides
-	public RealmHelper provideRealmHelper() {
-		return new RealmHelper();
-	}*/
+  public RealmHelper provideRealmHelper(RUserRepository rUserRepository) {
+    return new RealmHelper(rUserRepository);
+  }
+
+  @Singleton
+  @Provides
+  public RBaseRepository provideRBaseRepository(PreferenceHelper preferenceHelper) {
+    return new RBaseRepository(preferenceHelper);
+  }
 }

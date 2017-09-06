@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 
 import com.tomaschlapek.tcbasearchitecture.helper.PreferenceHelper;
+import com.tomaschlapek.tcbasearchitecture.helper.RealmHelper;
 
 import javax.inject.Inject;
 
@@ -33,6 +34,9 @@ public abstract class PresenterEmptyActivity extends AppCompatActivity
 
   @Inject
   public PreferenceHelper mPreferenceHelper;
+
+  @Inject
+  public RealmHelper mRealmHelper;
 
   /* Private Attributes ***************************************************************************/
 
