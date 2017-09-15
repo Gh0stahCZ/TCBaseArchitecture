@@ -129,4 +129,16 @@ public class MiscMethods {
       return "Do not work :/";
     }
   }
+
+  /**
+   * Simulates time-expensive operation.
+   */
+  public static void expensiveOperation() {
+    try {
+      Thread.sleep(8000);
+    } catch (InterruptedException e) {
+      // this is ok
+    }
+  }
+
 }

@@ -2,10 +2,10 @@ ext {
 
   // Versions
 
-  compileSdkVersionVar = 25
-  buildToolsVersionVar = "25.0.2"
+  compileSdkVersionVar = 26
+  buildToolsVersionVar = "26.0.1"
 
-  targetSdkVersionVar = 25
+  targetSdkVersionVar = 26
 
   supportVersion = "25.4.0"
   //  supportVersion = "26.0.0-beta2"

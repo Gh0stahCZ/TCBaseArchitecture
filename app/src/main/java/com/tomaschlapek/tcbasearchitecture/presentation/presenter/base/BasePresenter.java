@@ -55,7 +55,7 @@ public abstract class BasePresenter<TView extends IBaseView> extends AbstractVie
    * capabilities and should return text for sharing
    */
   public String getSharingText() {
-    return null;
+    return App.getResString(R.string.me);
   }
 
   /**

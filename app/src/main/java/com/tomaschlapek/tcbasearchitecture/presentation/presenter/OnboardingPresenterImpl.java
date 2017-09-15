@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 import com.tomaschlapek.fancyonboarding.OnBoardingPage;
+import com.tomaschlapek.tcbasearchitecture.App;
 import com.tomaschlapek.tcbasearchitecture.R;
 import com.tomaschlapek.tcbasearchitecture.presentation.presenter.base.ActivityPresenter;
 import com.tomaschlapek.tcbasearchitecture.presentation.presenter.interfaces.presenter.IOnboardingPresenter;
@@ -75,7 +76,7 @@ public class OnboardingPresenterImpl extends ActivityPresenter<IOnboardingActivi
 
   @Override
   public String getSharingText() {
-    return "Shiiiiiiit";
+    return App.getResString(R.string.me);
   }
 
   @Override

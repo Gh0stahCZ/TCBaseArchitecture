@@ -25,6 +25,7 @@
 
     <activity
       android:name=".presentation.ui.activity.InitActivity"
+      android:theme="@style/Theme.Transparent"
       android:screenOrientation="portrait">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
@@ -56,6 +57,14 @@
         android:name="android.support.PARENT_ACTIVITY"
         android:value=".presentation.ui.activity.SampleActivity"/>
     </activity>-->
+
+    <service
+      android:exported="false"
+      android:name=".presentation.ui.service.AutoUpdateJobService">
+      <intent-filter>
+        <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE"/>
+      </intent-filter>
+    </service>
 
   </application>
 

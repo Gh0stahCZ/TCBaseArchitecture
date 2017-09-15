@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
+import com.tomaschlapek.tcbasearchitecture.App;
+import com.tomaschlapek.tcbasearchitecture.R;
 import com.tomaschlapek.tcbasearchitecture.presentation.presenter.base.ActivityPresenter;
 import com.tomaschlapek.tcbasearchitecture.presentation.presenter.interfaces.presenter.ISamplePresenter;
 import com.tomaschlapek.tcbasearchitecture.presentation.presenter.interfaces.view.ISampleActivityView;
@@ -80,7 +82,7 @@ public class SamplePresenterImpl extends ActivityPresenter<ISampleActivityView> 
 
   @Override
   public String getSharingText() {
-    return "Shiiiiiiit";
+    return App.getResString(R.string.me);
   }
 
   public Realm getRealm(){

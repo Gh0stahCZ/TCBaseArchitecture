@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "694588029590",
+    "project_id": "tcbasearchitecture"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:694588029590:android:a0719157d12b5dea",
+        "android_client_info": {
+          "package_name": "com.tomaschlapek.tcbasearchitecture"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "694588029590-612mo837014nnf7mc0hqhf4le018kdnm.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "694588029590-db7b5qvbbtvmbjc7ejuljahqm1nrgfak.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tomaschlapek.tcbasearchitecture",
+            "certificate_hash": "60cbef07983061759039252aa52552cbb09ebc1a"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBSQLzr1L7LHA933TqOaSk-gjRLGfdBycY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

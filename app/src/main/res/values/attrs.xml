@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <attr name="gif"
+        format="reference"/>
+
+  <attr name="text"
+        format="string"/>
+
+  <declare-styleable name="LoadingButton">
+    <attr name="gif"/>
+    <attr name="text"/>
+    <attr name="buttonBackground"
+          format="reference"/>
+  </declare-styleable>
+
+  <declare-styleable name="EmptyLayout">
+    <attr name="emptyTitle"
+          format="string"/>
+    <attr name="emptyImage"
+          format="reference"/>
+  </declare-styleable>
+
+</resources>

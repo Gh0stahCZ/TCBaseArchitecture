@@ -46,6 +46,9 @@
   <color name="dark_mint">#4ac77e</color>
   <color name="space_black">#020D14</color>
 
+  <color name="facebook_blue">#475993</color>
+  <color name="facebook_blue_dark">#3b5998</color>
+
   <color name="text_color_primary">#212121</color>
   <color name="text_color_secondary">#424242</color>
 
@@ -69,5 +72,20 @@
   <color name="button_background_pressed">@color/sample_green</color>
   <color name="button_background_checked">@color/sample_greed_dark</color>
 
+  <color name="button_background_simple_normal">@color/gray_40</color>
+  <color name="button_background_simple_pressed">@color/gray_60</color>
+  <color name="button_background_simple_checked">@color/gray_60</color>
+
+  <color name="button_background_circle_normal">@color/gray_40</color>
+  <color name="button_background_circle_pressed">@color/gray_60</color>
+  <color name="button_background_circle_checked">@color/gray_60</color>
+
+  <color name="button_background_circle_selected_normal">@color/sample_green_soft</color>
+  <color name="button_background_circle_selected_pressed">@color/sample_greed_dark</color>
+  <color name="button_background_circle_selected_checked">@color/sample_greed_dark</color>
+
+  <color name="button_background_facebook_normal">@color/facebook_blue</color>
+  <color name="button_background_facebook_pressed">@color/facebook_blue_dark</color>
+  <color name="button_background_facebook_checked">@color/facebook_blue_dark</color>
 
 </resources>

@@ -15,6 +15,7 @@ import dagger.Module;
 import dagger.Provides;
 import okhttp3.Cache;
 import okhttp3.OkHttpClient;
+import okhttp3.Request;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -22,6 +23,7 @@ import timber.log.Timber;
 
 import static com.tomaschlapek.tcbasearchitecture.util.Constants.CACHE_SIZE;
 import static com.tomaschlapek.tcbasearchitecture.util.Constants.JSON_DATE_FORMAT;
+import static com.tomaschlapek.tcbasearchitecture.util.MiscMethods.bodyToString;
 
 @Module
 public class NetModule {
@@ -82,8 +84,23 @@ public class NetModule {
    * @return Instance of OkHttp client.
    */
   private OkHttpClient createApiClient(Cache cache, NetworkInterceptor interceptor) {
+
     OkHttpClient.Builder builder = new OkHttpClient.Builder();
     builder.addInterceptor(interceptor);
+    builder.addInterceptor(chain -> {
+      Request request =
+        chain.request().newBuilder().addHeader("Content-Type", "application/json").build();
+      Timber.d("Request: [%s] %s", request.method(), request.url());
+      Timber.d("Request: %s", request.headers().toString());
+      if (request.body() != null) {
+        Timber.d("Request: %s", bodyToString(request.body()));
+      }
+
+      // TODO Uncomment this call for simulation of slow internet connection.
+      // MiscMethods.expensiveOperation();
+
+      return chain.proceed(request);
+    });
     builder.cache(cache);
     return builder.build();
   }

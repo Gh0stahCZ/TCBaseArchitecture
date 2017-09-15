@@ -1,7 +1,7 @@
 package com.tomaschlapek.tcbasearchitecture.util;
 
 /**
- * Created by tomaschlapek on 6/9/17.
+ * Constants used across the app.
  */
 
 public class Constants {
@@ -19,4 +19,8 @@ public class Constants {
    */
   public static final String JSON_DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ssZ";
 
+  /**
+   * Code used in Google Sign In.
+   */
+  public static final int RC_SIGN_IN = 9009;
 }

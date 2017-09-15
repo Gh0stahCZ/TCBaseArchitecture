@@ -87,6 +87,11 @@ public class SampleActivity
     return false;
   }
 
+  @Override
+  public int getSelectedItemId() {
+    return R.id.action_favorites;
+  }
+
   /* Private Methods ******************************************************************************/
 
   private void init() {
