@@ -1,10 +1,6 @@
 apply plugin: 'com.android.application'
-//apply plugin: 'android-apt'
-//apply plugin: 'com.neenbedankt.android-apt'
-//apply plugin: "me.tatarka.retrolambda"
 apply plugin: 'realm-android' // Realm
 //apply plugin: 'io.fabric' // Crashlytics
-apply plugin: "me.tatarka.retrolambda"
 apply from: '../gradleScript/dependencies.gradle'
 
 // Constants definitions.
@@ -78,7 +74,7 @@ android {
     release {
       debuggable false
       minifyEnabled false
-//      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
       testCoverageEnabled false
       buildConfigField BOOLEAN, FIELD_DEBUG_MODE, FALSE
       buildConfigField BOOLEAN, FIELD_LEAK_CANARY_ENABLED, FALSE
@@ -92,7 +88,6 @@ android {
       buildConfigField BOOLEAN, FIELD_LEAK_CANARY_ENABLED, TRUE
     }
   }
-
 
   packagingOptions {
     exclude 'META-INF/DEPENDENCIES.txt'
@@ -120,7 +115,7 @@ repositories {
   }
   maven { url "https://jitpack.io" }
 
-  // crashlytics
+  // Crashlytics
   //  maven {
   //    url 'https://maven.fabric.io/public'
   //  }
@@ -137,15 +132,12 @@ dependencies {
   compile supportDependencies.design
   compile supportDependencies.supportAnnotation
 
-  // leak canary.
-
+  // Leak Canary
   //  debugCompile leakCanaryDependencies.leakDebug
-
   //  releaseCompile leakCanaryDependencies.leakRelease
-
   //  testCompile leakCanaryDependencies.leakTest
 
-  // networking
+  // Networking
   compile networkDependencies.retrofit
   compile networkDependencies.rxjava_adapter
   compile networkDependencies.converter_gson
@@ -153,69 +145,59 @@ dependencies {
   testCompile powerMockDependencies.api
   testCompile powerMockDependencies.classloading
 
-  // logging
+  // Logging
   compile timberDependencies.timber
 
   // TODO Uncomment when it will be necessary
 
+  // Firebase
+  compile firebaseDependencies.auth
   //  compile firebaseDependencies.core
-
   //  compile firebaseDependencies.messaging
 
-  compile firebaseDependencies.auth
-
+  // Play Services
+  compile playDependencies.auth
   //  compile playDependencies.gcm
-
   //  compile playDependencies.maps
-
   //  compile playDependencies.analytics
 
-  compile playDependencies.auth
-
-  //  firebase
-
-  // autofactory - google
-
+  // Auto Factory
   //  compile 'com.google.auto.factory:auto-factory:1.0-beta3'
 
-  // circle image view
-
+  // Circle Image View
   // compile 'de.hdodenhof:circleimageview:2.1.0'
 
-  // crashlytics
-
+  // Crashlytics
   // compile('com.crashlytics.sdk.android:crashlytics:2.6.8@aar') {
-
   //   transitive = true;
-
   // }
 
-  // mvvm library
+  // MVVM library
   compile 'eu.inloop:androidviewmodel:1.0.0'
 
-  // dagger
+  // Dagger
   annotationProcessor 'com.google.dagger:dagger-compiler:2.11'
   annotationProcessor 'com.google.dagger:dagger-android-processor:2.11'
   compile 'com.google.dagger:dagger:2.11'
   compile 'com.google.dagger:dagger-android-support:2.11'
 
-  // job dispatcher
+  // Job Dispatcher
   compile 'com.firebase:firebase-jobdispatcher:0.8.0'
 
-  // rxjava
+  // RxJava
   compile 'io.reactivex:rxjava:1.3.0'
   compile 'io.reactivex:rxandroid:1.2.1'
   compile 'com.jakewharton.rxbinding:rxbinding-appcompat-v7:0.4.0'
 
-  // picasso
+  // Picasso
   compile 'com.squareup.picasso:picasso:2.5.2'
   compile 'com.jakewharton.picasso:picasso2-okhttp3-downloader:1.1.0'
   compile 'com.squareup.okhttp:okhttp:2.5.0'
 
-  // rxpermissions
+  // RxPermissions
   compile 'com.tbruyelle.rxpermissions:rxpermissions:0.9.4@aar'
 
-  // image picker (from camera or gallery)
+  // Image Picker (from camera or gallery)
   compile 'com.github.jkwiecien:EasyImage:1.3.1'
 
   // Stetho debug bridge - add library only for debug.
@@ -226,10 +208,10 @@ dependencies {
   compile 'me.relex:circleindicator:1.2.2@aar'
   testCompile 'junit:junit:4.12'
   testCompile 'org.mockito:mockito-core:2.8.9'
-//  compile project(path: ':fancyonboarding')
-//  compile project(':fancysignup')
 
   compile 'com.android.support:multidex:1.0.2'
-}
 
+  //  compile project(path: ':fancyonboarding')
+  //  compile project(':fancysignup')
+}
 //apply plugin: 'com.google.gms.google-services'

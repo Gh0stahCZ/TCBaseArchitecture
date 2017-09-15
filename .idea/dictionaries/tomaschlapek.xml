@@ -6,6 +6,7 @@
       <w>firebase</w>
       <w>mvvm</w>
       <w>rxjava</w>
+      <w>stetho</w>
     </words>
   </dictionary>
 </component>
