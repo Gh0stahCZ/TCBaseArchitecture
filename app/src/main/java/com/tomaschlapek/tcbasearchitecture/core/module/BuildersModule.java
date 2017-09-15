@@ -1,7 +1,6 @@
 package com.tomaschlapek.tcbasearchitecture.core.module;
 
 import com.tomaschlapek.tcbasearchitecture.presentation.ui.activity.InitActivity;
-import com.tomaschlapek.tcbasearchitecture.presentation.ui.activity.OnboardingActivity;
 import com.tomaschlapek.tcbasearchitecture.presentation.ui.activity.SampleActivity;
 import com.tomaschlapek.tcbasearchitecture.presentation.ui.activity.SignInActivity;
 
@@ -21,8 +20,8 @@ public abstract class BuildersModule {
   @ContributesAndroidInjector
   public abstract SampleActivity contributeSampleActivityInjector();
 
-  @ContributesAndroidInjector
-  public abstract OnboardingActivity contributeOnboardingActivityInjector();
+  //  @ContributesAndroidInjector
+  //  public abstract OnboardingActivity contributeOnboardingActivityInjector();
 
   @ContributesAndroidInjector
   public abstract SignInActivity contributeSignInActivityInjector();
