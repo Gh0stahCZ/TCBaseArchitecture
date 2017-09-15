@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
+import com.tomaschlapek.tcbasearchitecture.App;
+import com.tomaschlapek.tcbasearchitecture.R;
 import com.tomaschlapek.tcbasearchitecture.presentation.presenter.base.ActivityPresenter;
 import com.tomaschlapek.tcbasearchitecture.presentation.presenter.interfaces.presenter.ISignUpPresenter;
 import com.tomaschlapek.tcbasearchitecture.presentation.presenter.interfaces.view.ISignUpActivityView;
@@ -67,7 +69,7 @@ public class SignUpPresenterImpl extends ActivityPresenter<ISignUpActivityView> 
 
   @Override
   public String getSharingText() {
-    return "Shiiiiiiit";
+    return App.getResString(R.string.me);
   }
 
   /* Private Methods ******************************************************************************/

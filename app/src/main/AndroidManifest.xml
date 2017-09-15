@@ -25,6 +25,7 @@
 
     <activity
       android:name=".presentation.ui.activity.InitActivity"
+      android:theme="@style/Theme.Transparent"
       android:screenOrientation="portrait">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>

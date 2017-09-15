@@ -2,6 +2,8 @@
   <string name="app_name">TCBaseArchitecture</string>
   <string name="app_name_mine">TCBaseArchitecture</string>
 
+  <string name="me">Tomáš Chlápek</string>
+
   <string name="sample_button">go</string>
   <string name="sample_onboarding_title">sample_onboarding_title</string>
   <string name="sample_onboarding_body">sample_onboarding_body</string>
@@ -35,4 +37,7 @@
   <string name="text_schedules">Schedule</string>
   <string name="text_music">Music</string>
   <string name="action_search">Search</string>
+
+  <string name="image_dialog_chooser">Choose between camera or gallery</string>
+  <string name="image_dialog_denied">Permission not granted</string>
 </resources>

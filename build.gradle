@@ -9,14 +9,11 @@ buildscript {
 
 
   dependencies {
-    classpath 'com.android.tools.build:gradle:3.0.0-alpha5'
+    classpath 'com.android.tools.build:gradle:3.0.0-beta1'
 //    classpath 'com.android.tools.build:gradle:2.2.2'
 
     //dagger
 //    classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
-
-    //retrolambda
-    classpath 'me.tatarka:gradle-retrolambda:3.6.1'
 
     // Realm
     classpath "io.realm:realm-gradle-plugin:2.3.1"

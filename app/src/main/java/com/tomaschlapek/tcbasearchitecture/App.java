@@ -6,6 +6,8 @@ import android.content.res.AssetManager;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
+import android.os.Build.VERSION_CODES;
 import android.util.DisplayMetrics;
 import android.util.Log;
 
@@ -25,6 +27,7 @@ import io.realm.Realm;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.ref.WeakReference;
+import java.util.Locale;
 
 import timber.log.Timber;
 
@@ -219,6 +222,17 @@ public class App extends Application {
    */
   public static Drawable getResDrawable(int id) {
     return ContextCompat.getDrawable(getContext(), id);
+  }
+
+  /**
+   * @see Resources#getBoolean(int)
+   */
+  public static Locale getLocale() {
+    if (VERSION.SDK_INT >= VERSION_CODES.N) {
+      return sResources.getConfiguration().getLocales().get(0);
+    } else {
+      return sResources.getConfiguration().locale;
+    }
   }
 
   /**

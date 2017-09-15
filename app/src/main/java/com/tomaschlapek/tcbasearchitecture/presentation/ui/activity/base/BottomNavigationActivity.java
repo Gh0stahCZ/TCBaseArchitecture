@@ -55,9 +55,17 @@ public abstract class BottomNavigationActivity<TView extends IBaseView, TViewMod
             item.setEnabled(!item.isEnabled());
             break;
         }
+
+        // TODO : Uncomment when screens will be implemented
+        /*if (getSelectedItemId() != item.getItemId()) {
+          finish();
+        }*/
+
         return true;
       });
   }
+
+  public abstract int getSelectedItemId();
 
   @Override
   public ViewGroup getContentContainer() {
