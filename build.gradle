@@ -1,6 +1,10 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
+
+  ext.kotlinVersion = '1.1.4-3'
+  ext.ankoVersion = '0.10.1'
+
   repositories {
     jcenter()
     maven { url 'https://maven.fabric.io/public' }
@@ -14,9 +18,11 @@ buildscript {
     // Retro Lambda
     classpath 'me.tatarka:gradle-retrolambda:3.6.1'
 
-
     // Realm
     classpath "io.realm:realm-gradle-plugin:3.7.1"
+
+    // Kotlin
+    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
 
     // TODO Uncomment when it will be needed
     /*
