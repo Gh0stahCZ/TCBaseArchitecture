@@ -2,17 +2,17 @@ ext {
 
   // Versions
 
+  buildToolsVersionVar = "26.0.0"
+
+  minSdkVersionVar = 19
   compileSdkVersionVar = 26
-  buildToolsVersionVar = "26.0.1"
+  targetSdkVersionVar = 25
 
-  targetSdkVersionVar = 26
-
-  supportVersion = "25.4.0"
-  //  supportVersion = "26.0.0-beta2"
-  playServicesVersion = "10.0.1"
-  retrofitVersion = "2.1.0"
-  firebaseVersion = "10.2.6"
-  leakCanaryVersion = "1.5.1"
+  supportVersion = "26.0.1"
+  playServicesVersion = "11.2.2"
+  firebaseVersion = "11.2.2"
+  retrofitVersion = "2.3.0"
+  leakCanaryVersion = "1.5.2"
   powerMockVersion = "1.6.6"
 
   timberVersion = "4.3.1"
