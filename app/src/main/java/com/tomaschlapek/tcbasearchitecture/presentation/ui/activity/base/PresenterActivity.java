@@ -1,6 +1,5 @@
 package com.tomaschlapek.tcbasearchitecture.presentation.ui.activity.base;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -116,14 +115,13 @@ public abstract class PresenterActivity<TView extends IBaseView, TViewModel exte
 
   @Override
   public void openShareDialog(@NonNull String text) {
-    Context context = getApplicationContext();
 
     Intent shareIntent = new Intent(Intent.ACTION_SEND);
     shareIntent.setType("text/plain");
-    shareIntent.putExtra(Intent.EXTRA_TITLE, context.getString(R.string.lib_app_name));
-    shareIntent.putExtra(Intent.EXTRA_SUBJECT, context.getString(R.string.lib_app_name));
+    shareIntent.putExtra(Intent.EXTRA_TITLE, getString(R.string.lib_app_name));
+    shareIntent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.lib_app_name));
     shareIntent.putExtra(Intent.EXTRA_TEXT, text);
 
-    context.startActivity(Intent.createChooser(shareIntent, null));
+    startActivity(Intent.createChooser(shareIntent, null));
   }
 }
