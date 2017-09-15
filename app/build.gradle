@@ -27,6 +27,7 @@ def versionMinor = 0
 def versionPatch = getGitCommitCount()
 def versionBuild = getGitSha()*/
 
+
 // TODO Uncomment it when app will be added on Git
 def buildNumber
 //buildNumber = 1
