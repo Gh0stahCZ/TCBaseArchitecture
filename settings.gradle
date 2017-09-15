@@ -1,1 +1,1 @@
-include ':app', ':fancyonboarding', ':fancysignup'
+include ':app'

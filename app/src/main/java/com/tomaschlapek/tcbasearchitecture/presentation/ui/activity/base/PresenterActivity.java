@@ -118,8 +118,8 @@ public abstract class PresenterActivity<TView extends IBaseView, TViewModel exte
 
     Intent shareIntent = new Intent(Intent.ACTION_SEND);
     shareIntent.setType("text/plain");
-    shareIntent.putExtra(Intent.EXTRA_TITLE, getString(R.string.lib_app_name));
-    shareIntent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.lib_app_name));
+    shareIntent.putExtra(Intent.EXTRA_TITLE, getString(R.string.app_name));
+    shareIntent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.app_name));
     shareIntent.putExtra(Intent.EXTRA_TEXT, text);
 
     startActivity(Intent.createChooser(shareIntent, null));

@@ -14,10 +14,8 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 
 import com.tbruyelle.rxpermissions.RxPermissions;
-import com.tomaschlapek.fancysignup.SignUpActivity;
 import com.tomaschlapek.tcbasearchitecture.App;
 import com.tomaschlapek.tcbasearchitecture.R;
-import com.tomaschlapek.tcbasearchitecture.presentation.ui.activity.OnboardingActivity;
 import com.tomaschlapek.tcbasearchitecture.presentation.ui.activity.SampleActivity;
 import com.tomaschlapek.tcbasearchitecture.presentation.ui.activity.SignInActivity;
 
@@ -68,7 +66,7 @@ public class NavigationHelper {
    */
   public static void openOnboardingActivity(Context context, boolean isInitActivity) {
     Timber.d("openOnboardingActivity()");
-    Intent intent = new Intent(context, OnboardingActivity.class);
+   /* Intent intent = new Intent(context, OnboardingActivity.class);
 
     if (isInitActivity) {
       intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -76,7 +74,7 @@ public class NavigationHelper {
       intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
     }
 
-    context.startActivity(intent);
+    context.startActivity(intent);*/
   }
 
   /**
@@ -100,7 +98,7 @@ public class NavigationHelper {
    */
   public static void openSignUpActivity(Context context, boolean isInitActivity) {
     Timber.d("openSignUpActivity()");
-    Intent intent = new Intent(context, com.tomaschlapek.fancysignup.SignUpActivity.class);
+    /*Intent intent = new Intent(context, com.tomaschlapek.fancysignup.SignUpActivity.class);
 
     if (isInitActivity) {
       intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -108,7 +106,7 @@ public class NavigationHelper {
       intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
     }
 
-    context.startActivity(intent);
+    context.startActivity(intent);*/
   }
 
   /**
@@ -158,17 +156,18 @@ public class NavigationHelper {
     boolean isInitActivity = true;
 
     if (isFirstRun) {
-      openOnboardingActivity(context, isInitActivity);
+      //      openOnboardingActivity(context, isInitActivity);
+      openSignInActivity(context, isInitActivity);
     } else if (!isLogged/* || !App.sDebug*/) {
       openSignInActivity(context, isInitActivity);
     } else if (SampleActivity.class.getName().equals(activityName)) {
       openSampleActivity(context, isInitActivity);
-    } else if (OnboardingActivity.class.getName().equals(activityName)) {
-      openOnboardingActivity(context, isInitActivity);
+//    } else if (OnboardingActivity.class.getName().equals(activityName)) {
+//      openOnboardingActivity(context, isInitActivity);
     } else if (SignInActivity.class.getName().equals(activityName)) {
       openSignInActivity(context, isInitActivity);
-    } else if (SignUpActivity.class.getName().equals(activityName)) {
-      openSignUpActivity(context, isInitActivity);
+      //    } else if (SignUpActivity.class.getName().equals(activityName)) {
+      //      openSignUpActivity(context, isInitActivity);
     } else {
       openSampleActivity(context, isInitActivity);
     }

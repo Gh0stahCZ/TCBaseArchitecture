@@ -38,10 +38,10 @@
       android:name=".presentation.ui.activity.SampleActivity"
       android:screenOrientation="portrait"
     />
-    <activity
+    <!--<activity
       android:name=".presentation.ui.activity.OnboardingActivity"
       android:screenOrientation="portrait"
-    />
+    />-->
     <activity
       android:name=".presentation.ui.activity.SignInActivity"
       android:screenOrientation="portrait"
