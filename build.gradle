@@ -2,8 +2,10 @@
 
 buildscript {
 
+  ext.gradleVersion = '3.0.0-beta5'
   ext.kotlinVersion = '1.1.4-3'
   ext.ankoVersion = '0.10.1'
+  ext.realmVersion = '3.7.1'
 
   repositories {
     jcenter()
@@ -13,13 +15,13 @@ buildscript {
 
 
   dependencies {
-    classpath 'com.android.tools.build:gradle:3.0.0-beta5'
+    classpath "com.android.tools.build:gradle:$gradleVersion"
 
     // Retro Lambda
     classpath 'me.tatarka:gradle-retrolambda:3.6.1'
 
     // Realm
-    classpath "io.realm:realm-gradle-plugin:3.7.1"
+    classpath "io.realm:realm-gradle-plugin:$realmVersion"
 
     // Kotlin
     classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
@@ -45,3 +47,4 @@ allprojects {
 task clean(type: Delete) {
   delete rootProject.buildDir
 }
+

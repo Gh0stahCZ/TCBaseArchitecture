@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
+apply plugin: 'realm-android' // Realm
 apply plugin: 'kotlin-android' // Kotlin
 apply plugin: 'kotlin-kapt' // Kotlin APT
-apply plugin: 'realm-android' // Realm
 //apply plugin: 'io.fabric' // Crashlytics
 apply from: '../gradleScript/dependencies.gradle'
 
@@ -171,9 +171,12 @@ dependencies {
   // Dagger
   compile daggerDependencies.general
   compile daggerDependencies.support
-  annotationProcessor daggerDependencies.android_processor
-  annotationProcessor daggerDependencies.compiler
+  kapt daggerDependencies.android_processor
   kapt daggerDependencies.compiler
+
+//  kapt 'com.google.dagger:dagger-android-processor:2.11'
+//  kapt 'com.google.dagger:dagger-compiler:2.11'
+
 
   // Auto Factory
   //  compile 'com.google.auto.factory:auto-factory:1.0-beta3'
@@ -223,7 +226,8 @@ dependencies {
   // Kotlin Anko Commons
   compile "org.jetbrains.anko:anko-commons:$ankoVersion"
 
-  kapt 'com.android.databinding:compiler:2.3.3'
+  kapt "com.android.databinding:compiler:$gradleVersion"
+  kapt "io.realm:realm-annotations-processor:$realmVersion"
 
   compile 'com.android.support:multidex:1.0.2'
 
