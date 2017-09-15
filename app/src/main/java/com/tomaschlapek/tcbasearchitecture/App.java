@@ -12,7 +12,6 @@ import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
 import android.support.multidex.MultiDex;
 import android.util.DisplayMetrics;
-import android.util.Log;
 
 import android.support.v4.content.ContextCompat;
 
@@ -21,6 +20,7 @@ import com.tomaschlapek.tcbasearchitecture.core.component.AppComponent;
 import com.tomaschlapek.tcbasearchitecture.core.component.DaggerAppComponent;
 import com.tomaschlapek.tcbasearchitecture.helper.RealmHelper;
 import com.tomaschlapek.tcbasearchitecture.presentation.ui.activity.SampleActivity;
+import com.tomaschlapek.tcbasearchitecture.util.DebugTree;
 import com.uphyca.stetho_realm.RealmInspectorModulesProvider;
 
 import io.realm.Realm;
@@ -425,61 +425,5 @@ public class App extends Application implements HasActivityInjector {
   /* Getters / Setters ****************************************************************************/
   /* Inner classes ********************************************************************************/
 
-  /**
-   * {@link Timber.Tree} class used for logging in debug mode.
-   */
-  private static class DebugTree extends Timber.DebugTree {
 
-    @Override
-    protected boolean isLoggable(int priority) {
-      return (priority >= Log.VERBOSE);
-    }
-
-    @Override
-    protected String createStackElementTag(StackTraceElement element) {
-      return super.createStackElementTag(element) + ":" + element.getLineNumber();
-    }
-
-    @Override
-    protected void log(int priority, String tag, String message, Throwable t) {
-      switch (priority) {
-        case Log.VERBOSE:
-          Log.v(tag, message, t);
-          break;
-        case Log.DEBUG:
-          Log.d(tag, message, t);
-          break;
-        case Log.INFO:
-          Log.i(tag, message, t);
-          break;
-        case Log.WARN:
-          Log.w(tag, message, t);
-          break;
-        case Log.ERROR:
-          Log.e(tag, message, t);
-          break;
-      }
-    }
-  }
-
-  //  // TODO Uncomment after Crashlytics addition
-  //  /**
-  //   * {@link Timber.Tree} class used for logging to Crashlytics.
-  //   */
-  //  private static class CrashlyticsTree extends Timber.DebugTree {
-  //    @Override
-  //    protected boolean isLoggable(int priority) {
-  //      return (priority >= Log.WARN);
-  //    }
-  //
-  //    @Override
-  //    protected String createStackElementTag(StackTraceElement element) {
-  //      return super.createStackElementTag(element) + ":" + element.getLineNumber();
-  //    }
-  //
-  //    @Override
-  //    protected void log(int priority, String tag, String message, Throwable t) {
-  //      Crashlytics.log(priority, tag, message);
-  //    }
-  //  }
 }
