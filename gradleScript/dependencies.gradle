@@ -9,9 +9,9 @@ ext {
   targetSdkVersionVar = 25
 
   supportVersion = "26.0.1"
-  playServicesVersion = "11.0.1"
-  retrofitVersion = "2.3.0"
+  playServicesVersion = "11.2.2"
   firebaseVersion = "11.2.2"
+  retrofitVersion = "2.3.0"
   leakCanaryVersion = "1.5.2"
   powerMockVersion = "1.6.6"
 
