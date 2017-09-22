@@ -19,7 +19,7 @@ import com.facebook.stetho.Stetho;
 import com.tomaschlapek.tcbasearchitecture.core.component.AppComponent;
 import com.tomaschlapek.tcbasearchitecture.core.component.DaggerAppComponent;
 import com.tomaschlapek.tcbasearchitecture.helper.RealmHelper;
-import com.tomaschlapek.tcbasearchitecture.presentation.ui.activity.SampleActivity;
+import com.tomaschlapek.tcbasearchitecture.presentation.ui.activity.KSampleActivity;
 import com.tomaschlapek.tcbasearchitecture.util.DebugTree;
 import com.uphyca.stetho_realm.RealmInspectorModulesProvider;
 
@@ -46,7 +46,7 @@ public class App extends Application implements HasActivityInjector {
 
   /* Public Constants *****************************************************************************/
 
-  public static final String INIT_ACTIVITY_NAME = SampleActivity.class.getName();
+  public static final String INIT_ACTIVITY_NAME = KSampleActivity.class.getName();
 
   /* Public Constants *****************************************************************************/
 
@@ -114,6 +114,7 @@ public class App extends Application implements HasActivityInjector {
   //  private RefWatcher mRefWatcher;
 
   /* Public Static Methods ************************************************************************/
+
 
   public static AppComponent getAppComponent() {
     return sAppComponent;

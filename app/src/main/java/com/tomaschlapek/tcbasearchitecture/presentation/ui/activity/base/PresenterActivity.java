@@ -9,13 +9,14 @@ import android.support.v4.app.FragmentActivity;
 import com.tomaschlapek.tcbasearchitecture.R;
 import com.tomaschlapek.tcbasearchitecture.presentation.presenter.base.BasePresenter;
 import com.tomaschlapek.tcbasearchitecture.presentation.presenter.interfaces.view.IBaseView;
+import com.tomaschlapek.tcbasearchitecture.presentation.presenter.interfaces.view.KIBaseView;
 
 import eu.inloop.viewmodel.ViewModelHelper;
 
 /**
  * Base class for all application activities that use view-model concept.
  */
-public abstract class PresenterActivity<TView extends IBaseView, TViewModel extends
+public abstract class PresenterActivity<TView extends KIBaseView, TViewModel extends
   BasePresenter<TView>> extends PresenterEmptyActivity implements IBaseView {
 
    /* Private Attributes ***************************************************************************/

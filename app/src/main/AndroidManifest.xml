@@ -35,7 +35,7 @@
     </activity>
 
     <activity
-      android:name=".presentation.ui.activity.SampleActivity"
+      android:name=".presentation.ui.activity.KSampleActivity"
       android:screenOrientation="portrait"
     />
     <!--<activity

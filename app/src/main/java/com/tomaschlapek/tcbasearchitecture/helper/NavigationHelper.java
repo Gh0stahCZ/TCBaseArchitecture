@@ -16,7 +16,7 @@ import android.support.v4.app.FragmentTransaction;
 import com.tbruyelle.rxpermissions.RxPermissions;
 import com.tomaschlapek.tcbasearchitecture.App;
 import com.tomaschlapek.tcbasearchitecture.R;
-import com.tomaschlapek.tcbasearchitecture.presentation.ui.activity.SampleActivity;
+import com.tomaschlapek.tcbasearchitecture.presentation.ui.activity.KSampleActivity;
 import com.tomaschlapek.tcbasearchitecture.presentation.ui.activity.SignInActivity;
 
 import pl.aprilapps.easyphotopicker.EasyImage;
@@ -47,10 +47,10 @@ public class NavigationHelper {
   /**
    * Opens sample activity..
    */
-  public static void openSampleActivity(Context context, boolean isInitActivity) {
-    Timber.d("openSampleActivity()");
+  public static void openKSampleActivity(Context context, boolean isInitActivity) {
+    Timber.d("openKSampleActivity()");
 
-    Intent intent = new Intent(context, SampleActivity.class);
+    Intent intent = new Intent(context, KSampleActivity.class);
 
     if (isInitActivity) {
       intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -160,8 +160,8 @@ public class NavigationHelper {
       openSignInActivity(context, isInitActivity);
     } else if (!isLogged/* || !App.sDebug*/) {
       openSignInActivity(context, isInitActivity);
-    } else if (SampleActivity.class.getName().equals(activityName)) {
-      openSampleActivity(context, isInitActivity);
+    } else if (KSampleActivity.class.getName().equals(activityName)) {
+      openKSampleActivity(context, isInitActivity);
 //    } else if (OnboardingActivity.class.getName().equals(activityName)) {
 //      openOnboardingActivity(context, isInitActivity);
     } else if (SignInActivity.class.getName().equals(activityName)) {
@@ -169,7 +169,7 @@ public class NavigationHelper {
       //    } else if (SignUpActivity.class.getName().equals(activityName)) {
       //      openSignUpActivity(context, isInitActivity);
     } else {
-      openSampleActivity(context, isInitActivity);
+      openKSampleActivity(context, isInitActivity);
     }
   }
 

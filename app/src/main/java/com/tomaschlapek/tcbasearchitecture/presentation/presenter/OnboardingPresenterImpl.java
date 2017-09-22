@@ -8,7 +8,7 @@
 //import com.tomaschlapek.tcbasearchitecture.App;
 //import com.tomaschlapek.tcbasearchitecture.R;
 //import com.tomaschlapek.tcbasearchitecture.presentation.presenter.base.ActivityPresenter;
-//import com.tomaschlapek.tcbasearchitecture.presentation.presenter.interfaces.presenter.IOnboardingPresenter;
+//import com.tomaschlapek.tcbasearchitecture.presentation.presenter.interfaces.presenter.KIOnboardingPresenter;
 //import com.tomaschlapek.tcbasearchitecture.presentation.presenter.interfaces.view.IOnboardingActivityView;
 //
 //import timber.log.Timber;
@@ -17,7 +17,7 @@
 // * Onboarding activity
 // */
 //public class OnboardingPresenterImpl extends ActivityPresenter<IOnboardingActivityView> implements
-//  IOnboardingPresenter {
+//  KIOnboardingPresenter {
 //
 //  /* Public Constants *****************************************************************************/
 //

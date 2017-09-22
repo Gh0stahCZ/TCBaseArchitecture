@@ -18,7 +18,7 @@ import com.tomaschlapek.tcbasearchitecture.R;
 import com.tomaschlapek.tcbasearchitecture.databinding.ActivityBaseBinding;
 import com.tomaschlapek.tcbasearchitecture.helper.NavigationHelper;
 import com.tomaschlapek.tcbasearchitecture.presentation.presenter.base.ActivityPresenter;
-import com.tomaschlapek.tcbasearchitecture.presentation.presenter.interfaces.view.IBaseView;
+import com.tomaschlapek.tcbasearchitecture.presentation.presenter.interfaces.view.KIBaseView;
 import com.tomaschlapek.tcbasearchitecture.presentation.ui.activity.InitActivity;
 
 import timber.log.Timber;
@@ -26,7 +26,7 @@ import timber.log.Timber;
 /**
  * Base class for all application activities.
  */
-public abstract class BaseActivity<TView extends IBaseView, TViewModel extends
+public abstract class BaseActivity<TView extends KIBaseView, TViewModel extends
   ActivityPresenter<TView>> extends PresenterActivity<TView, TViewModel> {
 
   /* Public Attributes ****************************************************************************/

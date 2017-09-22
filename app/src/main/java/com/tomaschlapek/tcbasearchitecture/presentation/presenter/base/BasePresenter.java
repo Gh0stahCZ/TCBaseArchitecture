@@ -13,14 +13,14 @@ import android.support.v4.content.LocalBroadcastManager;
 import com.tomaschlapek.tcbasearchitecture.App;
 import com.tomaschlapek.tcbasearchitecture.R;
 import com.tomaschlapek.tcbasearchitecture.helper.NavigationHelper;
-import com.tomaschlapek.tcbasearchitecture.presentation.presenter.interfaces.view.IBaseView;
+import com.tomaschlapek.tcbasearchitecture.presentation.presenter.interfaces.view.KIBaseView;
 
 import eu.inloop.viewmodel.AbstractViewModel;
 
 /**
  * Base class for presenter
  */
-public abstract class BasePresenter<TView extends IBaseView> extends AbstractViewModel<TView> {
+public abstract class BasePresenter<TView extends KIBaseView> extends AbstractViewModel<TView> {
 
   /* Private Methods ******************************************************************************/
 
@@ -107,7 +107,7 @@ public abstract class BasePresenter<TView extends IBaseView> extends AbstractVie
       }
 
       if (action.equalsIgnoreCase(App.getResString(R.string.broadcast_create_account))) {
-        NavigationHelper.openSampleActivity(App.getAppComponent().provideContext(), false);
+        NavigationHelper.openKSampleActivity(App.getAppComponent().provideContext(), false);
       } else if (action.equalsIgnoreCase(App.getResString(R.string.broadcast_sign_up))) {
         NavigationHelper.openSignInActivity(App.getAppComponent().provideContext(), false);
       }

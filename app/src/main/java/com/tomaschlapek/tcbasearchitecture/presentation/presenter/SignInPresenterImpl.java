@@ -11,14 +11,14 @@ import com.tomaschlapek.tcbasearchitecture.App;
 import com.tomaschlapek.tcbasearchitecture.R;
 import com.tomaschlapek.tcbasearchitecture.presentation.presenter.base.ActivityPresenter;
 import com.tomaschlapek.tcbasearchitecture.presentation.presenter.interfaces.presenter.ISignInPresenter;
-import com.tomaschlapek.tcbasearchitecture.presentation.presenter.interfaces.view.ISignInActivityView;
+import com.tomaschlapek.tcbasearchitecture.presentation.presenter.interfaces.view.KISignInActivityView;
 
 import timber.log.Timber;
 
 /**
  * Sign in activity
  */
-public class SignInPresenterImpl extends ActivityPresenter<ISignInActivityView> implements
+public class SignInPresenterImpl extends ActivityPresenter<KISignInActivityView> implements
   ISignInPresenter {
 
   /* Public Constants *****************************************************************************/
@@ -51,7 +51,7 @@ public class SignInPresenterImpl extends ActivityPresenter<ISignInActivityView> 
   }
 
   @Override
-  public void onBindView(@NonNull ISignInActivityView view) {
+  public void onBindView(@NonNull KISignInActivityView view) {
     super.onBindView(view);
   }
 

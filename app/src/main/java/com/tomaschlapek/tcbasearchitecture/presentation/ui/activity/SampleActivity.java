@@ -12,8 +12,9 @@ import android.support.v4.view.MenuItemCompat;
 
 import com.tomaschlapek.tcbasearchitecture.R;
 import com.tomaschlapek.tcbasearchitecture.databinding.ActivitySampleBinding;
-import com.tomaschlapek.tcbasearchitecture.presentation.presenter.SamplePresenterImpl;
+import com.tomaschlapek.tcbasearchitecture.presentation.presenter.KSamplePresenterImpl;
 import com.tomaschlapek.tcbasearchitecture.presentation.presenter.interfaces.view.ISampleActivityView;
+import com.tomaschlapek.tcbasearchitecture.presentation.presenter.interfaces.view.KISampleActivityView;
 import com.tomaschlapek.tcbasearchitecture.presentation.ui.activity.base.BottomNavigationActivity;
 
 import timber.log.Timber;
@@ -23,7 +24,7 @@ import timber.log.Timber;
  */
 
 public class SampleActivity
-  extends BottomNavigationActivity<ISampleActivityView, SamplePresenterImpl>
+  extends BottomNavigationActivity<KISampleActivityView, KSamplePresenterImpl>
   implements ISampleActivityView, SearchView.OnQueryTextListener {
 
   /* Private Constants ****************************************************************************/
@@ -103,7 +104,7 @@ public class SampleActivity
 
   @Override
   public Class getPresenterClass() {
-    return SamplePresenterImpl.class;
+    return KSamplePresenterImpl.class;
   }
 
   @Override

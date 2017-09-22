@@ -3,6 +3,7 @@ package com.tomaschlapek.tcbasearchitecture.realm.repository;
 import com.tomaschlapek.tcbasearchitecture.helper.PreferenceHelper;
 
 import io.realm.Realm;
+import io.realm.Realm.Transaction;
 import io.realm.Realm.Transaction.OnError;
 import io.realm.Realm.Transaction.OnSuccess;
 import io.realm.RealmList;
@@ -52,11 +53,21 @@ public abstract class RAbstractRepository<T extends RealmModel> extends RBaseRep
   // Instance defined
 
   void addOrUpdateAsync(Realm realm, T item, OnSuccess onSuccess, OnError onError) {
-    realm.executeTransactionAsync(realmInstance -> create(realmInstance, item), onSuccess, onError);
+    realm.executeTransactionAsync(new Transaction() {
+      @Override
+      public void execute(Realm realmInstance) {
+        create(realmInstance, item);
+      }
+    }, onSuccess, onError);
   }
 
   void addOrUpdateAsync(Realm realm, Iterable<T> item, OnSuccess onSuccess, OnError onError) {
-    realm.executeTransactionAsync(realmInstance -> create(realmInstance, item), onSuccess, onError);
+    realm.executeTransactionAsync(new Transaction() {
+      @Override
+      public void execute(Realm realmInstance) {
+        create(realmInstance, item);
+      }
+    }, onSuccess, onError);
   }
 
   void addOrUpdate(Realm realm, Iterable<T> item) {

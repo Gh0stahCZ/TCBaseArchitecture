@@ -8,12 +8,12 @@ import android.support.design.widget.BottomNavigationView;
 
 import com.tomaschlapek.tcbasearchitecture.R;
 import com.tomaschlapek.tcbasearchitecture.presentation.presenter.base.ActivityPresenter;
-import com.tomaschlapek.tcbasearchitecture.presentation.presenter.interfaces.view.IBaseView;
+import com.tomaschlapek.tcbasearchitecture.presentation.presenter.interfaces.view.KIBaseView;
 
 /**
  * Base class with drawer.
  */
-public abstract class BottomNavigationActivity<TView extends IBaseView, TViewModel extends
+public abstract class BottomNavigationActivity<TView extends KIBaseView, TViewModel extends
   ActivityPresenter<TView>> extends DrawerActivity<TView, TViewModel> {
 
   /* Public Types *********************************************************************************/

@@ -9,7 +9,7 @@ import android.support.v4.app.FragmentActivity;
 
 import com.tomaschlapek.tcbasearchitecture.domain.executor.MainThread;
 import com.tomaschlapek.tcbasearchitecture.domain.executor.impl.ThreadExecutor;
-import com.tomaschlapek.tcbasearchitecture.presentation.presenter.interfaces.view.IBaseView;
+import com.tomaschlapek.tcbasearchitecture.presentation.presenter.interfaces.view.KIBaseView;
 import com.tomaschlapek.tcbasearchitecture.presentation.ui.activity.base.PresenterActivity;
 import com.tomaschlapek.tcbasearchitecture.threading.MainThreadImpl;
 
@@ -22,7 +22,7 @@ import timber.log.Timber;
 /**
  * Base class for view models of {@link PresenterActivity}
  */
-public abstract class ActivityPresenter<TView extends IBaseView> extends BasePresenter<TView> {
+public abstract class ActivityPresenter<TView extends KIBaseView> extends BasePresenter<TView> {
 
   /* Protected Attributes *************************************************************************/
 
@@ -78,6 +78,7 @@ public abstract class ActivityPresenter<TView extends IBaseView> extends BasePre
       mRealm.close();
       mRealm = null;
     }
+
   }
 
   public void onNewIntent(Intent intent) {

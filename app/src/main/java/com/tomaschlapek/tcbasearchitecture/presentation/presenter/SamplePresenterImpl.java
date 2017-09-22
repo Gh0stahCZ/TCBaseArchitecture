@@ -8,8 +8,8 @@ import android.support.annotation.Nullable;
 import com.tomaschlapek.tcbasearchitecture.App;
 import com.tomaschlapek.tcbasearchitecture.R;
 import com.tomaschlapek.tcbasearchitecture.presentation.presenter.base.ActivityPresenter;
-import com.tomaschlapek.tcbasearchitecture.presentation.presenter.interfaces.presenter.ISamplePresenter;
-import com.tomaschlapek.tcbasearchitecture.presentation.presenter.interfaces.view.ISampleActivityView;
+import com.tomaschlapek.tcbasearchitecture.presentation.presenter.interfaces.presenter.KISamplePresenter;
+import com.tomaschlapek.tcbasearchitecture.presentation.presenter.interfaces.view.KISampleActivityView;
 
 import io.realm.Realm;
 
@@ -19,8 +19,8 @@ import timber.log.Timber;
  * Created by tomaschlapek on 17/5/17.
  */
 
-public class SamplePresenterImpl extends ActivityPresenter<ISampleActivityView> implements
-  ISamplePresenter {
+public class SamplePresenterImpl extends ActivityPresenter<KISampleActivityView> implements
+  KISamplePresenter {
 
   /* Public Constants *****************************************************************************/
 
@@ -50,7 +50,7 @@ public class SamplePresenterImpl extends ActivityPresenter<ISampleActivityView> 
   }
 
   @Override
-  public void onBindView(@NonNull ISampleActivityView view) {
+  public void onBindView(@NonNull KISampleActivityView view) {
     super.onBindView(view);
   }
 

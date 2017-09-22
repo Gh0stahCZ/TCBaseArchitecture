@@ -15,13 +15,13 @@ import android.support.annotation.Nullable;
 import com.tomaschlapek.tcbasearchitecture.App;
 import com.tomaschlapek.tcbasearchitecture.R;
 import com.tomaschlapek.tcbasearchitecture.presentation.presenter.base.ActivityPresenter;
-import com.tomaschlapek.tcbasearchitecture.presentation.presenter.interfaces.view.IBaseView;
-import com.tomaschlapek.tcbasearchitecture.presentation.ui.activity.SampleActivity;
+import com.tomaschlapek.tcbasearchitecture.presentation.presenter.interfaces.view.KIBaseView;
+import com.tomaschlapek.tcbasearchitecture.presentation.ui.activity.KSampleActivity;
 
 /**
  * Base class with drawer.
  */
-public abstract class ToolbarActivity<TView extends IBaseView, TViewModel extends
+public abstract class ToolbarActivity<TView extends KIBaseView, TViewModel extends
   ActivityPresenter<TView>> extends BaseActivity<TView, TViewModel> {
 
   /* Public Types *********************************************************************************/
@@ -116,7 +116,7 @@ public abstract class ToolbarActivity<TView extends IBaseView, TViewModel extend
       setSupportActionBar(mToolbar);
       //      activity.getSupportActionBar().setTitle(null);
 
-      if (this instanceof SampleActivity) {
+      if (this instanceof KSampleActivity) {
         hideBackArrowButton();
       } else {
         showBackArrowButton();

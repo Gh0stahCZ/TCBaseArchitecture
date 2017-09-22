@@ -12,7 +12,7 @@ import com.tomaschlapek.tcbasearchitecture.R;
 import com.tomaschlapek.tcbasearchitecture.databinding.ActivitySignInBinding;
 import com.tomaschlapek.tcbasearchitecture.helper.NavigationHelper;
 import com.tomaschlapek.tcbasearchitecture.presentation.presenter.SignInPresenterImpl;
-import com.tomaschlapek.tcbasearchitecture.presentation.presenter.interfaces.view.ISignInActivityView;
+import com.tomaschlapek.tcbasearchitecture.presentation.presenter.interfaces.view.KISignInActivityView;
 import com.tomaschlapek.tcbasearchitecture.presentation.ui.activity.base.BaseActivity;
 
 import java.util.concurrent.TimeUnit;
@@ -25,8 +25,8 @@ import timber.log.Timber;
  * Created by tomaschlapek on 18/5/17.
  */
 
-public class SignInActivity extends BaseActivity<ISignInActivityView, SignInPresenterImpl>
-  implements ISignInActivityView {
+public class SignInActivity extends BaseActivity<KISignInActivityView, SignInPresenterImpl>
+  implements KISignInActivityView {
 
   /* Private Constants ****************************************************************************/
 
@@ -71,7 +71,7 @@ public class SignInActivity extends BaseActivity<ISignInActivityView, SignInPres
 
   @Override
   public void onSuccessfulSignIn() {
-    NavigationHelper.openSampleActivity(this, false);
+    NavigationHelper.openKSampleActivity(this, false);
     finish();
   }
 

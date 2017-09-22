@@ -1,7 +1,7 @@
 package com.tomaschlapek.tcbasearchitecture.core.module;
 
 import com.tomaschlapek.tcbasearchitecture.presentation.ui.activity.InitActivity;
-import com.tomaschlapek.tcbasearchitecture.presentation.ui.activity.SampleActivity;
+import com.tomaschlapek.tcbasearchitecture.presentation.ui.activity.KSampleActivity;
 import com.tomaschlapek.tcbasearchitecture.presentation.ui.activity.SignInActivity;
 
 import dagger.Module;
@@ -18,7 +18,7 @@ public abstract class BuildersModule {
   public abstract InitActivity contributeInitActivityInjector();
 
   @ContributesAndroidInjector
-  public abstract SampleActivity contributeSampleActivityInjector();
+  public abstract KSampleActivity contributeKSampleActivityInjector();
 
   //  @ContributesAndroidInjector
   //  public abstract OnboardingActivity contributeOnboardingActivityInjector();
