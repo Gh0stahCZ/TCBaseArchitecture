@@ -40,4 +40,7 @@
 
   <string name="image_dialog_chooser">Choose between camera or gallery</string>
   <string name="image_dialog_denied">Permission not granted</string>
+  <string name="permission_not_granted">Permission not granted</string>
+
+  <string name="general_error_message">General error</string>
 </resources>

@@ -24,7 +24,7 @@
     />-->
 
     <activity
-      android:name=".presentation.ui.activity.InitActivity"
+      android:name=".presentation.ui.activity.base.KInitActivity"
       android:theme="@style/Theme.Transparent"
       android:screenOrientation="portrait">
       <intent-filter>
@@ -43,7 +43,7 @@
       android:screenOrientation="portrait"
     />-->
     <activity
-      android:name=".presentation.ui.activity.SignInActivity"
+      android:name=".presentation.ui.activity.KSignInActivity"
       android:screenOrientation="portrait"
     />
 
@@ -60,7 +60,7 @@
 
     <service
       android:exported="false"
-      android:name=".presentation.ui.service.AutoUpdateJobService">
+      android:name=".presentation.ui.service.KAutoUpdateJobService">
       <intent-filter>
         <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE"/>
       </intent-filter>

@@ -1,20 +1,36 @@
 package com.tomaschlapek.tcbasearchitecture.util
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.support.design.widget.Snackbar
 import android.support.v4.content.ContextCompat
 import android.text.format.DateUtils
 import android.text.format.Time
 import android.view.View
 import android.widget.Button
+import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
 import com.squareup.picasso.MemoryPolicy
 import com.tomaschlapek.tcbasearchitecture.App
 import com.tomaschlapek.tcbasearchitecture.R
+import com.tomaschlapek.tcbasearchitecture.domain.model.GeneralError
+import com.tomaschlapek.tcbasearchitecture.domain.model.GeneralErrorResponse
+import okhttp3.RequestBody
+import okhttp3.ResponseBody
+import okio.Buffer
+import org.jetbrains.anko.backgroundColor
+import retrofit2.Response
+import rx.Observable
+import rx.Subscription
+import rx.android.schedulers.AndroidSchedulers
+import rx.schedulers.Schedulers
+import timber.log.Timber
 import java.io.ByteArrayOutputStream
 import java.io.File
+import java.io.IOException
 import java.math.BigDecimal
 import java.text.SimpleDateFormat
 import java.util.*
@@ -27,7 +43,7 @@ import java.util.*
  */
 fun ImageView.setImageFromPath(path: String) {
 
-  App.getAppComponent().provideNetworkHelper().picasso
+  App.getAppComponent().provideKNetworkHelper().picasso
     .load(File(path))
     .memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE)
     .config(Bitmap.Config.RGB_565)
@@ -44,7 +60,7 @@ fun ImageView.setImageFromPath(path: String) {
 fun ImageView.loadUrl(url: String, isProfileImage: Boolean = false, placeHolderRes: Int? = null) {
 
   val requestMaker =
-    App.getAppComponent().provideNetworkHelper().picasso
+    App.getAppComponent().provideKNetworkHelper().picasso
       .load(url)
       .memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE)
       .config(Bitmap.Config.RGB_565)
@@ -72,6 +88,15 @@ fun String.imagePathToBase64(): String {
   return android.util.Base64.encodeToString(b, android.util.Base64.DEFAULT)
 }
 
+fun RequestBody.bodyToString(): String {
+  try {
+    val buffer = Buffer()
+    writeTo(buffer)
+    return buffer.readUtf8()
+  } catch (e: IOException) {
+    return "Do not work :/"
+  }
+}
 
 /**
  * Converts double to 2 decimal places.
@@ -200,3 +225,114 @@ fun Any.str(res: Int): String {
  * Gets color from resources.
  */
 fun Context.color(res: Int): Int = ContextCompat.getColor(this, res)
+
+/**
+ * Put String to SharedPreferences.
+ */
+fun SharedPreferences.storeString(res: Int, value: String?) {
+  val editor = this.edit()
+  editor.putString(str(res), value)
+  editor.apply()
+}
+
+/**
+ * Get String to SharedPreferences.
+ */
+fun SharedPreferences.restoreString(res: Int, defVal: String? = null): String? {
+  return this.getString(str(res), defVal)
+}
+
+/**
+ * Put Boolean to SharedPreferences.
+ */
+fun SharedPreferences.storeBoolean(res: Int, value: Boolean) {
+  val editor = this.edit()
+  editor.putBoolean(str(res), value)
+  editor.apply()
+}
+
+/**
+ * Get Boolean to SharedPreferences.
+ */
+fun SharedPreferences.restoreBoolean(res: Int, defVal: Boolean = false): Boolean {
+  return this.getBoolean(str(res), defVal)
+}
+
+/**
+ * Put Int to SharedPreferences.
+ */
+fun SharedPreferences.storeInt(res: Int, value: Int) {
+  val editor = this.edit()
+  editor.putInt(str(res), value)
+  editor.apply()
+}
+
+/**
+ * Get String to SharedPreferences.
+ */
+fun SharedPreferences.restoreInt(res: Int, defVal: Int = -1): Int {
+  return this.getInt(str(res), defVal)
+}
+
+
+fun View.snack(message: String, length: Int = Snackbar.LENGTH_LONG, f: Snackbar.() -> Unit) {
+  val snack = Snackbar.make(this, message, length)
+  snack.view.backgroundColor = App.getResColor(R.color.colorAccent)
+
+  snack.apply { view.layoutParams = (view.layoutParams as FrameLayout.LayoutParams).apply { setMargins(leftMargin, App.getResDimension(R.dimen.margin_small), rightMargin, App.getResDimension(R.dimen.margin_small)) } }.show()
+
+  snack.f()
+  snack.show()
+}
+
+fun View.snack(message: String) {
+  val snack = Snackbar.make(this, message, Snackbar.LENGTH_LONG)
+  snack.view.backgroundColor = App.getResColor(R.color.colorAccent)
+  snack.show()
+}
+
+fun View.snack(messageResId: Int) {
+  val snack = Snackbar.make(this, App.getResString(messageResId), Snackbar.LENGTH_LONG)
+  snack.view.backgroundColor = App.getResColor(R.color.colorAccent)
+  snack.show()
+}
+
+fun View.snack(messageResId: Int, bottomBarHeight: Int) {
+  val snack = Snackbar.make(this, App.getResString(messageResId), Snackbar.LENGTH_LONG)
+  snack.view.backgroundColor = App.getResColor(R.color.colorAccent)
+  //  snack.apply { view.layoutParams = (view.layoutParams as FrameLayout.LayoutParams).apply { setMargins(leftMargin, bottomBarHeight, rightMargin, bottomMargin) } }.show()
+  snack.show()
+}
+
+fun ResponseBody.getGeneralError(): GeneralError? {
+
+  val converter = App.getAppComponent().provideRetrofit().responseBodyConverter<GeneralErrorResponse>(GeneralErrorResponse::class.java, arrayOfNulls<Annotation>(0))
+  val error: GeneralErrorResponse
+
+  try {
+    error = converter.convert(this)
+  } catch (e: IOException) {
+    return null
+  }
+  return error.error
+}
+
+fun rx.Observable<out Response<*>>.applyTransform(onResponse: (Response<*>) -> Unit, onError: () -> Unit): Subscription {
+  return this.subscribeOn(Schedulers.io())
+    .observeOn(AndroidSchedulers.mainThread())
+    .onErrorResumeNext {
+      Timber.e(it?.message)
+      Observable.just(null)
+    }
+    .subscribe(
+      {
+        it?.let {
+          onResponse(it)
+        } ?: onError()
+      }
+    ) { error ->
+      Timber.e(error.message)
+      onError()
+    }
+
+}

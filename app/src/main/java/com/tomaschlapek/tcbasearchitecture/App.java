@@ -16,11 +16,11 @@ import android.util.DisplayMetrics;
 import android.support.v4.content.ContextCompat;
 
 import com.facebook.stetho.Stetho;
-import com.tomaschlapek.tcbasearchitecture.core.component.AppComponent;
-import com.tomaschlapek.tcbasearchitecture.core.component.DaggerAppComponent;
-import com.tomaschlapek.tcbasearchitecture.helper.RealmHelper;
+import com.tomaschlapek.tcbasearchitecture.core.component.DaggerKAppComponent;
+import com.tomaschlapek.tcbasearchitecture.core.component.KAppComponent;
+import com.tomaschlapek.tcbasearchitecture.helper.KRealmHelper;
 import com.tomaschlapek.tcbasearchitecture.presentation.ui.activity.KSampleActivity;
-import com.tomaschlapek.tcbasearchitecture.util.DebugTree;
+import com.tomaschlapek.tcbasearchitecture.widget.KDebugTree;
 import com.uphyca.stetho_realm.RealmInspectorModulesProvider;
 
 import io.realm.Realm;
@@ -53,13 +53,12 @@ public class App extends Application implements HasActivityInjector {
   @Inject
   DispatchingAndroidInjector<Activity> mAndroidInjector;
 
-
   /* Private Constants ****************************************************************************/
 
   /**
    * Application component used for dependency injection.
    */
-  private static AppComponent sAppComponent;
+  private static KAppComponent sAppComponent;
 
   /**
    * Application context.
@@ -116,7 +115,7 @@ public class App extends Application implements HasActivityInjector {
   /* Public Static Methods ************************************************************************/
 
 
-  public static AppComponent getAppComponent() {
+  public static KAppComponent getAppComponent() {
     return sAppComponent;
   }
 
@@ -304,16 +303,16 @@ public class App extends Application implements HasActivityInjector {
 
     // Start monitoring crashes.
     if (BuildConfig.DEBUG_MODE) {
-      Timber.plant(new DebugTree());
+      Timber.plant(new KDebugTree());
     } else {
       // TODO Uncomment after Crashlytics addition
       //  Fabric.with(this, new Crashlytics());
-      //  Timber.plant(new CrashlyticsTree());
-      Timber.plant(new DebugTree());
+      //  Timber.plant(new KrashlyticsTree());
+      Timber.plant(new KDebugTree());
     }
 
     sAppComponent =
-      DaggerAppComponent.builder()
+      DaggerKAppComponent.builder()
         .application(this)
         .build();
 
@@ -345,7 +344,7 @@ public class App extends Application implements HasActivityInjector {
     //    sIconFont = Typeface.createFromAsset(sAssets, "fonts/icons_font.ttf");
 
     Realm.init(this);
-    RealmHelper.initializeRealmConfig();
+    KRealmHelper.initializeRealmConfig();
   }
 
   @Override

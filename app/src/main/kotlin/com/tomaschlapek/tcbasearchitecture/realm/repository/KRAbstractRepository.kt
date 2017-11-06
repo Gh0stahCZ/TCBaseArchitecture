@@ -1,12 +1,12 @@
 package com.tomaschlapek.tcbasearchitecture.realm.repository
 
-import com.tomaschlapek.tcbasearchitecture.helper.PreferenceHelper
+import com.tomaschlapek.tcbasearchitecture.helper.KPreferenceHelper
 import io.realm.*
 
 /**
  * Created by tomaschlapek on 15/9/17.
  */
-abstract class KRAbstractRepository<T : RealmModel>(preferenceHelper: PreferenceHelper) : KRBaseRepository(preferenceHelper) {
+abstract class KRAbstractRepository<T : RealmModel>(preferenceHelper: KPreferenceHelper) : KRBaseRepository(preferenceHelper) {
 
   // No instance defined
 

@@ -13,7 +13,7 @@
 //import com.facebook.stetho.Stetho
 //import com.tomaschlapek.tcbasearchitecture.core.component.AppComponent
 //import com.tomaschlapek.tcbasearchitecture.core.component.DaggerAppComponent
-//import com.tomaschlapek.tcbasearchitecture.helper.RealmHelper
+//import com.tomaschlapek.tcbasearchitecture.helper.KRealmHelper
 //import com.tomaschlapek.tcbasearchitecture.presentation.ui.activity.KSampleActivity
 //import com.tomaschlapek.tcbasearchitecture.util.DebugTree
 //import com.uphyca.stetho_realm.RealmInspectorModulesProvider
@@ -306,6 +306,6 @@
 //    sIsDualPane = sResources.getBoolean(R.bool.is_dual_pane)
 //
 //    Realm.init(this)
-//    RealmHelper.initializeRealmConfig()
+//    KRealmHelper.initializeRealmConfig()
 //  }
 //}

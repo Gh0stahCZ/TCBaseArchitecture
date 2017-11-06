@@ -32,6 +32,10 @@ public class NetworkInterceptor implements Interceptor {
     if (request.body() != null) {
       Timber.d("Request: %s", MiscMethods.bodyToString(request.body()));
     }
+
+    // TODO Uncomment this line for slow connection simulation
+    // MiscMethods.expensiveOperation();
+    
     return chain.proceed(request);
   }
 }

@@ -3,6 +3,9 @@
 
   <string name="pref_key_first_run">pref_first_run</string>
   <string name="pref_key_user_login_token">pref_user_login_token</string>
+  <string name="pref_key_fb_access_token">pref_fb_access_token</string>
   <string name="pref_key_user_uid">pref_user_uid</string>
+  <string name="pref_key_firebase_token">pref_firebase_token</string>
+
 
 </resources>

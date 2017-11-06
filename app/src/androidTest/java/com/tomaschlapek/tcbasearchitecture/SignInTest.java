@@ -7,7 +7,7 @@ import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
-import com.tomaschlapek.tcbasearchitecture.presentation.ui.activity.SignInActivity;
+import com.tomaschlapek.tcbasearchitecture.presentation.ui.activity.KSignInActivity;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -36,8 +36,8 @@ public class SignInTest {
   private String mPassToBetyped;
 
   @Rule
-  public ActivityTestRule<SignInActivity> mActivityRule = new ActivityTestRule<>(
-    SignInActivity.class);
+  public ActivityTestRule<KSignInActivity> mActivityRule = new ActivityTestRule<>(
+    KSignInActivity.class);
 
   @Before
   public void initValidString() {

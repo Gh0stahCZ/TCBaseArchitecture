@@ -121,6 +121,7 @@ repositories {
     url 'https://github.com/uPhyca/stetho-realm/raw/master/maven-repo'
   }
   maven { url "https://jitpack.io" }
+  maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' } // Picasso snapshots
 
   // Crashlytics
   //  maven {
@@ -133,6 +134,8 @@ dependencies {
   androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
     exclude group: 'com.android.support', module: 'support-annotations'
   })
+
+  // Supprt
   compile supportDependencies.appCompat
   compile supportDependencies.recyclerView
   compile supportDependencies.cardView
@@ -148,6 +151,7 @@ dependencies {
   compile networkDependencies.retrofit
   compile networkDependencies.rxjava_adapter
   compile networkDependencies.converter_gson
+
   testCompile powerMockDependencies.rule
   testCompile powerMockDependencies.api
   testCompile powerMockDependencies.classloading
@@ -159,14 +163,16 @@ dependencies {
 
   // Firebase
   compile firebaseDependencies.auth
-  //  compile firebaseDependencies.core
-  //  compile firebaseDependencies.messaging
+  compile firebaseDependencies.core
+  compile firebaseDependencies.messaging
 
   // Play Services
   compile playDependencies.auth
   //  compile playDependencies.gcm
   //  compile playDependencies.maps
   //  compile playDependencies.analytics
+
+  compile playDependencies.maps
 
   // Dagger
   compile daggerDependencies.general
@@ -177,6 +183,17 @@ dependencies {
 //  kapt 'com.google.dagger:dagger-android-processor:2.11'
 //  kapt 'com.google.dagger:dagger-compiler:2.11'
 
+  // Kotlin
+  compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+
+  // Kotlin Anko Commons
+  compile ankoDependencies.commons
+  compile ankoDependencies.appcompat7
+  compile ankoDependencies.appcompat7commons
+  compile ankoDependencies.sdk25
+
+  kapt "com.android.databinding:compiler:$gradleVersion"
+  kapt "io.realm:realm-annotations-processor:$realmVersion"
 
   // Auto Factory
   //  compile 'com.google.auto.factory:auto-factory:1.0-beta3'
@@ -200,8 +217,8 @@ dependencies {
   compile 'io.reactivex:rxandroid:1.2.1'
   compile 'com.jakewharton.rxbinding:rxbinding-appcompat-v7:0.4.0'
 
-  // Picasso
-  compile 'com.squareup.picasso:picasso:2.5.2'
+  // Picasso - only snapshot is usable now
+  compile 'com.squareup.picasso:picasso:2.6.0-SNAPSHOT'
   compile 'com.jakewharton.picasso:picasso2-okhttp3-downloader:1.1.0'
   compile 'com.squareup.okhttp:okhttp:2.5.0'
 
@@ -220,14 +237,8 @@ dependencies {
   testCompile 'junit:junit:4.12'
   testCompile 'org.mockito:mockito-core:2.8.9'
 
-  // Kotlin
-  compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
-
-  // Kotlin Anko Commons
-  compile "org.jetbrains.anko:anko-commons:$ankoVersion"
-
-  kapt "com.android.databinding:compiler:$gradleVersion"
-  kapt "io.realm:realm-annotations-processor:$realmVersion"
+  // Facebook SDK
+  compile 'com.facebook.android:facebook-android-sdk:4.26.0'
 
   compile 'com.android.support:multidex:1.0.2'
 
