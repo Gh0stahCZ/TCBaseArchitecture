@@ -1,8 +1,8 @@
 package com.tomaschlapek.tcbasearchitecture.presentation.presenter.base
 
-import com.tomaschlapek.tcbasearchitecture.App
 import com.tomaschlapek.tcbasearchitecture.R
 import com.tomaschlapek.tcbasearchitecture.presentation.presenter.interfaces.view.KIBaseView
+import com.tomaschlapek.tcbasearchitecture.util.str
 import eu.inloop.viewmodel.AbstractViewModel
 
 /**
@@ -17,7 +17,7 @@ abstract class KBasePresenter<TView : KIBaseView> : AbstractViewModel<TView>() {
    * capabilities and should return text for sharing
    */
   open fun getSharingText(): String {
-    return App.getResString(R.string.me)
+    return str(R.string.me)
   }
 
   /**

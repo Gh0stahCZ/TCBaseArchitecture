@@ -6,6 +6,7 @@ import com.tomaschlapek.tcbasearchitecture.R
 import com.tomaschlapek.tcbasearchitecture.presentation.presenter.base.KActivityPresenter
 import com.tomaschlapek.tcbasearchitecture.presentation.presenter.interfaces.presenter.KISamplePresenter
 import com.tomaschlapek.tcbasearchitecture.presentation.presenter.interfaces.view.KISampleActivityView
+import com.tomaschlapek.tcbasearchitecture.util.str
 import io.realm.Realm
 import timber.log.Timber
 
@@ -51,7 +52,7 @@ class KSamplePresenterImpl : KActivityPresenter<KISampleActivityView>(), KISampl
   }
 
   override fun getSharingText(): String {
-    return App.getResString(R.string.me)
+    return str(R.string.me)
   }
 
   fun getRealm(): Realm? {

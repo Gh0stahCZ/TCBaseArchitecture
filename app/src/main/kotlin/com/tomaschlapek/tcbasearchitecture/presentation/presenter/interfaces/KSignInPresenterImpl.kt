@@ -3,11 +3,11 @@ package com.tomaschlapek.tcbasearchitecture.presentation.presenter.interfaces
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Patterns
-import com.tomaschlapek.tcbasearchitecture.App
 import com.tomaschlapek.tcbasearchitecture.R
 import com.tomaschlapek.tcbasearchitecture.presentation.presenter.base.KActivityPresenter
 import com.tomaschlapek.tcbasearchitecture.presentation.presenter.interfaces.presenter.KISignInPresenter
 import com.tomaschlapek.tcbasearchitecture.presentation.presenter.interfaces.view.KISignInActivityView
+import com.tomaschlapek.tcbasearchitecture.util.str
 import timber.log.Timber
 
 /**
@@ -62,7 +62,7 @@ class KSignInPresenterImpl : KActivityPresenter<KISignInActivityView>(), KISignI
   }
 
   override fun getSharingText(): String {
-    return App.getResString(R.string.me)
+    return str(R.string.me)
   }
 
   override fun isValidEmail(email: String): Boolean {

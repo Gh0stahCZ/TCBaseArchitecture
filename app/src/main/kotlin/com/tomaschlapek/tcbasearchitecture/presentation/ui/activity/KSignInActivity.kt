@@ -4,13 +4,13 @@ import android.databinding.DataBindingUtil
 import android.os.Bundle
 import com.jakewharton.rxbinding.widget.RxTextView
 import com.jakewharton.rxbinding.widget.TextViewTextChangeEvent
-import com.tomaschlapek.tcbasearchitecture.App
 import com.tomaschlapek.tcbasearchitecture.R
 import com.tomaschlapek.tcbasearchitecture.databinding.ActivitySignInBinding
 import com.tomaschlapek.tcbasearchitecture.helper.KNavigationHelper
 import com.tomaschlapek.tcbasearchitecture.presentation.presenter.interfaces.KSignInPresenterImpl
 import com.tomaschlapek.tcbasearchitecture.presentation.presenter.interfaces.view.KISignInActivityView
 import com.tomaschlapek.tcbasearchitecture.presentation.ui.activity.base.KBaseActivity
+import com.tomaschlapek.tcbasearchitecture.util.str
 import rx.Observable
 import rx.android.schedulers.AndroidSchedulers
 import timber.log.Timber
@@ -108,7 +108,7 @@ class KSignInActivity : KBaseActivity<KISignInActivityView, KSignInPresenterImpl
         if (presenter.isValidPassword(pass)) {
           mViews.sampleSignInPassInput.isErrorEnabled = false
         } else {
-          mViews.sampleSignInPassInput.error = App.getResString(R.string.sample_sign_in_invalid_pass)
+          mViews.sampleSignInPassInput.error = str(R.string.sample_sign_in_invalid_pass)
         }
       }
       ) { e -> Timber.e("e: " + e.localizedMessage) }
@@ -124,7 +124,7 @@ class KSignInActivity : KBaseActivity<KISignInActivityView, KSignInPresenterImpl
         if (presenter.isValidEmail(email)) {
           mViews.sampleSignInEmailInput.isErrorEnabled = false
         } else {
-          mViews.sampleSignInEmailInput.error = App.getResString(R.string.sample_sign_in_invalid_email)
+          mViews.sampleSignInEmailInput.error = str(R.string.sample_sign_in_invalid_email)
         }
       }) { e -> Timber.e("e: " + e.localizedMessage) }
   }

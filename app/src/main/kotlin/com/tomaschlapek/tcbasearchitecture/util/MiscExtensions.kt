@@ -226,6 +226,8 @@ fun Any.str(res: Int): String {
  */
 fun Context.color(res: Int): Int = ContextCompat.getColor(this, res)
 
+fun Context.dpToPx(res: Int): Int = this.resources.getDimensionPixelSize(res)
+
 /**
  * Put String to SharedPreferences.
  */
@@ -277,9 +279,9 @@ fun SharedPreferences.restoreInt(res: Int, defVal: Int = -1): Int {
 
 fun View.snack(message: String, length: Int = Snackbar.LENGTH_LONG, f: Snackbar.() -> Unit) {
   val snack = Snackbar.make(this, message, length)
-  snack.view.backgroundColor = App.getResColor(R.color.colorAccent)
+  snack.view.backgroundColor = context.color(R.color.colorAccent)
 
-  snack.apply { view.layoutParams = (view.layoutParams as FrameLayout.LayoutParams).apply { setMargins(leftMargin, App.getResDimension(R.dimen.margin_small), rightMargin, App.getResDimension(R.dimen.margin_small)) } }.show()
+  snack.apply { view.layoutParams = (view.layoutParams as FrameLayout.LayoutParams).apply { setMargins(leftMargin, context.dpToPx(R.dimen.margin_small), rightMargin, context.dpToPx(R.dimen.margin_small)) } }.show()
 
   snack.f()
   snack.show()
@@ -287,19 +289,19 @@ fun View.snack(message: String, length: Int = Snackbar.LENGTH_LONG, f: Snackbar.
 
 fun View.snack(message: String) {
   val snack = Snackbar.make(this, message, Snackbar.LENGTH_LONG)
-  snack.view.backgroundColor = App.getResColor(R.color.colorAccent)
+  snack.view.backgroundColor = context.color(R.color.colorAccent)
   snack.show()
 }
 
 fun View.snack(messageResId: Int) {
-  val snack = Snackbar.make(this, App.getResString(messageResId), Snackbar.LENGTH_LONG)
-  snack.view.backgroundColor = App.getResColor(R.color.colorAccent)
+  val snack = Snackbar.make(this, str(messageResId), Snackbar.LENGTH_LONG)
+  snack.view.backgroundColor = context.color(R.color.colorAccent)
   snack.show()
 }
 
 fun View.snack(messageResId: Int, bottomBarHeight: Int) {
-  val snack = Snackbar.make(this, App.getResString(messageResId), Snackbar.LENGTH_LONG)
-  snack.view.backgroundColor = App.getResColor(R.color.colorAccent)
+  val snack = Snackbar.make(this, str(messageResId), Snackbar.LENGTH_LONG)
+  snack.view.backgroundColor = context.color(R.color.colorAccent)
   //  snack.apply { view.layoutParams = (view.layoutParams as FrameLayout.LayoutParams).apply { setMargins(leftMargin, bottomBarHeight, rightMargin, bottomMargin) } }.show()
   snack.show()
 }

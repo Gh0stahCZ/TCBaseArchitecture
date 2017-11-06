@@ -12,10 +12,10 @@ import android.support.v4.app.FragmentActivity
 import android.support.v4.app.FragmentTransaction
 import com.google.android.gms.maps.model.LatLng
 import com.tbruyelle.rxpermissions.RxPermissions
-import com.tomaschlapek.tcbasearchitecture.App
 import com.tomaschlapek.tcbasearchitecture.R
 import com.tomaschlapek.tcbasearchitecture.presentation.ui.activity.KSampleActivity
 import com.tomaschlapek.tcbasearchitecture.presentation.ui.activity.KSignInActivity
+import com.tomaschlapek.tcbasearchitecture.util.str
 import org.jetbrains.anko.*
 import pl.aprilapps.easyphotopicker.EasyImage
 import timber.log.Timber
@@ -86,7 +86,7 @@ class KNavigationHelper {
 
     @JvmStatic
     fun openBrowser(context: Context, urlResId: Int) {
-      val url = App.getResString(urlResId)
+      val url = str(urlResId)
       context.browse(url)
     }
 
@@ -107,7 +107,7 @@ class KNavigationHelper {
         .subscribe { granted ->
           if (granted!!) {
             // Always true pre-M
-            EasyImage.openChooserWithGallery(activity, App.getResString(R.string.image_dialog_chooser), 0)
+            EasyImage.openChooserWithGallery(activity, str(R.string.image_dialog_chooser), 0)
           } else {
             activity.toast(R.string.permission_not_granted)
           }
