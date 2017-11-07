@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.view.ViewGroup
 import com.tomaschlapek.tcbasearchitecture.R
+import com.tomaschlapek.tcbasearchitecture.helper.KNavigationHelper
 import com.tomaschlapek.tcbasearchitecture.presentation.presenter.base.KActivityPresenter
 import com.tomaschlapek.tcbasearchitecture.presentation.presenter.interfaces.view.KIBaseView
 import org.jetbrains.anko.find
@@ -41,21 +42,20 @@ abstract class KBottomNavigationActivity<TView : KIBaseView, TViewModel : KActiv
 
     bottomNavigationView.setOnNavigationItemSelectedListener { item ->
       when (item.itemId) {
-        R.id.action_favorites -> {
-          //          KNavigationHelper.openKBuySearchActivity(this, false)
-          item.isEnabled = !item.isEnabled
+        R.id.action_sample -> {
+          KNavigationHelper.openKSampleActivity(this, false)
+//          item.isEnabled = !item.isEnabled
         }
-        R.id.action_schedules -> {
-          //          KNavigationHelper.openKSellActivity(this, false)
-          item.isEnabled = !item.isEnabled
+        R.id.action_map -> {
+          KNavigationHelper.openKMapActivity(this, false)
+//          item.isEnabled = !item.isEnabled
         }
-        R.id.action_music -> {
-          //          KNavigationHelper.openKChatActivity(this, false)
-          item.isEnabled = !item.isEnabled
+        R.id.action_chat -> {
+          KNavigationHelper.openKChatActivity(this, false)
+//          item.isEnabled = !item.isEnabled
         }
       }
 
-      // TODO : Uncomment when screens will be implemented
       if (getSelectedItemId() != item.itemId) {
         finish()
       }

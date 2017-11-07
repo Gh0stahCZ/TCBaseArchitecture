@@ -141,6 +141,8 @@ dependencies {
   compile supportDependencies.cardView
   compile supportDependencies.design
   compile supportDependencies.supportAnnotation
+  compile supportDependencies.preference
+  compile supportDependencies.preference14
 
   // Leak Canary
   //  debugCompile leakCanaryDependencies.leakDebug
@@ -168,6 +170,8 @@ dependencies {
 
   // Play Services
   compile playDependencies.auth
+  compile playDependencies.location
+  compile playDependencies.places
   //  compile playDependencies.gcm
   //  compile playDependencies.maps
   //  compile playDependencies.analytics

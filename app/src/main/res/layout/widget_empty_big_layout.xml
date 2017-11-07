@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/margin_huge"
+    android:clipChildren="false"
+    android:clipToPadding="false">
+
+    <LinearLayout
+      android:id="@+id/content_container"
+      android:orientation="vertical"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center"
+      android:gravity="center"
+      android:clipChildren="false"
+      android:clipToPadding="false"
+      android:layout_centerInParent="true">
+
+
+      <ImageView
+        android:id="@+id/empty_image"
+        android:layout_width="@dimen/empty_picture_size"
+        android:layout_height="@dimen/empty_picture_size"
+        android:layout_marginBottom="@dimen/margin_huge"
+        android:adjustViewBounds="true"
+        tools:src="@drawable/ic_empty"
+        />
+
+      <TextView
+        style="@style/Text.Huge.Bold"
+        android:id="@+id/empty_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_large"
+        android:layout_marginStart="@dimen/margin_large"
+        android:layout_marginRight="@dimen/margin_large"
+        android:layout_marginEnd="@dimen/margin_large"
+        android:layout_marginBottom="@dimen/margin_huge"
+        android:gravity="center_horizontal"
+        tools:text="Example title"
+        />
+
+      <TextView
+        style="@style/Text.Larger"
+        android:id="@+id/empty_subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_large"
+        android:layout_marginStart="@dimen/margin_large"
+        android:layout_marginRight="@dimen/margin_large"
+        android:layout_marginEnd="@dimen/margin_large"
+        android:layout_marginBottom="@dimen/margin_huge"
+        android:gravity="center_horizontal"
+        tools:text="Example subtitle"
+        />
+
+      <Button
+        style="@style/Button"
+        android:id="@+id/empty_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        />
+
+    </LinearLayout>
+  </RelativeLayout>
+</layout>

@@ -31,12 +31,17 @@ class Konstants {
     @JvmStatic
     val RC_SIGN_IN = 9009
 
-
     /**
     Auto update tag.
      */
     @JvmStatic
     val AUTO_UPDATE_JOB_TAG = "tag_auto_update_job"
+
+    /**
+     * Place picker request code
+     */
+    @JvmStatic
+    val LOCTION_PICKER_REQUEST = 2
   }
 
 

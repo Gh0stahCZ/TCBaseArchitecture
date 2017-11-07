@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:layout_marginTop="48dp"
+  android:layout_marginBottom="48dp"
+  android:overScrollMode="ifContentScrolls">
+
+  <LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="?dialogPreferredPadding"
+    android:paddingStart="?dialogPreferredPadding"
+    android:paddingRight="?dialogPreferredPadding"
+    android:paddingEnd="?dialogPreferredPadding"
+    android:paddingTop="?dialogPreferredPadding"
+    android:paddingBottom="?dialogPreferredPadding">
+
+    <TextView
+      style="?android:attr/textAppearanceSmall"
+      android:id="@android:id/message"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="?dialogPreferredPadding"
+      android:textColor="?android:attr/textColorSecondary"/>
+
+    <EditText
+      android:id="@android:id/edit"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"/>
+
+  </LinearLayout>
+</ScrollView>

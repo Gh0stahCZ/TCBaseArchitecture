@@ -7,5 +7,10 @@
   <string name="pref_key_user_uid">pref_user_uid</string>
   <string name="pref_key_firebase_token">pref_firebase_token</string>
 
+  <string name="key.name">key_name</string>
+  <string name="key.location">key_location</string>
+  <string name="key.phone">key_phone</string>
+  <string name="key.terms">key_terms</string>
+  <string name="key.logout">key_logout</string>
 
 </resources>

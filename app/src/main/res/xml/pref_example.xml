@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.preference.PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <android.support.v7.preference.EditTextPreference
+    android:key="@string/key.name"
+    android:title="Example name"
+    android:summary="Joe Doe"
+    android:dialogMessage="Your name"
+    android:dialogLayout="@layout/pref_dialog_edit_text_fix"
+    />
+
+  <android.support.v7.preference.Preference
+    android:key="@string/key.location"
+    android:title="Example location"
+    android:summary="Praha, Holešovice"
+    />
+
+  <android.support.v7.preference.EditTextPreference
+    android:key="@string/key.phone"
+    android:title="Example phone"
+    android:summary="646-456-329"
+    android:dialogMessage="Insert your phone number"
+    android:dialogLayout="@layout/pref_dialog_edit_text_fix"
+    />
+
+  <android.support.v7.preference.PreferenceCategory
+    android:title="Example General">
+
+    <android.support.v7.preference.Preference
+      android:key="@string/key.terms"
+      android:title="Example terms"
+      android:summary="Terms URL"
+      />
+
+    <android.support.v7.preference.Preference
+      android:key="@string/key.logout"
+      android:title="Example logout"
+      android:summary="Sign out"
+      />
+
+  </android.support.v7.preference.PreferenceCategory>
+</android.support.v7.preference.PreferenceScreen>

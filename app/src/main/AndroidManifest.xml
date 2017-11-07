@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools"
-          package="com.tomaschlapek.tcbasearchitecture"
->
+<manifest
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  package="com.tomaschlapek.tcbasearchitecture"
+  >
 
   <uses-permission android:name="android.permission.INTERNET"/>
   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
@@ -23,6 +24,10 @@
       android:value="@string/fabric_api_key"
     />-->
 
+    <meta-data
+      android:name="com.google.android.geo.API_KEY"
+      android:value="@string/google_places_api"/>
+
     <activity
       android:name=".presentation.ui.activity.base.KInitActivity"
       android:theme="@style/Theme.Transparent"
@@ -37,26 +42,37 @@
     <activity
       android:name=".presentation.ui.activity.KSampleActivity"
       android:screenOrientation="portrait"
-    />
-    <!--<activity
-      android:name=".presentation.ui.activity.OnboardingActivity"
+      android:exported="false"
+      />
+
+    <activity
+      android:name=".presentation.ui.activity.KMapActivity"
       android:screenOrientation="portrait"
-    />-->
+      android:exported="false"
+      />
+
+    <activity
+      android:name=".presentation.ui.activity.KChatActivity"
+      android:screenOrientation="portrait"
+      android:exported="false"
+      />
+
+    <activity
+      android:name=".presentation.ui.activity.KSettingsActivity"
+      android:screenOrientation="portrait"
+      android:exported="false"
+      android:parentActivityName=".presentation.ui.activity.KChatActivity"
+      >
+      <meta-data
+        android:name="android.support.PARENT_ACTIVITY"
+        android:value=".presentation.ui.activity.KChatActivity"/>
+    </activity>
+
     <activity
       android:name=".presentation.ui.activity.KSignInActivity"
       android:screenOrientation="portrait"
-    />
-
-    <!--<activity
-      android:name=".presentation.ui.activity.CustomActivity"
-      android:noHistory="true"
-      android:parentActivityName=".presentation.ui.activity.SampleActivity"
-      android:screenOrientation="portrait">
-
-      <meta-data
-        android:name="android.support.PARENT_ACTIVITY"
-        android:value=".presentation.ui.activity.SampleActivity"/>
-    </activity>-->
+      android:exported="false"
+      />
 
     <service
       android:exported="false"

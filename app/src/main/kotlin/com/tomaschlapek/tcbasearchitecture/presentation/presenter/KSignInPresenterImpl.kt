@@ -1,4 +1,4 @@
-package com.tomaschlapek.tcbasearchitecture.presentation.presenter.interfaces
+package com.tomaschlapek.tcbasearchitecture.presentation.presenter
 
 import android.os.Bundle
 import android.text.TextUtils
@@ -58,7 +58,7 @@ class KSignInPresenterImpl : KActivityPresenter<KISignInActivityView>(), KISignI
 
   override fun onSaveInstanceState(bundle: Bundle) {
     super.onSaveInstanceState(bundle)
-    bundle.putString(Argument.GAME_ID, mGameId)
+    bundle.putString(GAME_ID, mGameId)
   }
 
   override fun getSharingText(): String {
@@ -97,8 +97,8 @@ class KSignInPresenterImpl : KActivityPresenter<KISignInActivityView>(), KISignI
   private fun loadArguments(state: Bundle?) {
     // Load arguments.
     if (state != null) {
-      if (state.containsKey(Argument.GAME_ID)) {
-        mGameId = state.getString(Argument.GAME_ID)
+      if (state.containsKey(GAME_ID)) {
+        mGameId = state.getString(GAME_ID)
       }
     }
   }

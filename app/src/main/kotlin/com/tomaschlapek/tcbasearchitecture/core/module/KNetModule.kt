@@ -6,7 +6,7 @@ import com.squareup.picasso.OkHttpDownloader
 import com.squareup.picasso.Picasso
 import com.tomaschlapek.tcbasearchitecture.R
 import com.tomaschlapek.tcbasearchitecture.util.Konstants
-import com.tomaschlapek.tcbasearchitecture.widget.NetworkInterceptor
+import com.tomaschlapek.tcbasearchitecture.util.NetworkInterceptor
 import dagger.Module
 import dagger.Provides
 import okhttp3.Cache

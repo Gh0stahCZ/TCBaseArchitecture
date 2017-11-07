@@ -33,14 +33,30 @@
   <string name="sample_sign_in_invalid_pass">Invalid password</string>
 
   <string name="menu_share">Share</string>
-  <string name="text_favorites">Favorites</string>
-  <string name="text_schedules">Schedule</string>
-  <string name="text_music">Music</string>
+  <string name="menu_settings">Settings</string>
+  <string name="text_sample">Sample</string>
+  <string name="text_map">Map</string>
+  <string name="text_chat">Chat</string>
   <string name="action_search">Search</string>
+
+  <string name="toolbar_sample">Sample</string>
+  <string name="toolbar_map">Map</string>
+  <string name="toolbar_chat">Chat</string>
+  <string name="toolbar_settings">Settings</string>
 
   <string name="image_dialog_chooser">Choose between camera or gallery</string>
   <string name="image_dialog_denied">Permission not granted</string>
   <string name="permission_not_granted">Permission not granted</string>
 
   <string name="general_error_message">General error</string>
+  <string name="filter_reset">Reset</string>
+  <string name="filter_sort_by">Sort</string>
+  <string name="filter_by_date">Date</string>
+  <string name="filter_by_price">Price</string>
+  <string name="filter_search">Search</string>
+  <string name="location_error">Location error</string>
+  <string name="empty_no_connection">No connection</string>
+  <string name="empty_try_again">Try again</string>
+
+
 </resources>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  >
+
+  <LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+      android:orientation="horizontal"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+
+      <ImageButton
+        android:id="@+id/filter_sort_close_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/margin_medium"
+        android:src="@drawable/ic_action_down"
+        android:background="?attr/selectableItemBackground"
+        />
+
+      <android.support.v4.widget.Space
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"/>
+
+      <Button
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:id="@+id/filter_sort_reset_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/filter_reset"
+        />
+    </LinearLayout>
+
+
+    <include
+      layout="@layout/divider"/>
+
+
+    <TextView
+      style="@style/Text.Huge"
+      android:id="@+id/filter_sort_title"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_margin="@dimen/margin_huge"
+      android:text="@string/filter_sort_by"
+      />
+
+    <RadioGroup
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/margin_huge"
+      android:layout_marginEnd="@dimen/margin_huge"
+      >
+
+      <RadioButton
+        android:id="@+id/filter_sort_by_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/filter_by_date"
+        />
+
+      <RadioButton
+        android:id="@+id/filter_sort_by_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/filter_by_price"
+        />
+
+    </RadioGroup>
+
+
+    <Button
+      style="@style/Button"
+      android:id="@+id/filter_sort_search_button"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_margin="@dimen/margin_huge"
+      android:text="@string/filter_search"
+      />
+
+  </LinearLayout>
+
+</layout>

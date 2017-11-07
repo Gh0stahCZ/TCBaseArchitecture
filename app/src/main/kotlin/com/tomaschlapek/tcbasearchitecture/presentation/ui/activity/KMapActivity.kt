@@ -6,10 +6,11 @@ import android.support.v4.view.MenuItemCompat
 import android.support.v7.widget.SearchView
 import android.view.Menu
 import android.view.MenuItem
+import com.google.android.gms.maps.SupportMapFragment
 import com.tomaschlapek.tcbasearchitecture.R
-import com.tomaschlapek.tcbasearchitecture.databinding.ActivitySampleBinding
-import com.tomaschlapek.tcbasearchitecture.presentation.presenter.KSamplePresenterImpl
-import com.tomaschlapek.tcbasearchitecture.presentation.presenter.interfaces.view.KISampleActivityView
+import com.tomaschlapek.tcbasearchitecture.databinding.ActivityMapBinding
+import com.tomaschlapek.tcbasearchitecture.presentation.presenter.KMapPresenterImpl
+import com.tomaschlapek.tcbasearchitecture.presentation.presenter.interfaces.view.KIMapActivityView
 import com.tomaschlapek.tcbasearchitecture.presentation.ui.activity.base.KBottomNavigationActivity
 import com.tomaschlapek.tcbasearchitecture.util.str
 import org.jetbrains.anko.toast
@@ -18,11 +19,11 @@ import timber.log.Timber
 /**
  * Created by tomaschlapek on 15/9/17.
  */
-class KSampleActivity : KBottomNavigationActivity<KISampleActivityView, KSamplePresenterImpl>(), SearchView.OnQueryTextListener, KISampleActivityView {
+class KMapActivity : KBottomNavigationActivity<KIMapActivityView, KMapPresenterImpl>(), SearchView.OnQueryTextListener, KIMapActivityView {
 
   /* Private Attributes ***************************************************************************/
 
-  lateinit var mViews: ActivitySampleBinding
+  lateinit var mViews: ActivityMapBinding
 
   /* Public Methods *******************************************************************************/
 
@@ -49,7 +50,7 @@ class KSampleActivity : KBottomNavigationActivity<KISampleActivityView, KSampleP
     super.onCreate(savedInstanceState)
 
     mViews = DataBindingUtil
-      .inflate<ActivitySampleBinding>(layoutInflater, R.layout.activity_sample, getContentContainer(), true)
+      .inflate<ActivityMapBinding>(layoutInflater, R.layout.activity_map, getContentContainer(), true)
 
     Timber.i("Binding: " + mViews)
 
@@ -73,25 +74,25 @@ class KSampleActivity : KBottomNavigationActivity<KISampleActivityView, KSampleP
   }
 
   override fun showToast(message: String?) {
-    mViews?.sampleTextView?.text = presenter.getSharingText()
     toast(message.toString())
   }
 
   override fun getSelectedItemId(): Int {
-    return R.id.action_sample
+    return R.id.action_map
   }
 
-  override fun getPresenterClass(): Class<KSamplePresenterImpl> {
-    return KSamplePresenterImpl::class.java
+  override fun getPresenterClass(): Class<KMapPresenterImpl> {
+    return KMapPresenterImpl::class.java
   }
 
   override fun getToolbarTitle(): String {
-    return str(R.string.toolbar_sample)
+    return str(R.string.toolbar_map)
   }
 
   /* Private Methods ******************************************************************************/
 
+
   fun init() {
-    mViews.sampleButton.setOnClickListener { view -> presenter.onButtonClick() }
+    val mapFragment = supportFragmentManager.findFragmentById(R.id.example_map) as SupportMapFragment
   }
 }

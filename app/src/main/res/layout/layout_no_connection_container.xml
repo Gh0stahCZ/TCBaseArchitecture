@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <LinearLayout
+    android:id="@+id/no_connection_container"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:gravity="center_horizontal"
+    android:padding="@dimen/margin_huge">
+
+    <TextView
+      style="@style/Text.Huge"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="@dimen/margin_large"
+      tools:text="@string/empty_no_connection"
+      />
+
+    <com.tomaschlapek.tcbasearchitecture.widget.LoadingButton
+      style="@style/Button"
+      android:id="@+id/reconnect_button"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      app:text="@string/empty_try_again"
+      />
+  </LinearLayout>
+</layout>

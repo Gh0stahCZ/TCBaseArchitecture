@@ -2,37 +2,32 @@ package com.tomaschlapek.tcbasearchitecture.presentation.ui.activity
 
 import android.databinding.DataBindingUtil
 import android.os.Bundle
-import android.support.v4.view.MenuItemCompat
-import android.support.v7.widget.SearchView
 import android.view.Menu
 import android.view.MenuItem
 import com.tomaschlapek.tcbasearchitecture.R
-import com.tomaschlapek.tcbasearchitecture.databinding.ActivitySampleBinding
-import com.tomaschlapek.tcbasearchitecture.presentation.presenter.KSamplePresenterImpl
-import com.tomaschlapek.tcbasearchitecture.presentation.presenter.interfaces.view.KISampleActivityView
+import com.tomaschlapek.tcbasearchitecture.databinding.ActivityChatBinding
+import com.tomaschlapek.tcbasearchitecture.helper.KNavigationHelper
+import com.tomaschlapek.tcbasearchitecture.presentation.presenter.KChatPresenterImpl
+import com.tomaschlapek.tcbasearchitecture.presentation.presenter.interfaces.view.KIChatActivityView
 import com.tomaschlapek.tcbasearchitecture.presentation.ui.activity.base.KBottomNavigationActivity
 import com.tomaschlapek.tcbasearchitecture.util.str
 import org.jetbrains.anko.toast
 import timber.log.Timber
 
 /**
- * Created by tomaschlapek on 15/9/17.
+ * Chat activity.
  */
-class KSampleActivity : KBottomNavigationActivity<KISampleActivityView, KSamplePresenterImpl>(), SearchView.OnQueryTextListener, KISampleActivityView {
+class KChatActivity : KBottomNavigationActivity<KIChatActivityView, KChatPresenterImpl>(), KIChatActivityView {
 
   /* Private Attributes ***************************************************************************/
 
-  lateinit var mViews: ActivitySampleBinding
+  lateinit var mViews: ActivityChatBinding
 
   /* Public Methods *******************************************************************************/
 
   override fun onCreateOptionsMenu(menu: Menu): Boolean {
-    val menuRes: Int = R.menu.menu_sample
+    val menuRes: Int = R.menu.menu_chat
     menuInflater.inflate(menuRes, menu)
-
-    val menuItem = menu.findItem(R.id.action_search)
-    val searchView = MenuItemCompat.getActionView(menuItem) as SearchView
-    searchView.setOnQueryTextListener(this)
     return true
   }
 
@@ -42,6 +37,10 @@ class KSampleActivity : KBottomNavigationActivity<KISampleActivityView, KSampleP
       presenter.onShareDialog()
       return true
     }
+    if (itemId == R.id.settings_item) {
+      presenter.onSettingsClick()
+      return true
+    }
     return false
   }
 
@@ -49,7 +48,7 @@ class KSampleActivity : KBottomNavigationActivity<KISampleActivityView, KSampleP
     super.onCreate(savedInstanceState)
 
     mViews = DataBindingUtil
-      .inflate<ActivitySampleBinding>(layoutInflater, R.layout.activity_sample, getContentContainer(), true)
+      .inflate<ActivityChatBinding>(layoutInflater, R.layout.activity_chat, getContentContainer(), true)
 
     Timber.i("Binding: " + mViews)
 
@@ -61,37 +60,32 @@ class KSampleActivity : KBottomNavigationActivity<KISampleActivityView, KSampleP
     init()
   }
 
-  override fun onQueryTextSubmit(query: String?): Boolean {
-    return false
-  }
-
-  override fun onQueryTextChange(newText: String?): Boolean {
-    if (!newText.isNullOrBlank() && newText?.length!! > 3) {
-      Timber.d("Search text: " + newText)
-    }
-    return false
-  }
 
   override fun showToast(message: String?) {
-    mViews?.sampleTextView?.text = presenter.getSharingText()
     toast(message.toString())
   }
 
-  override fun getSelectedItemId(): Int {
-    return R.id.action_sample
+  override fun openSettings() {
+    KNavigationHelper.openKSettingsActivity(this, false)
   }
 
-  override fun getPresenterClass(): Class<KSamplePresenterImpl> {
-    return KSamplePresenterImpl::class.java
+  override fun getSelectedItemId(): Int {
+    return R.id.action_chat
+  }
+
+  override fun getPresenterClass(): Class<KChatPresenterImpl> {
+    return KChatPresenterImpl::class.java
   }
 
   override fun getToolbarTitle(): String {
-    return str(R.string.toolbar_sample)
+    return str(R.string.toolbar_chat)
   }
 
   /* Private Methods ******************************************************************************/
 
   fun init() {
-    mViews.sampleButton.setOnClickListener { view -> presenter.onButtonClick() }
+    with(mViews.chatSwipeRefresh) {
+      setOnRefreshListener { isRefreshing = false }
+    }
   }
 }

@@ -13,8 +13,9 @@ import android.support.v4.app.FragmentTransaction
 import com.google.android.gms.maps.model.LatLng
 import com.tbruyelle.rxpermissions.RxPermissions
 import com.tomaschlapek.tcbasearchitecture.R
-import com.tomaschlapek.tcbasearchitecture.presentation.ui.activity.KSampleActivity
-import com.tomaschlapek.tcbasearchitecture.presentation.ui.activity.KSignInActivity
+import com.tomaschlapek.tcbasearchitecture.presentation.ui.activity.*
+import com.tomaschlapek.tcbasearchitecture.presentation.ui.fragment.ExampleBottomSheetFragment
+import com.tomaschlapek.tcbasearchitecture.presentation.ui.fragment.ExamplePrefFragment
 import com.tomaschlapek.tcbasearchitecture.util.str
 import org.jetbrains.anko.*
 import pl.aprilapps.easyphotopicker.EasyImage
@@ -42,6 +43,23 @@ class KNavigationHelper {
       launchActivity(intent, context, isInitActivity)
     }
 
+    @JvmStatic
+    fun openKMapActivity(context: Context, isInitActivity: Boolean) {
+      val intent = context.intentFor<KMapActivity>(/*KSamplePresenterImpl.Argument.EXTRA_GAME_ID to "game"*/)
+      launchActivity(intent, context, isInitActivity)
+    }
+
+    @JvmStatic
+    fun openKChatActivity(context: Context, isInitActivity: Boolean) {
+      val intent = context.intentFor<KChatActivity>(/*KSamplePresenterImpl.Argument.EXTRA_GAME_ID to "game"*/)
+      launchActivity(intent, context, isInitActivity)
+    }
+
+    @JvmStatic
+    fun openKSettingsActivity(context: Context, isInitActivity: Boolean) {
+      val intent = context.intentFor<KSettingsActivity>(/*KSamplePresenterImpl.Argument.EXTRA_GAME_ID to "game"*/)
+      launchActivity(intent, context, isInitActivity)
+    }
 
     @JvmStatic
     fun openKOnboardingActivity(context: Context, isInitActivity: Boolean) {
@@ -63,17 +81,17 @@ class KNavigationHelper {
       launchActivity(intent, context, isInitActivity)
     }
 
-//    @JvmStatic
-//    fun openSettingsActivity(context: Context, isInitActivity: Boolean) {
-//      val intent = context.intentFor<KSettingsActivity>(/*KSamplePresenterImpl.Argument.EXTRA_GAME_ID to "game"*/)
-//      launchActivity(intent, context, isInitActivity)
-//    }
-//
-//    @JvmStatic
-//    fun openNewAdActivity(context: Context, isInitActivity: Boolean, dialogOption: Int) {
-//      val intent = context.intentFor<KNewAdActivity>(KNewAdPresenterImpl.Argument.EXTRA_DIALOG_OPTION to dialogOption)
-//      launchActivity(intent, context, isInitActivity)
-//    }
+    //    @JvmStatic
+    //    fun openSettingsActivity(context: Context, isInitActivity: Boolean) {
+    //      val intent = context.intentFor<KSettingsActivity>(/*KSamplePresenterImpl.Argument.EXTRA_GAME_ID to "game"*/)
+    //      launchActivity(intent, context, isInitActivity)
+    //    }
+    //
+    //    @JvmStatic
+    //    fun openNewAdActivity(context: Context, isInitActivity: Boolean, dialogOption: Int) {
+    //      val intent = context.intentFor<KNewAdActivity>(KNewAdPresenterImpl.Argument.EXTRA_DIALOG_OPTION to dialogOption)
+    //      launchActivity(intent, context, isInitActivity)
+    //    }
 
     /**
      * Make custom actions.
@@ -128,13 +146,19 @@ class KNavigationHelper {
 
     // ******* Fragments ******* //
 
-//    @JvmStatic
-//    fun addPreferenceFragment(activity: FragmentActivity, containerId: Int) {
-//      val fragment = KPreferenceFragment.newInstance()
-//      val transaction = beginTransaction(activity)
-//      replaceFragment(transaction, containerId, fragment, false)
-//    }
+    @JvmStatic
+    fun addExamplePrefFragment(activity: FragmentActivity, containerId: Int): ExamplePrefFragment {
+      val fragment = ExamplePrefFragment.newInstance()
+      val transaction = beginTransaction(activity)
+      replaceFragment(transaction, containerId, fragment, false)
+      return fragment
+    }
 
+    @JvmStatic
+    fun openExampleBottomSheetFragment(activity: FragmentActivity) {
+      val exampleFragment = ExampleBottomSheetFragment.newInstance()
+      exampleFragment.show(activity.supportFragmentManager, exampleFragment.tag)
+    }
 
     // ******* Private static functions ******* //
 
@@ -144,10 +168,10 @@ class KNavigationHelper {
       when {
         isFirstRun -> openKOnboardingActivity(context, isInitActivity)
         !isLogged -> openKSampleActivity(context, isInitActivity)
-//        KBuySearchActivity::class.java.name == activityName -> openKBuySearchActivity(context, isInitActivity)
-//        KBuyMineActivity::class.java.name == activityName -> openKBuyMineActivity(context, isInitActivity)
-//        KLoginActivity::class.java.name == activityName -> openKLoginActivity(context, isInitActivity)
-//        KCreateProfileActivity::class.java.name == activityName -> openKCreateProfileActivity(context, isInitActivity)
+      //        KBuySearchActivity::class.java.name == activityName -> openKBuySearchActivity(context, isInitActivity)
+      //        KBuyMineActivity::class.java.name == activityName -> openKBuyMineActivity(context, isInitActivity)
+      //        KLoginActivity::class.java.name == activityName -> openKLoginActivity(context, isInitActivity)
+      //        KCreateProfileActivity::class.java.name == activityName -> openKCreateProfileActivity(context, isInitActivity)
         else -> openKSampleActivity(context, isInitActivity)
       }
 

@@ -7,7 +7,7 @@ import com.jakewharton.rxbinding.widget.TextViewTextChangeEvent
 import com.tomaschlapek.tcbasearchitecture.R
 import com.tomaschlapek.tcbasearchitecture.databinding.ActivitySignInBinding
 import com.tomaschlapek.tcbasearchitecture.helper.KNavigationHelper
-import com.tomaschlapek.tcbasearchitecture.presentation.presenter.interfaces.KSignInPresenterImpl
+import com.tomaschlapek.tcbasearchitecture.presentation.presenter.KSignInPresenterImpl
 import com.tomaschlapek.tcbasearchitecture.presentation.presenter.interfaces.view.KISignInActivityView
 import com.tomaschlapek.tcbasearchitecture.presentation.ui.activity.base.KBaseActivity
 import com.tomaschlapek.tcbasearchitecture.util.str

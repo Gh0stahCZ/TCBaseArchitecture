@@ -5,6 +5,7 @@ import android.graphics.PorterDuff
 import android.os.Build
 import android.os.Bundle
 import android.support.v4.app.NavUtils
+import android.support.v4.content.ContextCompat
 import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
@@ -79,6 +80,10 @@ abstract class KToolbarActivity<TView : KIBaseView, TViewModel : KActivityPresen
     return toolbarContainer
   }
 
+  open fun getToolbarTitle(): String {
+    return str(R.string.app_name)
+  }
+
   fun updateToolbar(titleResId: Int) {
     toolbar!!.title = str(titleResId)
   }
@@ -101,11 +106,10 @@ abstract class KToolbarActivity<TView : KIBaseView, TViewModel : KActivityPresen
 
       setSupportActionBar(toolbar)
 
-      val upArrow = resources.getDrawable(R.drawable.abc_ic_ab_back_material)
+      val upArrow = ContextCompat.getDrawable(this, R.drawable.abc_ic_ab_back_material)
       upArrow.setColorFilter(resources.getColor(R.color.white), PorterDuff.Mode.SRC_ATOP)
       supportActionBar?.setHomeAsUpIndicator(upArrow)
-
-      //      activity.getSupportActionBar().setTitle(null);
+      supportActionBar?.title = getToolbarTitle()
 
       if (this is KBottomNavigationActivity<*, *>) {
         hideBackArrowButton()

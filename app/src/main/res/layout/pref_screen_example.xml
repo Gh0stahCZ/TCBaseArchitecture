@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:orientation="vertical"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
+
+  <LinearLayout
+    android:id="@+id/custom_view_group"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="?attr/dialogPreferredPadding"
+    android:text="Button in custom layout">
+
+    <ImageView
+      android:id="@+id/pref_custom_profile_picture"
+      android:layout_width="@dimen/image_size"
+      android:layout_height="@dimen/image_size"
+      android:layout_marginRight="@dimen/margin_medium"
+      android:src="@drawable/ic_no_content"
+      />
+
+    <LinearLayout
+      android:orientation="vertical"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center_vertical">
+
+      <TextView
+        style="@style/Text.Large.Unimportant"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Example title"
+        />
+
+      <TextView
+        style="@style/Text.Large.Unimportant"
+        android:id="@+id/pref_custom_upgrade"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        android:focusable="true"
+        android:text="Example subtitle"
+        android:textColor="@color/colorPrimary"
+        />
+    </LinearLayout>
+  </LinearLayout>
+
+  <FrameLayout
+    android:id="@android:id/list_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="NewApi"/>
+
+</LinearLayout>

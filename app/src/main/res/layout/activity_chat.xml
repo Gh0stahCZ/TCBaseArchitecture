@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  >
+
+  <FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <include
+      android:id="@+id/no_connection_container"
+      layout="@layout/layout_no_connection_container"
+      android:visibility="gone"/>
+
+    <com.tomaschlapek.tcbasearchitecture.widget.EmptyLayout
+      android:id="@+id/empty_container"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      app:emptyBigImage="@drawable/ic_empty"
+      app:emptyBigFabShown="false"
+      app:emptyBigSubtitle="Example subtitle"
+      android:visibility="gone"
+      />
+
+    <LinearLayout
+      android:id="@+id/content_container"
+      android:orientation="vertical"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:visibility="visible"
+      >
+
+      <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/chat_swipe_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+          android:id="@+id/chat_recycler_view"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+          tools:listitem="@layout/item_chat_message"
+          />
+
+      </android.support.v4.widget.SwipeRefreshLayout>
+
+    </LinearLayout>
+  </FrameLayout>
+</layout>

@@ -21,4 +21,17 @@
           format="reference"/>
   </declare-styleable>
 
+  <declare-styleable name="EmptyBigLayout">
+    <attr name="emptyBigTitle"
+          format="string"/>
+    <attr name="emptyBigSubtitle"
+          format="string"/>
+    <attr name="emptyBigButtonText"
+          format="string"/>
+    <attr name="emptyBigFabShown"
+          format="boolean"/>
+    <attr name="emptyBigImage"
+          format="reference"/>
+  </declare-styleable>
+
 </resources>
