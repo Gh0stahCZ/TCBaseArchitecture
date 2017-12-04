@@ -87,10 +87,10 @@ abstract class KActivityPresenter<TView : KIBaseView> : KBasePresenter<TView>() 
   }
 
   val isUserLogged: Boolean
-    get() = !TextUtils.isEmpty(preferenceHelper.getUserLoginToken())
+    get() = !TextUtils.isEmpty(preferenceHelper.userLoginToken)
 
   protected val isUserLoggedByFb: Boolean
-    get() = !TextUtils.isEmpty(preferenceHelper.getFbLoginToken())
+    get() = !TextUtils.isEmpty(preferenceHelper.userFbToken)
 
   /**
    * Loads arguments from SavedInstance or passed bundle.

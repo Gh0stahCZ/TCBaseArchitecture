@@ -1,9 +1,11 @@
 package com.tomaschlapek.tcbasearchitecture.util
 
+import android.annotation.TargetApi
 import android.content.Context
 import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.os.Build
 import android.support.design.widget.Snackbar
 import android.support.v4.content.ContextCompat
 import android.text.format.DateUtils
@@ -338,3 +340,19 @@ fun rx.Observable<out Response<*>>.applyTransform(onResponse: (Response<*>) -> U
     }
 
 }
+
+/**
+ * Turns off Thread Safety for lazy initialization.
+ * !! NOTE !! : It should be used wisely and only when we use object on MainThread.
+ */
+fun <T> lazyFast(operation: () -> T): Lazy<T> = lazy(LazyThreadSafetyMode.NONE) {
+  operation()
+}
+
+@TargetApi(Build.VERSION_CODES.N)
+fun Context.safeContext(): Context =
+  takeUnless { isDeviceProtectedStorage }?.run {
+    this.applicationContext.let {
+      ContextCompat.createDeviceProtectedStorageContext(it) ?: it
+    }
+  } ?: this

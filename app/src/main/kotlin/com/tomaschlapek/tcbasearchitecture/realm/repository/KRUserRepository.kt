@@ -11,7 +11,7 @@ import javax.inject.Inject
 class KRUserRepository @Inject constructor(preferenceHelper: KPreferenceHelper) : KRAbstractRepository<KRUser>(preferenceHelper) {
 
   fun getLoggedUser(realm: Realm?): KRUser? {
-    return getUserByToken(realm, preferenceHelper.getUserLoginToken())
+    return getUserByToken(realm, preferenceHelper.userLoginToken)
   }
 
   fun getUserByToken(realm: Realm?, token: String?): KRUser? {

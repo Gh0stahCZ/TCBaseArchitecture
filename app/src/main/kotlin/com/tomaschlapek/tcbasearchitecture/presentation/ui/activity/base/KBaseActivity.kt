@@ -14,7 +14,6 @@ import com.tomaschlapek.tcbasearchitecture.App
 import com.tomaschlapek.tcbasearchitecture.R
 import com.tomaschlapek.tcbasearchitecture.databinding.ActivityBaseBinding
 import com.tomaschlapek.tcbasearchitecture.helper.KNavigationHelper
-import com.tomaschlapek.tcbasearchitecture.presentation.presenter.KSamplePresenterImpl
 import com.tomaschlapek.tcbasearchitecture.presentation.presenter.base.KActivityPresenter
 import com.tomaschlapek.tcbasearchitecture.presentation.presenter.interfaces.view.KIBaseView
 
@@ -181,8 +180,8 @@ abstract class KBaseActivity<TView : KIBaseView, TViewModel : KActivityPresenter
     val intent = intent
     val action = intent.action
     val data = intent.dataString
-    val isFirstRun = App.getAppComponent().provideKPreferenceHelper().getFirstRun()
-    val isLogged = !TextUtils.isEmpty(App.getAppComponent().provideKPreferenceHelper().getUserLoginToken())
+    val isFirstRun = App.getAppComponent().provideKPreferenceHelper().firstRun
+    val isLogged = !TextUtils.isEmpty(App.getAppComponent().provideKPreferenceHelper().userLoginToken)
 
     KNavigationHelper.openInitActivity(applicationContext,
       initActivityName, isFirstRun, isLogged, sharingBundle)
