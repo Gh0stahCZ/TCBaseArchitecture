@@ -12,6 +12,7 @@ import com.tomaschlapek.tcbasearchitecture.databinding.ActivityMapBinding
 import com.tomaschlapek.tcbasearchitecture.presentation.presenter.KMapPresenterImpl
 import com.tomaschlapek.tcbasearchitecture.presentation.presenter.interfaces.view.KIMapActivityView
 import com.tomaschlapek.tcbasearchitecture.presentation.ui.activity.base.KBottomNavigationActivity
+import com.tomaschlapek.tcbasearchitecture.util.ActivityBinder
 import com.tomaschlapek.tcbasearchitecture.util.str
 import org.jetbrains.anko.toast
 import timber.log.Timber
@@ -23,7 +24,7 @@ class KMapActivity : KBottomNavigationActivity<KIMapActivityView, KMapPresenterI
 
   /* Private Attributes ***************************************************************************/
 
-  lateinit var mViews: ActivityMapBinding
+  private val mViews: ActivityMapBinding by ActivityBinder(R.layout.activity_map)
 
   /* Public Methods *******************************************************************************/
 
@@ -48,12 +49,6 @@ class KMapActivity : KBottomNavigationActivity<KIMapActivityView, KMapPresenterI
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-
-    mViews = DataBindingUtil
-      .inflate<ActivityMapBinding>(layoutInflater, R.layout.activity_map, getContentContainer(), true)
-
-    Timber.i("Binding: " + mViews)
-
     onCreatePresenter(savedInstanceState)
   }
 

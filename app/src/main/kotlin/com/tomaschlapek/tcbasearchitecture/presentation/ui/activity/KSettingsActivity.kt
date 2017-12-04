@@ -1,7 +1,6 @@
 package com.tomaschlapek.tcbasearchitecture.presentation.ui.activity
 
 import android.content.Intent
-import android.databinding.DataBindingUtil
 import android.os.Bundle
 import com.google.android.gms.location.places.Place
 import com.google.android.gms.location.places.ui.PlaceAutocomplete
@@ -13,6 +12,7 @@ import com.tomaschlapek.tcbasearchitecture.presentation.presenter.KSettingsPrese
 import com.tomaschlapek.tcbasearchitecture.presentation.presenter.interfaces.view.KISettingsActivityView
 import com.tomaschlapek.tcbasearchitecture.presentation.ui.activity.base.KToolbarActivity
 import com.tomaschlapek.tcbasearchitecture.presentation.ui.fragment.ExamplePrefFragment
+import com.tomaschlapek.tcbasearchitecture.util.ActivityBinder
 import com.tomaschlapek.tcbasearchitecture.util.Konstants
 import com.tomaschlapek.tcbasearchitecture.util.str
 import org.jetbrains.anko.toast
@@ -25,21 +25,13 @@ class KSettingsActivity : KToolbarActivity<KISettingsActivityView, KSettingsPres
 
   /* Private Attributes ***************************************************************************/
 
-  lateinit var mViews: ActivitySettingsBinding
+  private val mViews: ActivitySettingsBinding by ActivityBinder(R.layout.activity_settings)
   lateinit var prefFragment: ExamplePrefFragment
-
 
   /* Public Methods *******************************************************************************/
 
-
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-
-    mViews = DataBindingUtil
-      .inflate<ActivitySettingsBinding>(layoutInflater, R.layout.activity_settings, getContentContainer(), true)
-
-    Timber.i("Binding: " + mViews)
-
     onCreatePresenter(savedInstanceState)
   }
 

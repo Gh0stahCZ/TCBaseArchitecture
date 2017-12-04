@@ -1,6 +1,5 @@
 package com.tomaschlapek.tcbasearchitecture.presentation.ui.activity
 
-import android.databinding.DataBindingUtil
 import android.os.Bundle
 import com.jakewharton.rxbinding.widget.RxTextView
 import com.jakewharton.rxbinding.widget.TextViewTextChangeEvent
@@ -10,6 +9,7 @@ import com.tomaschlapek.tcbasearchitecture.helper.KNavigationHelper
 import com.tomaschlapek.tcbasearchitecture.presentation.presenter.KSignInPresenterImpl
 import com.tomaschlapek.tcbasearchitecture.presentation.presenter.interfaces.view.KISignInActivityView
 import com.tomaschlapek.tcbasearchitecture.presentation.ui.activity.base.KBaseActivity
+import com.tomaschlapek.tcbasearchitecture.util.ActivityBinder
 import com.tomaschlapek.tcbasearchitecture.util.str
 import rx.Observable
 import rx.android.schedulers.AndroidSchedulers
@@ -26,16 +26,12 @@ class KSignInActivity : KBaseActivity<KISignInActivityView, KSignInPresenterImpl
   /**
    * Data binding.
    */
-  lateinit var mViews: ActivitySignInBinding
+  private val mViews: ActivitySignInBinding by ActivityBinder(R.layout.activity_sign_in)
 
   /* Public Methods *******************************************************************************/
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-
-    mViews = DataBindingUtil
-      .inflate<ActivitySignInBinding>(layoutInflater, R.layout.activity_sign_in, getContentContainer(), true)
-
     onCreatePresenter(savedInstanceState)
   }
 

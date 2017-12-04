@@ -1,6 +1,5 @@
 package com.tomaschlapek.tcbasearchitecture.presentation.ui.activity
 
-import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v4.view.MenuItemCompat
 import android.support.v7.widget.SearchView
@@ -11,18 +10,19 @@ import com.tomaschlapek.tcbasearchitecture.databinding.ActivitySampleBinding
 import com.tomaschlapek.tcbasearchitecture.presentation.presenter.KSamplePresenterImpl
 import com.tomaschlapek.tcbasearchitecture.presentation.presenter.interfaces.view.KISampleActivityView
 import com.tomaschlapek.tcbasearchitecture.presentation.ui.activity.base.KBottomNavigationActivity
+import com.tomaschlapek.tcbasearchitecture.util.ActivityBinder
 import com.tomaschlapek.tcbasearchitecture.util.str
 import org.jetbrains.anko.toast
 import timber.log.Timber
 
 /**
- * Created by tomaschlapek on 15/9/17.
+ * Sample Activity
  */
 class KSampleActivity : KBottomNavigationActivity<KISampleActivityView, KSamplePresenterImpl>(), SearchView.OnQueryTextListener, KISampleActivityView {
 
   /* Private Attributes ***************************************************************************/
 
-  lateinit var mViews: ActivitySampleBinding
+  private val mViews: ActivitySampleBinding by ActivityBinder(R.layout.activity_sample)
 
   /* Public Methods *******************************************************************************/
 
@@ -47,12 +47,6 @@ class KSampleActivity : KBottomNavigationActivity<KISampleActivityView, KSampleP
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-
-    mViews = DataBindingUtil
-      .inflate<ActivitySampleBinding>(layoutInflater, R.layout.activity_sample, getContentContainer(), true)
-
-    Timber.i("Binding: " + mViews)
-
     onCreatePresenter(savedInstanceState)
   }
 

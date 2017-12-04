@@ -1,6 +1,5 @@
 package com.tomaschlapek.tcbasearchitecture.presentation.ui.activity
 
-import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -10,9 +9,9 @@ import com.tomaschlapek.tcbasearchitecture.helper.KNavigationHelper
 import com.tomaschlapek.tcbasearchitecture.presentation.presenter.KChatPresenterImpl
 import com.tomaschlapek.tcbasearchitecture.presentation.presenter.interfaces.view.KIChatActivityView
 import com.tomaschlapek.tcbasearchitecture.presentation.ui.activity.base.KBottomNavigationActivity
+import com.tomaschlapek.tcbasearchitecture.util.ActivityBinder
 import com.tomaschlapek.tcbasearchitecture.util.str
 import org.jetbrains.anko.toast
-import timber.log.Timber
 
 /**
  * Chat activity.
@@ -21,7 +20,7 @@ class KChatActivity : KBottomNavigationActivity<KIChatActivityView, KChatPresent
 
   /* Private Attributes ***************************************************************************/
 
-  lateinit var mViews: ActivityChatBinding
+  private val mViews: ActivityChatBinding by ActivityBinder(R.layout.activity_chat)
 
   /* Public Methods *******************************************************************************/
 
@@ -46,12 +45,6 @@ class KChatActivity : KBottomNavigationActivity<KIChatActivityView, KChatPresent
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-
-    mViews = DataBindingUtil
-      .inflate<ActivityChatBinding>(layoutInflater, R.layout.activity_chat, getContentContainer(), true)
-
-    Timber.i("Binding: " + mViews)
-
     onCreatePresenter(savedInstanceState)
   }
 
