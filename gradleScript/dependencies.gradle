@@ -6,11 +6,11 @@ ext {
 
   minSdkVersionVar = 19
   compileSdkVersionVar = 26
-  targetSdkVersionVar = 25
+  targetSdkVersionVar = 26
 
   supportVersion = "26.0.1"
-  playServicesVersion = "11.2.2"
-  firebaseVersion = "11.2.2"
+  playServicesVersion = "11.6.2"
+  firebaseVersion = "11.6.2"
   retrofitVersion = "2.3.0"
   leakCanaryVersion = "1.5.2"
   powerMockVersion = "1.6.6"

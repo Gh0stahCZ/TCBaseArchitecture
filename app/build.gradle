@@ -64,7 +64,7 @@ android {
     versionName "1.0." + buildNumber
     testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     vectorDrawables.useSupportLibrary = true
-    signingConfig signingConfigs.config
+//    signingConfig signingConfigs.config
     multiDexEnabled true
   }
 
@@ -249,4 +249,4 @@ dependencies {
   //  compile project(path: ':fancyonboarding')
   //  compile project(':fancysignup')
 }
-//apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.gms.google-services'
