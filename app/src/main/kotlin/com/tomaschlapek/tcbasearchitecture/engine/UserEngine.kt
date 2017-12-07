@@ -2,6 +2,7 @@ package com.tomaschlapek.tcbasearchitecture.engine
 
 import com.tomaschlapek.tcbasearchitecture.App
 import com.tomaschlapek.tcbasearchitecture.R
+import com.tomaschlapek.tcbasearchitecture.helper.INVALID_STRING
 import com.tomaschlapek.tcbasearchitecture.helper.KPreferenceHelper
 import com.tomaschlapek.tcbasearchitecture.network.EmailLoginRequestService
 import com.tomaschlapek.tcbasearchitecture.network.EmailPassBody
@@ -48,12 +49,11 @@ class UserEngine(private var retrofit: Retrofit, private var preferenceHelper: K
   /* Public Methods *******************************************************************************/
 
   fun startUserSession(userInfo: UserInfoResponse) {
-    preferenceHelper.setUserLoginToken(userInfo.token)
+    preferenceHelper.userLoginToken = userInfo.token ?: INVALID_STRING
   }
 
   fun clearUserSession() {
-    preferenceHelper.setUserLoginToken(null)
-    preferenceHelper.setFbLoginToken(null)
+    preferenceHelper.clearUserData()
   }
 
   fun loadAndRequest(req: () -> Unit) {

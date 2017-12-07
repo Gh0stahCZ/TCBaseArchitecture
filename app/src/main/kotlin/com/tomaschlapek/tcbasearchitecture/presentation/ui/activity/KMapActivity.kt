@@ -1,6 +1,5 @@
 package com.tomaschlapek.tcbasearchitecture.presentation.ui.activity
 
-import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v4.view.MenuItemCompat
 import android.support.v7.widget.SearchView
@@ -18,7 +17,7 @@ import org.jetbrains.anko.toast
 import timber.log.Timber
 
 /**
- * Created by tomaschlapek on 15/9/17.
+ * Map adapter.
  */
 class KMapActivity : KBottomNavigationActivity<KIMapActivityView, KMapPresenterImpl>(), SearchView.OnQueryTextListener, KIMapActivityView {
 
@@ -88,6 +87,7 @@ class KMapActivity : KBottomNavigationActivity<KIMapActivityView, KMapPresenterI
 
 
   fun init() {
+    mViews
     val mapFragment = supportFragmentManager.findFragmentById(R.id.example_map) as SupportMapFragment
   }
 }

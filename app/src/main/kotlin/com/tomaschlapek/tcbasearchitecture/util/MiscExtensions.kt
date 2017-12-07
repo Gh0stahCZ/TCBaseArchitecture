@@ -350,9 +350,16 @@ fun <T> lazyFast(operation: () -> T): Lazy<T> = lazy(LazyThreadSafetyMode.NONE) 
 }
 
 @TargetApi(Build.VERSION_CODES.N)
-fun Context.safeContext(): Context =
-  takeUnless { isDeviceProtectedStorage }?.run {
-    this.applicationContext.let {
-      ContextCompat.createDeviceProtectedStorageContext(it) ?: it
-    }
-  } ?: this
+fun Context.safeContext(): Context {
+
+  if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N && isDeviceProtectedStorage) {
+    return ContextCompat.createDeviceProtectedStorageContext(this.applicationContext) ?: this.applicationContext
+  }
+  return this
+}
+
+//  takeUnless { isDeviceProtectedStorage }?.run {
+//    this.applicationContext.let {
+//      ContextCompat.createDeviceProtectedStorageContext(it) ?: it
+//    }
+//  } ?: this
