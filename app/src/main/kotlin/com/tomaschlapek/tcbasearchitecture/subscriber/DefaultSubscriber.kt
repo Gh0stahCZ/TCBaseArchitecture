@@ -20,7 +20,7 @@ abstract class DefaultSubscriber<T : Response<out Any>, in Q : Any> : rx.Subscri
 
     t?.let {
 
-      if (it.isSuccessful && it.body() != null) {
+      if (it.isSuccessful) {
         val resp = it.body() as? Q
         resp?.let {
           onNextSuccess(it)

@@ -36,4 +36,6 @@ interface KIBaseView : IView {
   fun openShareDialog(text: String)
 
   fun setLoadingProgressVisibility(visible: Boolean)
+
+  fun onNotificationReceived(message: String)
 }

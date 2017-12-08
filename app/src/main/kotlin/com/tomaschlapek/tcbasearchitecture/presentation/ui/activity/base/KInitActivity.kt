@@ -6,6 +6,8 @@ import com.tomaschlapek.tcbasearchitecture.presentation.presenter.interfaces.vie
 
 class KInitActivity : KBaseActivity<KIBaseView, KBasePresenterImpl>(), KIBaseView {
 
+  override fun abortNotification(): Boolean = false
+
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
   }

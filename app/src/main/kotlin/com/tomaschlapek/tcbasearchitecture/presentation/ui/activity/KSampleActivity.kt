@@ -15,6 +15,7 @@ import com.tomaschlapek.tcbasearchitecture.util.str
 import org.jetbrains.anko.toast
 import timber.log.Timber
 
+
 /**
  * Sample Activity
  */
@@ -25,6 +26,8 @@ class KSampleActivity : KBottomNavigationActivity<KISampleActivityView, KSampleP
   private val mViews: ActivitySampleBinding by ActivityBinder(R.layout.activity_sample)
 
   /* Public Methods *******************************************************************************/
+
+  override fun abortNotification(): Boolean = false
 
   override fun onCreateOptionsMenu(menu: Menu): Boolean {
     val menuRes: Int = R.menu.menu_sample
@@ -67,7 +70,7 @@ class KSampleActivity : KBottomNavigationActivity<KISampleActivityView, KSampleP
   }
 
   override fun showToast(message: String?) {
-    mViews?.sampleTextView?.text = presenter.getSharingText()
+    mViews.sampleTextView.text = presenter.getSharingText()
     toast(message.toString())
   }
 

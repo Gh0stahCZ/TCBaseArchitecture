@@ -5,6 +5,7 @@ import com.tomaschlapek.tcbasearchitecture.App
 import com.tomaschlapek.tcbasearchitecture.core.module.KAppModule
 import com.tomaschlapek.tcbasearchitecture.core.module.KBuildersModule
 import com.tomaschlapek.tcbasearchitecture.core.module.KNetModule
+import com.tomaschlapek.tcbasearchitecture.core.module.KNotifModule
 import com.tomaschlapek.tcbasearchitecture.engine.UserEngine
 import com.tomaschlapek.tcbasearchitecture.helper.KNetworkHelper
 import com.tomaschlapek.tcbasearchitecture.helper.KPreferenceHelper
@@ -19,7 +20,7 @@ import javax.inject.Singleton
  * Base app component.
  */
 @Singleton
-@Component(modules = arrayOf(AndroidSupportInjectionModule::class, KAppModule::class, KNetModule::class, KBuildersModule::class))
+@Component(modules = arrayOf(AndroidSupportInjectionModule::class, KAppModule::class, KNotifModule::class, KNetModule::class, KBuildersModule::class))
 interface KAppComponent : AndroidInjector<App> {
 
   fun provideContext(): Context

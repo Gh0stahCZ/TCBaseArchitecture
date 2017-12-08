@@ -42,6 +42,30 @@ class Konstants {
      */
     @JvmStatic
     val LOCTION_PICKER_REQUEST = 2
+
+    /**
+     * Broadcast notification tag.
+     */
+    @JvmStatic
+    val BROADCAST_NOTIFICATION = "extra_broadcast_notification"
+
+    /**
+     * Unexpected error
+     */
+    @JvmStatic
+    val ERROR_NO_CONNECTION = 999
+
+    /**
+     * Unexpected error
+     */
+    @JvmStatic
+    val HTTP_GENERIC_ERROR_CODE = 998
+
+    /**
+     * Request Timeout error
+     */
+    @JvmStatic
+    val HTTP_ERROR_CODE_TIMEOUT = 997
   }
 
 

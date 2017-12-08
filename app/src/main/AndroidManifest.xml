@@ -75,7 +75,7 @@
       />
 
     <service
-      android:name=".presentation.ui.service.KAutoUpdateJobService"
+      android:name=".presentation.ui.service.KAutoResendPushTokenJobService"
       android:exported="false">
       <intent-filter>
         <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE"/>
@@ -97,6 +97,20 @@
         <action android:name="com.google.firebase.MESSAGING_EVENT"/>
       </intent-filter>
     </service>
+
+    <receiver
+      android:enabled="true"
+      android:name=".presentation.ui.service.DefaultPushReceiver"
+      android:exported="false">
+      <intent-filter android:priority="0">
+        <action android:name="extra_broadcast_notification"/>
+      </intent-filter>
+    </receiver>
+
+    <service
+      android:enabled="true"
+      android:name=".presentation.ui.service.DefaultPushIntentService"
+      android:exported="false"/>
 
   </application>
 

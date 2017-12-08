@@ -78,8 +78,13 @@ abstract class KActivityPresenter<TView : KIBaseView> : KBasePresenter<TView>() 
     }
   }
 
-  fun onNewIntent(intent: Intent) {
+  open fun onNewIntent(intent: Intent) {
     Timber.d("onNewIntent() : " + intent)
+  }
+
+  fun onNotificationReceived(notification: Map<String, String>?) {
+    Timber.d(notification?.toString())
+    view?.onNotificationReceived(notification?.toString() ?: "Unknown data")
   }
 
   override fun onSaveInstanceState(bundle: Bundle) {

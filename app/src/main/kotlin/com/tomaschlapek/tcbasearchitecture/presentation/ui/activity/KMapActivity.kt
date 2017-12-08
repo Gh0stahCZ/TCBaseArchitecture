@@ -6,7 +6,6 @@ import android.support.v7.widget.SearchView
 import android.view.Menu
 import android.view.MenuItem
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.firebase.iid.FirebaseInstanceId
 import com.tomaschlapek.tcbasearchitecture.R
 import com.tomaschlapek.tcbasearchitecture.databinding.ActivityMapBinding
 import com.tomaschlapek.tcbasearchitecture.presentation.presenter.KMapPresenterImpl
@@ -27,6 +26,8 @@ class KMapActivity : KBottomNavigationActivity<KIMapActivityView, KMapPresenterI
   private val mViews: ActivityMapBinding by ActivityBinder(R.layout.activity_map)
 
   /* Public Methods *******************************************************************************/
+
+  override fun abortNotification(): Boolean = false
 
   override fun onCreateOptionsMenu(menu: Menu): Boolean {
     val menuRes: Int = R.menu.menu_sample
@@ -90,7 +91,5 @@ class KMapActivity : KBottomNavigationActivity<KIMapActivityView, KMapPresenterI
   fun init() {
     mViews
     val mapFragment = supportFragmentManager.findFragmentById(R.id.example_map) as SupportMapFragment
-    val token = FirebaseInstanceId.getInstance().token
-    Timber.d("Firebase token : $token")
   }
 }

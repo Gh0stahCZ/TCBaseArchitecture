@@ -2,6 +2,7 @@ package com.tomaschlapek.tcbasearchitecture
 
 import android.app.Activity
 import android.app.Application
+import android.app.Service
 import android.content.Context
 import android.content.res.AssetManager
 import android.content.res.Configuration
@@ -21,6 +22,7 @@ import com.uphyca.stetho_realm.RealmInspectorModulesProvider
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
+import dagger.android.HasServiceInjector
 import io.realm.Realm
 import timber.log.Timber
 import java.io.IOException
@@ -32,12 +34,15 @@ import javax.inject.Inject
 /**
  * Application class.
  */
-class App : Application(), HasActivityInjector {
+class App : Application(), HasActivityInjector, HasServiceInjector {
 
   /* Public Constants *****************************************************************************/
 
   @Inject
-  lateinit var mAndroidInjector: DispatchingAndroidInjector<Activity>
+  lateinit var mActivityInjector: DispatchingAndroidInjector<Activity>
+
+  @Inject
+  lateinit var mServiceInjector: DispatchingAndroidInjector<Service>
 
   /* Public Methods *******************************************************************************/
 
@@ -94,7 +99,11 @@ class App : Application(), HasActivityInjector {
   }
 
   override fun activityInjector(): AndroidInjector<Activity> {
-    return mAndroidInjector
+    return mActivityInjector
+  }
+
+  override fun serviceInjector(): AndroidInjector<Service> {
+    return mServiceInjector
   }
 
   companion object {

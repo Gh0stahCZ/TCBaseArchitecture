@@ -9,4 +9,4 @@ import javax.inject.Scope
  */
 @Scope
 @Retention(RetentionPolicy.RUNTIME)
-annotation class KPerActivity
+annotation class PerActivity

@@ -35,8 +35,8 @@ class KAppModule {
 
   @Provides
   @Singleton
-  fun provideKNetworkHelper(context: Context, retrofit: Retrofit, picasso: Picasso): KNetworkHelper {
-    return KNetworkHelper(context, retrofit, picasso)
+  fun provideKNetworkHelper(context: Context, picasso: Picasso): KNetworkHelper {
+    return KNetworkHelper(context, picasso)
   }
 
   @Singleton
@@ -53,7 +53,7 @@ class KAppModule {
 
   @Singleton
   @Provides
-  fun provideUserEngine(retrofit: Retrofit, preferenceHelper: KPreferenceHelper): UserEngine {
-    return UserEngine(retrofit, preferenceHelper)
+  fun provideUserEngine(retrofit: Retrofit, preferenceHelper: KPreferenceHelper, netHelper: KNetworkHelper): UserEngine {
+    return UserEngine(retrofit, preferenceHelper, netHelper)
   }
 }

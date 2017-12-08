@@ -4,14 +4,16 @@ import android.content.Context
 import android.os.Bundle
 import com.firebase.jobdispatcher.*
 import com.squareup.picasso.Picasso
-import com.tomaschlapek.tcbasearchitecture.presentation.ui.service.KAutoUpdateJobService
+import com.tomaschlapek.tcbasearchitecture.presentation.ui.service.KAutoResendPushTokenJobService
 import com.tomaschlapek.tcbasearchitecture.util.Konstants
-import retrofit2.Retrofit
+
+const val AUTO_RESEND_PUSH_TOKEN_JOB = "tag_auto_update_resend_push_token_job"
 
 /**
  * Network helper.
  */
-class KNetworkHelper(context: Context, retrofit: Retrofit, val picasso: Picasso) {
+class KNetworkHelper(context: Context, val picasso: Picasso) {
+
 
   /* Private Constants ****************************************************************************/
   /* Private Attributes ***************************************************************************/
@@ -22,9 +24,18 @@ class KNetworkHelper(context: Context, retrofit: Retrofit, val picasso: Picasso)
 
   /* Public Methods *******************************************************************************/
 
+  fun scheduleAutoResendPushTokenJob() {
+    val autoUpdateJob = mDispatcher.newJobBuilder()
+      .setService(KAutoResendPushTokenJobService::class.java) // the JobService that will be called
+      .setTag(AUTO_RESEND_PUSH_TOKEN_JOB)        // uniquely identifies the job
+      .build()
+
+    mDispatcher.mustSchedule(autoUpdateJob)
+  }
+
   fun scheduleAutoUpdateJob() {
     val autoUpdateJob = mDispatcher.newJobBuilder()
-      .setService(KAutoUpdateJobService::class.java) // the JobService that will be called
+      .setService(KAutoResendPushTokenJobService::class.java) // the JobService that will be called
       .setTag(Konstants.AUTO_UPDATE_JOB_TAG)        // uniquely identifies the job
       .build()
 
@@ -37,7 +48,7 @@ class KNetworkHelper(context: Context, retrofit: Retrofit, val picasso: Picasso)
 
     val myJob = mDispatcher.newJobBuilder()
       // the JobService that will be called
-      .setService(KAutoUpdateJobService::class.java)
+      .setService(KAutoResendPushTokenJobService::class.java)
       // uniquely identifies the job
       .setTag(Konstants.AUTO_UPDATE_JOB_TAG)
       // one-off job
@@ -51,12 +62,7 @@ class KNetworkHelper(context: Context, retrofit: Retrofit, val picasso: Picasso)
       // retry with exponential backoff
       .setRetryStrategy(RetryStrategy.DEFAULT_EXPONENTIAL)
       // constraints that need to be satisfied for the job to run
-      .setConstraints(
-        // only run on an unmetered network
-        Constraint.ON_UNMETERED_NETWORK,
-        // only run when the device is charging
-        Constraint.DEVICE_CHARGING
-      )
+
       .setExtras(myExtrasBundle)
       .build()
 

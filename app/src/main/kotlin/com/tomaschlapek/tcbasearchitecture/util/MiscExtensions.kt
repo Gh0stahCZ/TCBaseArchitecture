@@ -1,7 +1,9 @@
 package com.tomaschlapek.tcbasearchitecture.util
 
 import android.annotation.TargetApi
+import android.content.BroadcastReceiver
 import android.content.Context
+import android.content.IntentFilter
 import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -20,6 +22,7 @@ import com.tomaschlapek.tcbasearchitecture.App
 import com.tomaschlapek.tcbasearchitecture.R
 import com.tomaschlapek.tcbasearchitecture.domain.model.GeneralError
 import com.tomaschlapek.tcbasearchitecture.domain.model.GeneralErrorResponse
+import okhttp3.MediaType
 import okhttp3.RequestBody
 import okhttp3.ResponseBody
 import okio.Buffer
@@ -224,6 +227,27 @@ fun Any.str(res: Int): String {
 }
 
 /**
+ * Gets actual UNIX time in ms.
+ */
+fun Any.now(): Long {
+  return System.currentTimeMillis()
+}
+
+/**
+ * Gets actual UNIX time in ms.
+ */
+fun Any.generateNotifId(): Int {
+  return now().toInt()
+}
+
+/**
+ * Gets string from resources.
+ */
+fun Any.str(res: Int, input: String): String {
+  return App.getResString(res, input)
+}
+
+/**
  * Gets color from resources.
  */
 fun Context.color(res: Int): Int = ContextCompat.getColor(this, res)
@@ -324,10 +348,10 @@ fun ResponseBody.getGeneralError(): GeneralError? {
 fun rx.Observable<out Response<*>>.applyTransform(onResponse: (Response<*>) -> Unit, onError: () -> Unit): Subscription {
   return this.subscribeOn(Schedulers.io())
     .observeOn(AndroidSchedulers.mainThread())
-    .onErrorResumeNext {
-      Timber.e(it?.message)
-      Observable.just(null)
-    }
+    //    .onErrorResumeNext {
+    //      Timber.e(it?.message)
+    //      Observable.just(null)
+    //    }
     .subscribe(
       {
         it?.let {
@@ -340,6 +364,7 @@ fun rx.Observable<out Response<*>>.applyTransform(onResponse: (Response<*>) -> U
     }
 
 }
+
 
 /**
  * Turns off Thread Safety for lazy initialization.
@@ -356,6 +381,23 @@ fun Context.safeContext(): Context {
     return ContextCompat.createDeviceProtectedStorageContext(this.applicationContext) ?: this.applicationContext
   }
   return this
+}
+
+fun Context.registerPushReceiver(receiver: BroadcastReceiver) {
+  val filter = IntentFilter(Konstants.BROADCAST_NOTIFICATION)
+  filter.priority = 1
+  registerReceiver(receiver, filter)
+}
+
+fun <T> createErrorResponse(throwable: Throwable): Observable<Response<T>> {
+  return Observable.just(getError(throwable)
+  )
+}
+
+fun <T> getError(throwable: Throwable): Response<T> {
+  return Response.error(Konstants.HTTP_GENERIC_ERROR_CODE, ResponseBody
+    .create(MediaType.parse("application/json"),
+      "{\"error\":[\"" + throwable.localizedMessage + "\"]}"))
 }
 
 //  takeUnless { isDeviceProtectedStorage }?.run {

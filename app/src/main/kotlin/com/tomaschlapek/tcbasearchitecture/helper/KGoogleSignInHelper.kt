@@ -176,7 +176,7 @@ class KGoogleSignInHelper {
 
     registerWithServer(activity, false)
 
-    App.getAppComponent().provideKPreferenceHelper().clearUserData()
+    App.getAppComponent().provideUserEngine().clearUserSession()
 
     FirebaseAuth.getInstance().signOut()
 

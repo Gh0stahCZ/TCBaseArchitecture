@@ -4,6 +4,7 @@ import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Path
 import rx.Observable
 
 /* Example requests */
@@ -30,14 +31,21 @@ interface SomeRequestService {
 }
 */
 
-interface EmailLoginRequestService {
+
+
+interface UserService {
   @POST("users/login")
   fun setEmailLogin(@Body body: EmailPassBody): Observable<Response<UserInfoResponse>>
-}
 
-
-interface MyProfileInfoRequestService {
   @GET("users/profile")
   fun getMyProfileInfo(): Observable<Response<UserInfoResponse>>
+
+  @POST("users/fcm-register/{token}")
+  fun sendPushToken(@Path("token") token: String): Observable<Response<Void>>
+
+  @POST("users/fcm-unregister/{token}")
+  fun disablePushToken(@Path("token") token: String): Observable<Response<Void>>
+
+
 }
 

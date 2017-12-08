@@ -30,6 +30,8 @@ class KSettingsActivity : KToolbarActivity<KISettingsActivityView, KSettingsPres
 
   /* Public Methods *******************************************************************************/
 
+  override fun abortNotification(): Boolean = false
+
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     onCreatePresenter(savedInstanceState)
@@ -76,6 +78,7 @@ class KSettingsActivity : KToolbarActivity<KISettingsActivityView, KSettingsPres
   /* Private Methods ******************************************************************************/
 
   fun init() {
+    mViews
     prefFragment = KNavigationHelper.addExamplePrefFragment(this, R.id.content_container)
   }
 }

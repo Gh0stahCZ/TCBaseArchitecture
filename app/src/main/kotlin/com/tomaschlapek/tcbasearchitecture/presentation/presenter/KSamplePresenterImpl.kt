@@ -1,7 +1,7 @@
 package com.tomaschlapek.tcbasearchitecture.presentation.presenter
 
+import android.content.Intent
 import android.os.Bundle
-import com.tomaschlapek.tcbasearchitecture.App
 import com.tomaschlapek.tcbasearchitecture.R
 import com.tomaschlapek.tcbasearchitecture.presentation.presenter.base.KActivityPresenter
 import com.tomaschlapek.tcbasearchitecture.presentation.presenter.interfaces.presenter.KISamplePresenter
@@ -9,6 +9,8 @@ import com.tomaschlapek.tcbasearchitecture.presentation.presenter.interfaces.vie
 import com.tomaschlapek.tcbasearchitecture.util.str
 import io.realm.Realm
 import timber.log.Timber
+
+const val EXTRA_NOTIF_DATA = "extra_notif_data"
 
 /**
  * Sample presenter.
@@ -27,6 +29,7 @@ class KSamplePresenterImpl : KActivityPresenter<KISampleActivityView>(), KISampl
   /* Private Attributes ***************************************************************************/
 
   var mGameId: String? = null
+  var mNotifData: String? = null
 
   /* Public Methods *******************************************************************************/
 
@@ -36,8 +39,14 @@ class KSamplePresenterImpl : KActivityPresenter<KISampleActivityView>(), KISampl
     loadArguments(state) // Load arguments.
   }
 
+  override fun onSaveInstanceState(outState: Bundle) {
+    super.onSaveInstanceState(outState)
+    outState.putString(EXTRA_NOTIF_DATA, mNotifData)
+  }
+
   override fun onBindView(view: KISampleActivityView) {
     super.onBindView(view)
+    init()
   }
 
   override fun registerSubscribers() {
@@ -59,17 +68,30 @@ class KSamplePresenterImpl : KActivityPresenter<KISampleActivityView>(), KISampl
     return super.mRealm
   }
 
+  override fun onNewIntent(intent: Intent) {
+    super.onNewIntent(intent)
+    loadArguments(intent.extras)
+  }
+
   /* Private Methods ******************************************************************************/
 
   // Load arguments.
   fun loadArguments(state: Bundle?) {
-    if (state?.containsKey(Argument.GAME_ID) ?: false) {
-      mGameId = state?.let { state.getString(Argument.GAME_ID) }
+    if (state?.containsKey(Argument.GAME_ID) == true) {
+      mGameId = state.let { state.getString(Argument.GAME_ID) }
+    }
+    if (state?.containsKey(EXTRA_NOTIF_DATA) == true) {
+      mNotifData = state.let { state.getString(EXTRA_NOTIF_DATA) }
+    }
+
+    if (!mNotifData.isNullOrBlank()) {
+      view?.showToast(mNotifData)
     }
   }
 
   fun init() {
     Timber.d("init()")
+
   }
 
   /* Inner classes ********************************************************************************/

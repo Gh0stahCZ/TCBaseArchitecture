@@ -1,6 +1,7 @@
 package com.tomaschlapek.tcbasearchitecture.presentation.ui.activity.base
 
 import android.annotation.SuppressLint
+import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.databinding.DataBindingUtil
@@ -16,6 +17,10 @@ import com.tomaschlapek.tcbasearchitecture.databinding.ActivityBaseBinding
 import com.tomaschlapek.tcbasearchitecture.helper.KNavigationHelper
 import com.tomaschlapek.tcbasearchitecture.presentation.presenter.base.KActivityPresenter
 import com.tomaschlapek.tcbasearchitecture.presentation.presenter.interfaces.view.KIBaseView
+import com.tomaschlapek.tcbasearchitecture.presentation.ui.service.EXTRA_INT
+import com.tomaschlapek.tcbasearchitecture.presentation.ui.service.EXTRA_NOTIFICATION
+import com.tomaschlapek.tcbasearchitecture.util.registerPushReceiver
+import org.jetbrains.anko.toast
 
 /**
  * Base activity.
@@ -31,6 +36,15 @@ abstract class KBaseActivity<TView : KIBaseView, TViewModel : KActivityPresenter
 
   lateinit protected var mBaseContainer: ViewGroup
 
+  private val notificationReceiver = object : BroadcastReceiver() {
+    override fun onReceive(context: Context, intent: Intent) {
+      val notification = intent.getSerializableExtra(EXTRA_NOTIFICATION) as HashMap<String, String>
+      val number = intent.getSerializableExtra(EXTRA_INT)
+      presenter.onNotificationReceived(notification)
+      abortBroadcast()
+    }
+  }
+
   /* Public Methods *******************************************************************************/
 
   /**
@@ -38,6 +52,29 @@ abstract class KBaseActivity<TView : KIBaseView, TViewModel : KActivityPresenter
    */
   fun getPageTitle(): String {
     return javaClass.name
+  }
+
+  override fun onStart() {
+    super.onStart()
+    if (abortNotification()) {
+      registerNotificationAbortReceiver()
+    }
+  }
+
+  override fun onStop() {
+    super.onStop()
+    if (abortNotification()) {
+      unregisterNotificationAbortReceiver()
+    }
+  }
+
+
+  private fun registerNotificationAbortReceiver() {
+    registerPushReceiver(notificationReceiver)
+  }
+
+  private fun unregisterNotificationAbortReceiver() {
+    unregisterReceiver(notificationReceiver)
   }
 
   /**
@@ -91,6 +128,10 @@ abstract class KBaseActivity<TView : KIBaseView, TViewModel : KActivityPresenter
     // TODO
   }
 
+  override fun onNotificationReceived(message: String) {
+    toast(message)
+  }
+
   @SuppressLint("MissingSuperCall")
   override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -125,9 +166,11 @@ abstract class KBaseActivity<TView : KIBaseView, TViewModel : KActivityPresenter
     //    try {
     unregisterBroadcasts()
     //    } catch (e: IllegalArgumentException) {
-    // Some receiver was not registered.
+    // Some notificationReceiver was not registered.
     //    }
   }
+
+  abstract fun abortNotification(): Boolean
 
   abstract override fun getPresenterClass(): Class<TViewModel>?
 

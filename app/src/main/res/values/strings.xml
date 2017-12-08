@@ -58,5 +58,18 @@
   <string name="empty_no_connection">No connection</string>
   <string name="empty_try_again">Try again</string>
 
+  <string name="notification_title_custom">Custom notification title</string>
+  <string name="notification_title_general">General notification title</string>
+  <string name="notification_title_none">-</string>
+
+  <string name="notification_title_offer">New offer</string>
+  <string name="notification_message_offer">You have new offer for your demand from %1$s</string>
+
+  <string name="notification_channel_offers">Offer channel</string>
+  <string name="notification_channel_ratings">Channel rating</string>
+
+  <string name="notification_title_rating">New rating</string>
+  <string name="notification_message_rating">You have new rating from %1$s</string>
+
 
 </resources>

@@ -30,6 +30,8 @@ class KSignInActivity : KBaseActivity<KISignInActivityView, KSignInPresenterImpl
 
   /* Public Methods *******************************************************************************/
 
+  override fun abortNotification(): Boolean = false
+
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     onCreatePresenter(savedInstanceState)

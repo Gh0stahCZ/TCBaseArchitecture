@@ -83,7 +83,7 @@ class ExamplePrefFragment : PreferenceFragmentCompat() {
     mTerms = findPreference(str(R.string.key_terms))
     mLogout = findPreference(str(R.string.key_logout))
 
-    mName.setOnPreferenceChangeListener { preference, newValue ->
+    mName.setOnPreferenceChangeListener { _, newValue ->
       mName.summary = newValue.toString()
       true
     }
@@ -93,7 +93,7 @@ class ExamplePrefFragment : PreferenceFragmentCompat() {
       true
     }
 
-    mPhone.setOnPreferenceChangeListener { preference, newValue ->
+    mPhone.setOnPreferenceChangeListener { _, newValue ->
       mPhone.summary = newValue.toString()
       true
     }

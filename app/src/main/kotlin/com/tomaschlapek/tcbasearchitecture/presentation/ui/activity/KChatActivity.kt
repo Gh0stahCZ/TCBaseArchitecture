@@ -24,6 +24,8 @@ class KChatActivity : KBottomNavigationActivity<KIChatActivityView, KChatPresent
 
   /* Public Methods *******************************************************************************/
 
+  override fun abortNotification(): Boolean = true
+
   override fun onCreateOptionsMenu(menu: Menu): Boolean {
     val menuRes: Int = R.menu.menu_chat
     menuInflater.inflate(menuRes, menu)
@@ -76,9 +78,11 @@ class KChatActivity : KBottomNavigationActivity<KIChatActivityView, KChatPresent
 
   /* Private Methods ******************************************************************************/
 
-  fun init() {
+  private fun init() {
     with(mViews.chatSwipeRefresh) {
       setOnRefreshListener { isRefreshing = false }
     }
   }
+
+
 }
