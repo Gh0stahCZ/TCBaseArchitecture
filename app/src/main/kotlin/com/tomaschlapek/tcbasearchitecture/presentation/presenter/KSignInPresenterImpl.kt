@@ -10,6 +10,7 @@ import com.tomaschlapek.tcbasearchitecture.presentation.presenter.interfaces.vie
 import com.tomaschlapek.tcbasearchitecture.util.str
 import timber.log.Timber
 
+
 /**
  * Sign in activity
  */
@@ -33,6 +34,7 @@ class KSignInPresenterImpl : KActivityPresenter<KISignInActivityView>(), KISignI
    */
   private var mGameId: String? = null
 
+
   /* Constructor **********************************************************************************/
   /* Public Methods *******************************************************************************/
 
@@ -46,14 +48,6 @@ class KSignInPresenterImpl : KActivityPresenter<KISignInActivityView>(), KISignI
   override fun onBindView(view: KISignInActivityView) {
     super.onBindView(view)
     init()
-  }
-
-  override fun clearView() {
-    super.clearView()
-  }
-
-  override fun onDestroy() {
-    super.onDestroy()
   }
 
   override fun onSaveInstanceState(bundle: Bundle) {
@@ -73,10 +67,44 @@ class KSignInPresenterImpl : KActivityPresenter<KISignInActivityView>(), KISignI
     return !TextUtils.isEmpty(pass) && pass.length >= MIN_PASS_SIZE
   }
 
-  override fun onSignInButtonClick(email: String, pass: String) {
-    if (view != null) {
-      view!!.onSuccessfulSignIn()
+  override fun onSkipClick() {
+
+    mAuth.signInAnonymously().addOnCompleteListener(mActivity) { task ->
+      if (task.isSuccessful) {
+        // Sign in success, update UI with the signed-in user's information
+        Timber.d("createUserWithEmail:success")
+        val user = mAuth.currentUser
+        user?.let { loggedUser ->
+          userEngine.startUserSession(loggedUser)
+          view?.onSuccessfulSignIn()
+        } ?: view?.showSnack(str(R.string.general_error_message))
+      } else {
+        // If sign in fails, display a message to the user.
+        Timber.w("createUserWithEmail:failure", task.exception?.message)
+        view?.showSnack(task.exception?.localizedMessage ?: task.exception?.message ?: str(R.string.sample_sign_invalid_credentials))
+      }
     }
+  }
+
+  override fun onSignInButtonClick(email: String, pass: String) {
+
+    mAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener(mActivity) { task ->
+      if (task.isSuccessful) {
+        // Sign in success, update UI with the signed-in user's information
+        Timber.d("createUserWithEmail:success")
+        val user = mAuth.currentUser
+        user?.let { loggedUser ->
+          userEngine.startUserSession(loggedUser)
+          view?.onSuccessfulSignIn()
+        } ?: view?.showSnack(str(R.string.general_error_message))
+      } else {
+        // If sign in fails, display a message to the user.
+        Timber.w("createUserWithEmail:failure", task.exception?.message)
+        view?.showSnack(task.exception?.localizedMessage ?: task.exception?.message ?: str(R.string.sample_sign_invalid_credentials))
+        //              updateUI(null)
+      }
+    }
+
   }
 
   override fun registerSubscribers() {
