@@ -1,10 +1,13 @@
 package com.tomaschlapek.tcbasearchitecture.engine
 
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.tomaschlapek.tcbasearchitecture.App
 import com.tomaschlapek.tcbasearchitecture.R
 import com.tomaschlapek.tcbasearchitecture.helper.INVALID_STRING
 import com.tomaschlapek.tcbasearchitecture.helper.KNetworkHelper
 import com.tomaschlapek.tcbasearchitecture.helper.KPreferenceHelper
+import com.tomaschlapek.tcbasearchitecture.helper.KRealmHelper
 import com.tomaschlapek.tcbasearchitecture.network.EmailPassBody
 import com.tomaschlapek.tcbasearchitecture.network.UserInfoResponse
 import com.tomaschlapek.tcbasearchitecture.network.UserService
@@ -24,7 +27,7 @@ import rx.subscriptions.CompositeSubscription
 /**
  * Holds current state of user and makes network requests.
  */
-class UserEngine(private var retrofit: Retrofit, private var preferenceHelper: KPreferenceHelper, private val netHelper: KNetworkHelper) {
+class UserEngine(private var retrofit: Retrofit, private var preferenceHelper: KPreferenceHelper, private val netHelper: KNetworkHelper, private val realmHelper: KRealmHelper) {
 
   /* Private Constants ****************************************************************************/
   /* Private Attributes ***************************************************************************/
@@ -50,6 +53,7 @@ class UserEngine(private var retrofit: Retrofit, private var preferenceHelper: K
   private var sendPushTokenOutputSubject = PublishSubject.create<Response<Void>>()
   private var disablePushTokenOutputSubject = PublishSubject.create<Response<Void>>()
 
+  private var emailVerifiedOutputSubject = BehaviorSubject.create<Boolean>()
   private var loadingOutputSubject = BehaviorSubject.create<Boolean>()
 
   /* Public Methods *******************************************************************************/
@@ -57,11 +61,12 @@ class UserEngine(private var retrofit: Retrofit, private var preferenceHelper: K
   /**
    * Starts user session and sends FCM token to server.
    */
-  fun startUserSession(userInfo: UserInfoResponse) {
-    preferenceHelper.userLoginToken = userInfo.token ?: INVALID_STRING
+  fun startUserSession(loggedUser: FirebaseUser) {
+    preferenceHelper.userLoginToken = loggedUser.uid
+    realmHelper.createRUser(loggedUser)
 
     val fcmToken = preferenceHelper.userFirebaseToken
-    requestSendPushToken(fcmToken) // ! Warning ! - user will not get response
+    // TODO Uncomment when ready   requestSendPushToken(fcmToken) // ! Warning ! - user will not get response
   }
 
   /**
@@ -73,6 +78,8 @@ class UserEngine(private var retrofit: Retrofit, private var preferenceHelper: K
 
     netHelper.cancelAllJobs()
     preferenceHelper.clearUserData()
+    realmHelper.clearDB()
+    FirebaseAuth.getInstance().signOut()
   }
 
   fun isUserLogged(): Boolean {
@@ -95,6 +102,10 @@ class UserEngine(private var retrofit: Retrofit, private var preferenceHelper: K
     return CompositeSubscription(loadingOutputSubject.subscribe(subscriber))
   }
 
+  fun registerEmailVerifiedSubscriber(subscriber: LoadingSubscriber<Boolean>): CompositeSubscription {
+    return CompositeSubscription(loadingOutputSubject.subscribe(subscriber))
+  }
+
   fun registerEmailLoginSubscriber(subscriber: DefaultSubscriber<Response<UserInfoResponse>, UserInfoResponse>): CompositeSubscription {
     return CompositeSubscription(emailLoginOutputSubject.subscribe(subscriber))
   }
@@ -103,7 +114,6 @@ class UserEngine(private var retrofit: Retrofit, private var preferenceHelper: K
     return CompositeSubscription(myProfileInfoOutputSubject.subscribe(subscriber))
   }
 
-
   fun registerSendPushTokenSubscriber(subscriber: DefaultEmptySubscriber<Response<Void>>): CompositeSubscription {
     return CompositeSubscription(sendPushTokenOutputSubject.subscribe(subscriber))
   }
@@ -111,7 +121,6 @@ class UserEngine(private var retrofit: Retrofit, private var preferenceHelper: K
   fun registerDisablePushTokenSubscriber(subscriber: DefaultEmptySubscriber<Response<Void>>): CompositeSubscription {
     return CompositeSubscription(disablePushTokenOutputSubject.subscribe(subscriber))
   }
-
 
   //******** NETWORK REQUESTS *********************************************************************/
 
@@ -137,8 +146,8 @@ class UserEngine(private var retrofit: Retrofit, private var preferenceHelper: K
   fun requestSendPushToken(token: String?, dispatchedFromJob: Boolean = false): Boolean {
     if (!token.isNullOrBlank() && isUserLogged()) {
       loadAndRequest({
-        lastMyProfileInfoRequest?.unsubscribe()
-        lastMyProfileInfoRequest = sendPushToken(token!!, dispatchedFromJob)
+        lastSendPushTokenRequest?.unsubscribe()
+        lastSendPushTokenRequest = sendPushToken(token!!, dispatchedFromJob)
       })
       return true
     }
@@ -148,8 +157,8 @@ class UserEngine(private var retrofit: Retrofit, private var preferenceHelper: K
   fun requestDisablePushToken(token: String) {
     if (!token.isBlank()) {
       loadAndRequest({
-        lastMyProfileInfoRequest?.unsubscribe()
-        lastMyProfileInfoRequest = disablePushToken(token)
+        lastDisablePushTokenRequest?.unsubscribe()
+        lastDisablePushTokenRequest = disablePushToken(token)
       })
     }
   }

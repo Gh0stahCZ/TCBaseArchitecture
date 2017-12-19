@@ -35,7 +35,25 @@ interface KIBaseView : IView {
    */
   fun openShareDialog(text: String)
 
+  fun showSnack(text: String)
+
+  fun showSnack(textResId: Int)
+
+  fun showSnack(text: String, buttonText: String, onClick: (android.view.View) -> kotlin.Unit)
+
+  fun showSnack(textResId: Int, buttonTextResId: Int, onClick: (View) -> Unit)
+
+  fun showToast(text: String)
+
+  fun showToast(textResId: Int)
+
+  fun showNotImplemented()
+
   fun setLoadingProgressVisibility(visible: Boolean)
 
   fun onNotificationReceived(message: String)
+
+  fun showVerifyBlock()
+
+  fun showVerifyEmailSentDialog(textResId: Int)
 }

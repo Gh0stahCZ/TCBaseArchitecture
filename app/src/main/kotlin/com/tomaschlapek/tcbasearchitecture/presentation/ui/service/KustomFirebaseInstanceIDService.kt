@@ -2,9 +2,9 @@ package com.tomaschlapek.tcbasearchitecture.presentation.ui.service
 
 import com.google.firebase.iid.FirebaseInstanceId
 import com.google.firebase.iid.FirebaseInstanceIdService
-import com.tomaschlapek.tcbasearchitecture.App
 import com.tomaschlapek.tcbasearchitecture.engine.UserEngine
 import com.tomaschlapek.tcbasearchitecture.helper.INVALID_STRING
+import com.tomaschlapek.tcbasearchitecture.helper.KPreferenceHelper
 import dagger.android.AndroidInjection
 import timber.log.Timber
 import javax.inject.Inject
@@ -15,6 +15,7 @@ import javax.inject.Inject
 class KustomFirebaseInstanceIDService : FirebaseInstanceIdService() {
 
   @Inject internal lateinit var userEngine: UserEngine
+  @Inject internal lateinit var preferenceHelper: KPreferenceHelper
 
   override fun onCreate() {
     AndroidInjection.inject(this)
@@ -25,12 +26,12 @@ class KustomFirebaseInstanceIDService : FirebaseInstanceIdService() {
     // Fetch updated Instance ID token and notify our app's server of any changes (if applicable).
     val refreshedToken = FirebaseInstanceId.getInstance().token
     Timber.d("Firebase token: $refreshedToken")
-    App.getAppComponent().provideKPreferenceHelper().userFirebaseToken = refreshedToken ?: INVALID_STRING
+    preferenceHelper.userFirebaseToken = refreshedToken ?: INVALID_STRING
 
     updateTokenOnServer(refreshedToken)
   }
 
   private fun updateTokenOnServer(token: String?) {
-    userEngine.requestSendPushToken(token)
+//    userEngine.TODO Uncomment when ready requestSendPushToken(token)
   }
 }

@@ -8,13 +8,11 @@ import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Build
-import android.support.design.widget.Snackbar
 import android.support.v4.content.ContextCompat
 import android.text.format.DateUtils
 import android.text.format.Time
 import android.view.View
 import android.widget.Button
-import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
 import com.squareup.picasso.MemoryPolicy
@@ -26,7 +24,6 @@ import okhttp3.MediaType
 import okhttp3.RequestBody
 import okhttp3.ResponseBody
 import okio.Buffer
-import org.jetbrains.anko.backgroundColor
 import retrofit2.Response
 import rx.Observable
 import rx.Subscription
@@ -303,7 +300,7 @@ fun SharedPreferences.restoreInt(res: Int, defVal: Int = -1): Int {
 }
 
 
-fun View.snack(message: String, length: Int = Snackbar.LENGTH_LONG, f: Snackbar.() -> Unit) {
+/*fun View.snack(message: String, length: Int = Snackbar.LENGTH_LONG, f: Snackbar.() -> Unit) {
   val snack = Snackbar.make(this, message, length)
   snack.view.backgroundColor = context.color(R.color.colorAccent)
 
@@ -330,7 +327,7 @@ fun View.snack(messageResId: Int, bottomBarHeight: Int) {
   snack.view.backgroundColor = context.color(R.color.colorAccent)
   //  snack.apply { view.layoutParams = (view.layoutParams as FrameLayout.LayoutParams).apply { setMargins(leftMargin, bottomBarHeight, rightMargin, bottomMargin) } }.show()
   snack.show()
-}
+}*/
 
 fun ResponseBody.getGeneralError(): GeneralError? {
 
@@ -399,9 +396,3 @@ fun <T> getError(throwable: Throwable): Response<T> {
     .create(MediaType.parse("application/json"),
       "{\"error\":[\"" + throwable.localizedMessage + "\"]}"))
 }
-
-//  takeUnless { isDeviceProtectedStorage }?.run {
-//    this.applicationContext.let {
-//      ContextCompat.createDeviceProtectedStorageContext(it) ?: it
-//    }
-//  } ?: this

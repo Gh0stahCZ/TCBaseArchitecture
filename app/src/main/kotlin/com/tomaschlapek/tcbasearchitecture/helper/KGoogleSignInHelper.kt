@@ -28,17 +28,17 @@ class KGoogleSignInHelper {
   /**
    * Reference to the Activity this object is bound to (we use a weak ref to avoid context leaks).
    */
-  private val mActivityRef: WeakReference<Activity>? = null
+   var mActivityRef: WeakReference<Activity>? = null
 
   /**
    * Callbacks interface we invoke to notify the user of this class of events.
    */
-  private val mSignInListenerRef: WeakReference<KSignInListener>? = null
+   var mSignInListenerRef: WeakReference<KSignInListener>? = null
 
   /**
    * The entry point to Google Play Services.
    */
-  private val mGoogleApiClient: GoogleApiClient? = null
+   var mGoogleApiClient: GoogleApiClient? = null
 
   private val mFirebaseAuth = FirebaseAuth.getInstance()
 
@@ -47,7 +47,7 @@ class KGoogleSignInHelper {
 
   fun getGoogleSignInOptions(webClientId: String): GoogleSignInOptions {
     return GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-      .requestIdToken(webClientId)
+//      .requestIdToken(webClientId)
       .requestEmail()
       .build()
   }

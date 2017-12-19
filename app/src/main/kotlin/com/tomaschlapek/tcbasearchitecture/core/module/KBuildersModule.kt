@@ -38,6 +38,9 @@ abstract class KBuildersModule {
   abstract fun contributeSignInActivityInjector(): KSignInActivity
 
   @ContributesAndroidInjector
+  abstract fun contributeSignUpActivityInjector(): KSignUpActivity
+
+  @ContributesAndroidInjector
   abstract fun contributeFirebaseMessagingServiceInjector(): KustomFirebaseMessagingService
 
   @ContributesAndroidInjector

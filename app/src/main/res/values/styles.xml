@@ -338,6 +338,17 @@
          parent="Text.Medium.Bold">
   </style>
 
+ <!-- <style name="Button"
+         parent="Text.Large.Bold">
+    <item name="android:paddingLeft">@dimen/margin_small</item>
+    <item name="android:paddingRight">@dimen/margin_small</item>
+    <item name="android:paddingTop">@dimen/margin_small</item>
+    <item name="android:paddingBottom">@dimen/margin_small</item>
+    <item name="android:textColor">@color/button_text_normal</item>
+    <item name="android:background">@drawable/button_background_default</item>
+  </style>-->
+
+
   <style name="Button"
          parent="Text.Large.Bold">
     <item name="android:paddingLeft">@dimen/margin_small</item>
@@ -347,6 +358,17 @@
     <item name="android:textColor">@color/button_text_inverse_normal</item>
     <item name="android:background">@drawable/button_background_default</item>
   </style>
+
+  <style name="Button.Active" parent="ThemeOverlay.AppCompat.Dark">
+    <item name="colorAccent">@color/button_background_normal</item>
+    <item name="colorControlHighlight">@color/button_background_pressed</item>
+    <item name="colorButtonNormal">@color/button_background_disabled</item>
+  </style>
+
+  <style name="Button.Borderless" parent="ThemeOverlay.AppCompat.Dark">
+    <item name="colorAccent">@android:color/white</item>
+  </style>
+
 
   <style name="Button.Facebook">
     <item name="android:textColor">@color/white</item>

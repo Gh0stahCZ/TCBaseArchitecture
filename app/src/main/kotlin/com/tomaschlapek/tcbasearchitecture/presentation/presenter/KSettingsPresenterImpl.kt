@@ -63,13 +63,13 @@ class KSettingsPresenterImpl : KActivityPresenter<KISettingsActivityView>(), KIS
   /* Private Methods ******************************************************************************/
 
   // Load arguments.
-  fun loadArguments(state: Bundle?) {
+  private fun loadArguments(state: Bundle?) {
     if (state?.containsKey(Argument.GAME_ID) ?: false) {
       mGameId = state?.let { state.getString(Argument.GAME_ID) }
     }
   }
 
-  fun init() {
+  private fun init() {
     Timber.d("init()")
   }
 

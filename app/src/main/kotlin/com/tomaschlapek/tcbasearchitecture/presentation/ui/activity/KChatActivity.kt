@@ -11,7 +11,6 @@ import com.tomaschlapek.tcbasearchitecture.presentation.presenter.interfaces.vie
 import com.tomaschlapek.tcbasearchitecture.presentation.ui.activity.base.KBottomNavigationActivity
 import com.tomaschlapek.tcbasearchitecture.util.ActivityBinder
 import com.tomaschlapek.tcbasearchitecture.util.str
-import org.jetbrains.anko.toast
 
 /**
  * Chat activity.
@@ -25,6 +24,7 @@ class KChatActivity : KBottomNavigationActivity<KIChatActivityView, KChatPresent
   /* Public Methods *******************************************************************************/
 
   override fun abortNotification(): Boolean = true
+  override fun blockUnauthorized(): Boolean = true
 
   override fun onCreateOptionsMenu(menu: Menu): Boolean {
     val menuRes: Int = R.menu.menu_chat
@@ -53,11 +53,6 @@ class KChatActivity : KBottomNavigationActivity<KIChatActivityView, KChatPresent
   override fun onPostCreate(savedInstanceState: Bundle?) {
     super.onPostCreate(savedInstanceState)
     init()
-  }
-
-
-  override fun showToast(message: String?) {
-    toast(message.toString())
   }
 
   override fun openSettings() {

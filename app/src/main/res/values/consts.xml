@@ -9,6 +9,9 @@
   <string name="google_server_client_id">694588029590-612mo837014nnf7mc0hqhf4le018kdnm.apps.googleusercontent.com</string>
 
   <string name="google_places_api">AIzaSyDLhLSxA9vG9CiBXwj36i8-iyRTrEiehDE</string>
+
   <!--<string name="fabric_api_key">42f5078xxxxxxxxxxxxxxx</string>-->
+  <string name="link_verify_email">https://b2d78.app.goo.gl/jTpt</string>
+  <!--<string name="link_verify_email">http://tomaschlapek.com/tcbasearch/verify-email</string>-->
 
 </resources>

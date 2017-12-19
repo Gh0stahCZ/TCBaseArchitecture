@@ -76,7 +76,7 @@ class KSamplePresenterImpl : KActivityPresenter<KISampleActivityView>(), KISampl
   /* Private Methods ******************************************************************************/
 
   // Load arguments.
-  fun loadArguments(state: Bundle?) {
+  private fun loadArguments(state: Bundle?) {
     if (state?.containsKey(Argument.GAME_ID) == true) {
       mGameId = state.let { state.getString(Argument.GAME_ID) }
     }
@@ -84,12 +84,12 @@ class KSamplePresenterImpl : KActivityPresenter<KISampleActivityView>(), KISampl
       mNotifData = state.let { state.getString(EXTRA_NOTIF_DATA) }
     }
 
-    if (!mNotifData.isNullOrBlank()) {
-      view?.showToast(mNotifData)
+    mNotifData?.let {
+      view?.showToast(it)
     }
   }
 
-  fun init() {
+  private fun init() {
     Timber.d("init()")
 
   }

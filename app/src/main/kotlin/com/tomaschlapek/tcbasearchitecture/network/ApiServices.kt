@@ -46,6 +46,5 @@ interface UserService {
   @POST("users/fcm-unregister/{token}")
   fun disablePushToken(@Path("token") token: String): Observable<Response<Void>>
 
-
 }
 

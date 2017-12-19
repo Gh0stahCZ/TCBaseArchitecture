@@ -43,7 +43,7 @@ class KPreferenceHelper(context: Context) {
   fun clearUserData() {
     userLoginToken = INVALID_STRING
     userFbToken = INVALID_STRING
-    userFirebaseToken = INVALID_STRING
+//    userFirebaseToken = INVALID_STRING
   }
 
   //////////////////////////////////////////////////////////////////////////////////////////////////

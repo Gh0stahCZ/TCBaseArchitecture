@@ -31,12 +31,4 @@ class KNotifModule {
   @Singleton
   fun provideNotificationBuilder(): NotificationBuilder =
     DefaultNotificationBuilder()
-
-  /*@Provides
-  @Singleton
-  fun providePushNotification(notificationManager: NotificationManager,
-    resolver: NotificationItemResolver,
-    notificationBuilder: NotificationBuilder): PushNotification {
-    return AppPushNotification(notificationManager, resolver, notificationBuilder)
-  }*/
 }

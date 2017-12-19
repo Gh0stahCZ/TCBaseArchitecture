@@ -5,7 +5,6 @@
   xmlns:app="http://schemas.android.com/apk/res-auto"
   >
 
-
   <ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -17,32 +16,6 @@
       android:layout_height="wrap_content"
       android:padding="@dimen/margin_giga">
 
-      <!--<RelativeLayout
-        android:id="@+id/sample_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone"
-      >
-
-        <Button
-          android:id="@+id/sample_button"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_marginTop="@dimen/margin_medium"
-          android:text="Sign In"
-          android:layout_centerInParent="true"
-        />
-
-        <TextView
-          android:id="@+id/sample_text_view"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="Hello World!"
-          android:layout_below="@id/sample_button"
-          android:layout_centerHorizontal="true"
-        />
-
-      </RelativeLayout>-->
 
       <ImageView
         android:layout_width="wrap_content"
@@ -53,14 +26,14 @@
 
       <!-- Email Label -->
       <android.support.design.widget.TextInputLayout
-        android:id="@+id/sample_sign_in_email_input"
+        android:id="@+id/sample_sign_up_email_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_medium"
         android:layout_marginBottom="@dimen/margin_medium">
 
         <android.support.design.widget.TextInputEditText
-          android:id="@+id/sample_sign_in_email_edit_text"
+          android:id="@+id/sample_sign_up_email_edit_text"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:hint="@string/sample_sign_email"
@@ -69,7 +42,7 @@
 
       <!-- Password Label -->
       <android.support.design.widget.TextInputLayout
-        android:id="@+id/sample_sign_in_pass_input"
+        android:id="@+id/sample_sign_up_pass_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_medium"
@@ -77,32 +50,23 @@
         app:passwordToggleEnabled="true">
 
         <android.support.design.widget.TextInputEditText
-          android:id="@+id/sample_sign_in_pass_edit_text"
+          android:id="@+id/sample_sign_up_pass_edit_text"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:hint="@string/sample_sign_pass"
           android:inputType="textPassword"/>
       </android.support.design.widget.TextInputLayout>
 
-      <android.support.v7.widget.AppCompatButton
+      <Button
         style="@style/Widget.AppCompat.Button.Colored"
-        android:id="@+id/sample_sign_in_button"
+        android:id="@+id/sample_sign_up_button"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_giga"
         android:layout_marginBottom="@dimen/margin_giga"
         android:padding="@dimen/margin_large"
-        android:text="@string/sample_sign_in_button"
+        android:text="@string/sample_sign_up_button"
         android:theme="@style/Button.Active"/>
-      <TextView
-
-        android:id="@+id/sample_sign_in_link_text_view"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/margin_giga"
-        android:gravity="center"
-        android:text="@string/sample_sign_in_link"
-        />
 
     </LinearLayout>
   </ScrollView>

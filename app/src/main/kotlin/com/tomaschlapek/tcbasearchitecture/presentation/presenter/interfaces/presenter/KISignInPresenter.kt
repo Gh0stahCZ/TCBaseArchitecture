@@ -10,4 +10,5 @@ interface KISignInPresenter {
   fun isValidPassword(pass: String): Boolean
 
   fun onSignInButtonClick(email: String, pass: String)
+  fun onSkipClick()
 }

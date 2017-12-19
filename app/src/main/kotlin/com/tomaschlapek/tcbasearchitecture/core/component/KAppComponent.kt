@@ -9,6 +9,7 @@ import com.tomaschlapek.tcbasearchitecture.core.module.KNotifModule
 import com.tomaschlapek.tcbasearchitecture.engine.UserEngine
 import com.tomaschlapek.tcbasearchitecture.helper.KNetworkHelper
 import com.tomaschlapek.tcbasearchitecture.helper.KPreferenceHelper
+import com.tomaschlapek.tcbasearchitecture.helper.KRealmHelper
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjector
@@ -30,6 +31,8 @@ interface KAppComponent : AndroidInjector<App> {
   fun provideUserEngine(): UserEngine
 
   fun provideKPreferenceHelper(): KPreferenceHelper
+
+  fun provideRealmHelper(): KRealmHelper
 
   fun provideRetrofit(): Retrofit
 

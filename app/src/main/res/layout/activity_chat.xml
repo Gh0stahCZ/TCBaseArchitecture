@@ -22,7 +22,7 @@
       app:emptyBigImage="@drawable/ic_empty"
       app:emptyBigFabShown="false"
       app:emptyBigSubtitle="Example subtitle"
-      android:visibility="gone"
+      android:visibility="visible"
       />
 
     <LinearLayout

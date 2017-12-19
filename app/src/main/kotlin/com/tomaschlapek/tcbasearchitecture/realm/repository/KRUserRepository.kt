@@ -1,20 +1,20 @@
 package com.tomaschlapek.tcbasearchitecture.realm.repository
 
 import com.tomaschlapek.tcbasearchitecture.helper.KPreferenceHelper
-import com.tomaschlapek.tcbasearchitecture.realm.KRUser
+import com.tomaschlapek.tcbasearchitecture.realm.RUser
 import io.realm.Realm
 import javax.inject.Inject
 
 /**
  * Created by tomaschlapek on 15/9/17.
  */
-class KRUserRepository @Inject constructor(preferenceHelper: KPreferenceHelper) : KRAbstractRepository<KRUser>(preferenceHelper) {
+class KRUserRepository @Inject constructor(preferenceHelper: KPreferenceHelper) : KRAbstractRepository<RUser>(preferenceHelper) {
 
-  fun getLoggedUser(realm: Realm?): KRUser? {
+  fun getLoggedUser(realm: Realm?): RUser? {
     return getUserByToken(realm, preferenceHelper.userLoginToken)
   }
 
-  fun getUserByToken(realm: Realm?, token: String?): KRUser? {
-    return getFirst(realm?.where(KRUser::class.java))
+  fun getUserByToken(realm: Realm?, token: String?): RUser? {
+    return getFirst(realm?.where(RUser::class.java))
   }
 }

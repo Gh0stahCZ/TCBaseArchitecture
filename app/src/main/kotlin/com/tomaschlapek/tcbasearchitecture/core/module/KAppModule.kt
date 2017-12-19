@@ -53,7 +53,7 @@ class KAppModule {
 
   @Singleton
   @Provides
-  fun provideUserEngine(retrofit: Retrofit, preferenceHelper: KPreferenceHelper, netHelper: KNetworkHelper): UserEngine {
-    return UserEngine(retrofit, preferenceHelper, netHelper)
+  fun provideUserEngine(retrofit: Retrofit, preferenceHelper: KPreferenceHelper, netHelper: KNetworkHelper, realmHelper: KRealmHelper): UserEngine {
+    return UserEngine(retrofit, preferenceHelper, netHelper, realmHelper)
   }
 }

@@ -77,7 +77,7 @@ class KNavigationHelper {
 
     @JvmStatic
     fun openSignUpActivity(context: Context, isInitActivity: Boolean) {
-      val intent = context.intentFor<KSignInActivity>(/*KSamplePresenterImpl.Argument.EXTRA_GAME_ID to "game"*/)
+      val intent = context.intentFor<KSignUpActivity>(/*KSamplePresenterImpl.Argument.EXTRA_GAME_ID to "game"*/)
       launchActivity(intent, context, isInitActivity)
     }
 
@@ -140,6 +140,13 @@ class KNavigationHelper {
     }
 
     @JvmStatic
+    fun openEmailClient(context: Context) {
+      val intent = Intent(Intent.ACTION_MAIN)
+      intent.addCategory(Intent.CATEGORY_APP_EMAIL)
+      context.startActivity(Intent.createChooser(intent, str(R.string.email_dialog_chooser)))
+    }
+
+    @JvmStatic
     fun openInitActivity(context: Context, activityName: String, isFirstRun: Boolean, isLogged: Boolean, sharingBundle: Bundle?) {
       openInitActivityWithData(context, activityName, isFirstRun, isLogged, sharingBundle)
     }
@@ -167,7 +174,7 @@ class KNavigationHelper {
 
       when {
         isFirstRun -> openKOnboardingActivity(context, isInitActivity)
-        !isLogged -> openKSampleActivity(context, isInitActivity)
+        !isLogged -> openSignInActivity(context, isInitActivity)
       //        KBuySearchActivity::class.java.name == activityName -> openKBuySearchActivity(context, isInitActivity)
       //        KBuyMineActivity::class.java.name == activityName -> openKBuyMineActivity(context, isInitActivity)
       //        KLoginActivity::class.java.name == activityName -> openKLoginActivity(context, isInitActivity)

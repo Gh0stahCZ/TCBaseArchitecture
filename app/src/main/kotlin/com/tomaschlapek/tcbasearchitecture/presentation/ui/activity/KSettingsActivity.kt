@@ -15,7 +15,6 @@ import com.tomaschlapek.tcbasearchitecture.presentation.ui.fragment.ExamplePrefF
 import com.tomaschlapek.tcbasearchitecture.util.ActivityBinder
 import com.tomaschlapek.tcbasearchitecture.util.Konstants
 import com.tomaschlapek.tcbasearchitecture.util.str
-import org.jetbrains.anko.toast
 import timber.log.Timber
 
 /**
@@ -59,9 +58,6 @@ class KSettingsActivity : KToolbarActivity<KISettingsActivityView, KSettingsPres
     init()
   }
 
-  override fun showToast(message: String?) {
-    toast(message.toString())
-  }
 
   override fun showPlace(place: Place) {
     prefFragment.showLocation(place.name.toString())
@@ -77,7 +73,7 @@ class KSettingsActivity : KToolbarActivity<KISettingsActivityView, KSettingsPres
 
   /* Private Methods ******************************************************************************/
 
-  fun init() {
+  private fun init() {
     mViews
     prefFragment = KNavigationHelper.addExamplePrefFragment(this, R.id.content_container)
   }

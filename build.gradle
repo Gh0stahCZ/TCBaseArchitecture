@@ -5,7 +5,7 @@ buildscript {
   ext.gradleVersion = '3.0.0-beta5'
   ext.kotlinVersion = '1.1.4-3'
   ext.ankoVersion = '0.10.1'
-  ext.realmVersion = '3.7.1'
+  ext.realmVersion = '4.3.1'
 
   repositories {
     jcenter()

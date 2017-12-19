@@ -80,6 +80,8 @@
   <color name="button_background_circle_pressed">@color/gray_60</color>
   <color name="button_background_circle_checked">@color/gray_60</color>
 
+  <color name="button_background_disabled">#424f4f4f</color>
+
   <color name="button_background_circle_selected_normal">@color/sample_green_soft</color>
   <color name="button_background_circle_selected_pressed">@color/sample_greed_dark</color>
   <color name="button_background_circle_selected_checked">@color/sample_greed_dark</color>

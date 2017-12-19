@@ -74,6 +74,17 @@
       android:exported="false"
       />
 
+    <activity
+      android:name=".presentation.ui.activity.KSignUpActivity"
+      android:screenOrientation="portrait"
+      android:exported="false"
+      android:parentActivityName=".presentation.ui.activity.KChatActivity"
+      >
+      <meta-data
+        android:name="android.support.PARENT_ACTIVITY"
+        android:value=".presentation.ui.activity.KSignInActivity"/>
+    </activity>
+
     <service
       android:name=".presentation.ui.service.KAutoResendPushTokenJobService"
       android:exported="false">
@@ -97,15 +108,6 @@
         <action android:name="com.google.firebase.MESSAGING_EVENT"/>
       </intent-filter>
     </service>
-
-    <receiver
-      android:enabled="true"
-      android:name=".presentation.ui.service.DefaultPushReceiver"
-      android:exported="false">
-      <intent-filter android:priority="0">
-        <action android:name="extra_broadcast_notification"/>
-      </intent-filter>
-    </receiver>
 
     <service
       android:enabled="true"

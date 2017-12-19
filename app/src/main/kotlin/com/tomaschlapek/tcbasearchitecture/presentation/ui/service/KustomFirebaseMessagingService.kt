@@ -45,12 +45,7 @@ class KustomFirebaseMessagingService : FirebaseMessagingService() {
         action = Konstants.BROADCAST_NOTIFICATION
       }
 
-      sendOrderedBroadcast(bcIntent, null, null, null, Activity.RESULT_OK, null, dataExtras);
+      sendOrderedBroadcast(bcIntent, null, DefaultPushReceiver(), null, Activity.RESULT_OK, null, dataExtras);
     }
-  }
-
-  private fun showMessage(data: Map<String, String>) {
-    Timber.d("Message data payload: $data")
-    pushNotification.show(applicationContext, data)
   }
 }

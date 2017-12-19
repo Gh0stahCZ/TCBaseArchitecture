@@ -4,13 +4,21 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.FragmentActivity
 import android.text.TextUtils
+import com.google.firebase.auth.ActionCodeSettings
+import com.google.firebase.auth.FirebaseAuth
 import com.tomaschlapek.tcbasearchitecture.App
+import com.tomaschlapek.tcbasearchitecture.R
 import com.tomaschlapek.tcbasearchitecture.engine.UserEngine
+import com.tomaschlapek.tcbasearchitecture.helper.KNavigationHelper
 import com.tomaschlapek.tcbasearchitecture.helper.KPreferenceHelper
+import com.tomaschlapek.tcbasearchitecture.helper.KRealmHelper
 import com.tomaschlapek.tcbasearchitecture.presentation.presenter.interfaces.view.KIBaseView
+import com.tomaschlapek.tcbasearchitecture.util.str
 import eu.inloop.viewmodel.AbstractViewModel
 import io.realm.Realm
+import okhttp3.WebSocketListener
 import timber.log.Timber
+
 
 /**
  * Base class for view models of [PresenterActivity]
@@ -32,6 +40,11 @@ abstract class KActivityPresenter<TView : KIBaseView> : KBasePresenter<TView>() 
 
   lateinit var userEngine: UserEngine
   lateinit var preferenceHelper: KPreferenceHelper
+  lateinit var realmHelper: KRealmHelper
+
+  protected val mAuth by lazy {
+    FirebaseAuth.getInstance()
+  }
 
   abstract fun registerSubscribers()
 
@@ -46,6 +59,9 @@ abstract class KActivityPresenter<TView : KIBaseView> : KBasePresenter<TView>() 
 
     userEngine = App.getAppComponent().provideUserEngine()
     preferenceHelper = App.getAppComponent().provideKPreferenceHelper()
+    realmHelper = App.getAppComponent().provideRealmHelper()
+
+    val sckt: WebSocketListener
   }
 
   /**
@@ -82,14 +98,46 @@ abstract class KActivityPresenter<TView : KIBaseView> : KBasePresenter<TView>() 
     Timber.d("onNewIntent() : " + intent)
   }
 
+
   fun onNotificationReceived(notification: Map<String, String>?) {
     Timber.d(notification?.toString())
     view?.onNotificationReceived(notification?.toString() ?: "Unknown data")
   }
 
+  fun sendVerifyEmail() {
+    val user = mAuth.currentUser
+
+    val dynamicLink = str(R.string.link_verify_email)
+    val actionCodeSettings = ActionCodeSettings.newBuilder()
+      .setUrl(dynamicLink)
+      .build()
+
+    user?.sendEmailVerification(actionCodeSettings)?.addOnCompleteListener(mActivity) { task ->
+      if (task.isSuccessful) {
+        view?.showSnack(R.string.email_sent, R.string.open_email) {
+          KNavigationHelper.openEmailClient(mActivity)
+        }
+      } else {
+        view?.showSnack(R.string.email_not_sent)
+      }
+    }
+  }
+
+  fun blockUnauthorized() {
+    if (isUserLogged && isUserVerified) {
+      return
+    } else {
+      view?.showVerifyBlock()
+    }
+  }
+
+
   override fun onSaveInstanceState(bundle: Bundle) {
     super.onSaveInstanceState(bundle)
   }
+
+  val isUserVerified: Boolean
+    get() = mAuth.currentUser?.isEmailVerified ?: false
 
   val isUserLogged: Boolean
     get() = !TextUtils.isEmpty(preferenceHelper.userLoginToken)

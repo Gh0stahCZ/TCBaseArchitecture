@@ -13,7 +13,6 @@ import com.tomaschlapek.tcbasearchitecture.presentation.presenter.interfaces.vie
 import com.tomaschlapek.tcbasearchitecture.presentation.ui.activity.base.KBottomNavigationActivity
 import com.tomaschlapek.tcbasearchitecture.util.ActivityBinder
 import com.tomaschlapek.tcbasearchitecture.util.str
-import org.jetbrains.anko.toast
 import timber.log.Timber
 
 /**
@@ -69,10 +68,6 @@ class KMapActivity : KBottomNavigationActivity<KIMapActivityView, KMapPresenterI
     return false
   }
 
-  override fun showToast(message: String?) {
-    toast(message.toString())
-  }
-
   override fun getSelectedItemId(): Int {
     return R.id.action_map
   }
@@ -88,7 +83,7 @@ class KMapActivity : KBottomNavigationActivity<KIMapActivityView, KMapPresenterI
   /* Private Methods ******************************************************************************/
 
 
-  fun init() {
+  private fun init() {
     mViews
     val mapFragment = supportFragmentManager.findFragmentById(R.id.example_map) as SupportMapFragment
   }

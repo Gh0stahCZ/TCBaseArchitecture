@@ -1,9 +1,11 @@
 package com.tomaschlapek.tcbasearchitecture.helper
 
-import com.tomaschlapek.tcbasearchitecture.realm.KRUser
+import com.google.firebase.auth.FirebaseUser
+import com.tomaschlapek.tcbasearchitecture.realm.RUser
 import com.tomaschlapek.tcbasearchitecture.realm.repository.KRUserRepository
 import io.realm.Realm
 import io.realm.RealmConfiguration
+
 
 /**
  * Manages access and CRUD operation to Realm.
@@ -25,7 +27,7 @@ class KRealmHelper(val mRUserRepository: KRUserRepository) {
           RealmConfiguration.Builder()
             .name(Realm.DEFAULT_REALM_NAME)
             .schemaVersion(0)
-            .deleteRealmIfMigrationNeeded()
+//            .deleteRealmIfMigrationNeeded()
             .build()
         )
       }
@@ -60,28 +62,26 @@ class KRealmHelper(val mRUserRepository: KRUserRepository) {
    * *
    * @return Reference to logged user.
    */
-  fun getLoggedUser(realmInstance: Realm): KRUser? {
+  fun getLoggedUser(realmInstance: Realm): RUser? {
     return mRUserRepository.getLoggedUser(realmInstance)
   }
 
   /* Realm object creation ************************************************************************/
 
-  // TODO Uncomment when ready
-  //  /**
-  //   * Creates User Realm objects and persists them.
-  //   *
-  //   * @param userInfoResponse UserInfo (from API).
-  //   * @param token User token (from API).
-  //   */
-  //  public void createRUser(UserInfoResponse userInfoResponse, String token) {
-  //
-  //    try (Realm realm = Realm.getDefaultInstance()) {
-  //      realm.executeTransactionAsync(realmInstance -> {
-  //        RUser rUser = new RUser(userInfoResponse, token);
-  //        createUser(realmInstance, rUser);
-  //      });
-  //    }
-  //  }
+  //   TODO Uncomment when ready
+  /**
+   * Creates User Realm objects and persists them.
+   *
+   * @param firebaseUser UserInfo (from API).
+   */
+  fun createRUser(firebaseUser: FirebaseUser) {
+    Realm.getDefaultInstance().use { realm ->
+      realm.executeTransactionAsync { realmInstance ->
+        val rUser = RUser(firebaseUser)
+        createUser(realmInstance, rUser)
+      }
+    }
+  }
 
   /* User creation and connection **************************************************************/
 
@@ -92,7 +92,7 @@ class KRealmHelper(val mRUserRepository: KRUserRepository) {
    * *
    * @param rUser User to addition.
    */
-  private fun createUser(realmInstance: Realm, rUser: KRUser) {
+  private fun createUser(realmInstance: Realm, rUser: RUser) {
     mRUserRepository.create(realmInstance, rUser)
   }
 

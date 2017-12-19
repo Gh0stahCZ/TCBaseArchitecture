@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.support.v4.app.FragmentActivity
 import android.view.ViewGroup
 import com.tomaschlapek.tcbasearchitecture.helper.KPreferenceHelper
-import com.tomaschlapek.tcbasearchitecture.helper.KRealmHelper
 import dagger.android.support.DaggerAppCompatActivity
 import eu.inloop.viewmodel.IViewModelProvider
 import eu.inloop.viewmodel.ViewModelProvider
@@ -22,8 +21,6 @@ abstract class KPresenterEmptyActivity : DaggerAppCompatActivity(), IViewModelPr
   @Inject
   lateinit var mPreferenceHelper: KPreferenceHelper
 
-  @Inject
-  lateinit var mRealmHelper: KRealmHelper
 
   /* Private Attributes ***************************************************************************/
 
@@ -74,5 +71,9 @@ abstract class KPresenterEmptyActivity : DaggerAppCompatActivity(), IViewModelPr
    * @return View group to inflate layouts.
    */
   abstract fun getContentContainer(): ViewGroup
+
+  abstract fun blockUnauthorized(): Boolean
+
+
 
 }

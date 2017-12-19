@@ -1,6 +1,7 @@
 package com.tomaschlapek.tcbasearchitecture.presentation.ui.activity.base
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
@@ -17,9 +18,13 @@ import com.tomaschlapek.tcbasearchitecture.databinding.ActivityBaseBinding
 import com.tomaschlapek.tcbasearchitecture.helper.KNavigationHelper
 import com.tomaschlapek.tcbasearchitecture.presentation.presenter.base.KActivityPresenter
 import com.tomaschlapek.tcbasearchitecture.presentation.presenter.interfaces.view.KIBaseView
-import com.tomaschlapek.tcbasearchitecture.presentation.ui.service.EXTRA_INT
 import com.tomaschlapek.tcbasearchitecture.presentation.ui.service.EXTRA_NOTIFICATION
 import com.tomaschlapek.tcbasearchitecture.util.registerPushReceiver
+import org.jetbrains.anko.alert
+import org.jetbrains.anko.appcompat.v7.Appcompat
+import org.jetbrains.anko.cancelButton
+import org.jetbrains.anko.design.snackbar
+import org.jetbrains.anko.okButton
 import org.jetbrains.anko.toast
 
 /**
@@ -38,10 +43,9 @@ abstract class KBaseActivity<TView : KIBaseView, TViewModel : KActivityPresenter
 
   private val notificationReceiver = object : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
+      setResultCode(Activity.RESULT_CANCELED)
       val notification = intent.getSerializableExtra(EXTRA_NOTIFICATION) as HashMap<String, String>
-      val number = intent.getSerializableExtra(EXTRA_INT)
       presenter.onNotificationReceived(notification)
-      abortBroadcast()
     }
   }
 
@@ -120,6 +124,63 @@ abstract class KBaseActivity<TView : KIBaseView, TViewModel : KActivityPresenter
     focus?.clearFocus()
   }
 
+  override fun showSnack(text: String) {
+    snackbar(getContentContainer(), text)
+  }
+
+  override fun showSnack(textResId: Int) {
+    snackbar(getContentContainer(), textResId)
+  }
+
+  override fun showSnack(text: String, buttonText: String, onClick: (android.view.View) -> kotlin.Unit) {
+    snackbar(getContentContainer(), text, buttonText, onClick)
+  }
+
+  override fun showSnack(textResId: Int, buttonTextResId: Int, onClick: (View) -> Unit) {
+    snackbar(getContentContainer(), textResId, buttonTextResId, onClick)
+  }
+
+  override fun showToast(text: String) {
+    toast(text)
+  }
+
+  override fun showToast(textResId: Int) {
+    toast(textResId)
+  }
+
+  override fun showNotImplemented() {
+    toast(R.string.not_implemented_yet)
+  }
+
+  override fun showVerifyBlock() {
+    val verifyAlert = alert(Appcompat) {
+      titleResource = R.string.verify_account_title
+      messageResource = R.string.verify_account_message
+      positiveButton(R.string.send_email) {
+        presenter.sendVerifyEmail()
+
+      }
+      cancelButton {
+
+      }
+    }.build()
+    verifyAlert.setCanceledOnTouchOutside(false)
+    verifyAlert.setCancelable(false)
+    verifyAlert.show()
+  }
+
+  override fun showVerifyEmailSentDialog(textResId: Int) {
+    val verifyAlert = alert(Appcompat) {
+      titleResource = textResId
+      okButton {
+        finish()
+      }
+    }.build()
+    verifyAlert.setCanceledOnTouchOutside(false)
+    verifyAlert.setCancelable(false)
+    verifyAlert.show()
+  }
+
   /**
    * Sets loading progress visibility
    * @param visible
@@ -140,6 +201,13 @@ abstract class KBaseActivity<TView : KIBaseView, TViewModel : KActivityPresenter
       attemptFirstInit(savedInstanceState)
     } else {
       attemptClassicInit(savedInstanceState)
+    }
+  }
+
+  override fun onPostCreate(savedInstanceState: Bundle?) {
+    super.onPostCreate(savedInstanceState)
+    if (blockUnauthorized()) {
+      presenter.blockUnauthorized()
     }
   }
 
@@ -177,6 +245,8 @@ abstract class KBaseActivity<TView : KIBaseView, TViewModel : KActivityPresenter
   override fun getContentContainer(): ViewGroup {
     return mBaseContainer
   }
+
+  override fun blockUnauthorized(): Boolean = false
 
   /**
    * Get data from sharing

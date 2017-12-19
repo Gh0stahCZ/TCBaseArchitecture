@@ -14,6 +14,7 @@ import android.view.ViewGroup
 import com.tomaschlapek.tcbasearchitecture.R
 import com.tomaschlapek.tcbasearchitecture.presentation.presenter.base.KActivityPresenter
 import com.tomaschlapek.tcbasearchitecture.presentation.presenter.interfaces.view.KIBaseView
+import com.tomaschlapek.tcbasearchitecture.presentation.ui.activity.KSignInActivity
 import com.tomaschlapek.tcbasearchitecture.util.str
 
 /**
@@ -111,7 +112,7 @@ abstract class KToolbarActivity<TView : KIBaseView, TViewModel : KActivityPresen
       supportActionBar?.setHomeAsUpIndicator(upArrow)
       supportActionBar?.title = getToolbarTitle()
 
-      if (this is KBottomNavigationActivity<*, *>) {
+      if (this is KBottomNavigationActivity<*, *> || this is KSignInActivity) {
         hideBackArrowButton()
       } else {
         showBackArrowButton()

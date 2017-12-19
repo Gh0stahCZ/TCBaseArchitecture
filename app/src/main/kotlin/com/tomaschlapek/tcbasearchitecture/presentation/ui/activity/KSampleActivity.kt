@@ -12,7 +12,6 @@ import com.tomaschlapek.tcbasearchitecture.presentation.presenter.interfaces.vie
 import com.tomaschlapek.tcbasearchitecture.presentation.ui.activity.base.KBottomNavigationActivity
 import com.tomaschlapek.tcbasearchitecture.util.ActivityBinder
 import com.tomaschlapek.tcbasearchitecture.util.str
-import org.jetbrains.anko.toast
 import timber.log.Timber
 
 
@@ -69,9 +68,9 @@ class KSampleActivity : KBottomNavigationActivity<KISampleActivityView, KSampleP
     return false
   }
 
-  override fun showToast(message: String?) {
+  override fun showToast(text: String) {
     mViews.sampleTextView.text = presenter.getSharingText()
-    toast(message.toString())
+    super.showToast(text)
   }
 
   override fun getSelectedItemId(): Int {
@@ -88,7 +87,7 @@ class KSampleActivity : KBottomNavigationActivity<KISampleActivityView, KSampleP
 
   /* Private Methods ******************************************************************************/
 
-  fun init() {
+  private fun init() {
     mViews.sampleButton.setOnClickListener { view -> presenter.onButtonClick() }
   }
 }
